@@ -92,15 +92,7 @@
 
   /* ===== Portfolio ===== */
   .tile{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#0b1220}
-  .tile img{
-    display:block;
-    width:100%;
-    height:auto;
-    aspect-ratio:16/9;
-    object-fit:cover;
-    object-position:top center; /* 맨 위를 표시하도록 설정 */
-    transition:transform .5s ease;
-  }
+  .tile img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;transition:transform .5s ease}
   .tile:hover img{transform:scale(1.03)}
   .cap{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-top:1px solid var(--line);font-size:14px;color:var(--mut)}
   .outcap{display:flex;align-items:center;justify-content:space-between;margin:6px 6px 18px 6px;font-size:14px;color:var(--mut)}
@@ -124,6 +116,11 @@
   .step strong{display:block;margin-top:2px;line-height:1.2}
   .step p.lede{margin:6px 0 0}
   .step + .step{margin-top:24px;padding-top:10px}
+
+  /* 👇 추가된 부분 */
+  #process .step:first-of-type {
+    margin-top: 40px;
+  }
 
   .metric{display:flex;flex-direction:column;gap:4px}
   .kpi{font-size:clamp(24px,3.2vw,36px);font-weight:900}
@@ -154,234 +151,8 @@
     .tile img{transition:none}
     [data-reveal]{transition:none}
   }
-
-/* ====== STRICT MINIMAL PATCH: keep visuals, only fix header & anchors ====== */
-:root{ --header-h: 68px; }
-
-/* 1) 헤더 항상 상단 고정 (배경/색/폰트는 기존 그대로 유지) */
-header{
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 2000;
-}
-
-/* 2) 헤더 높이만큼 본문 내려 주기 (겹침 방지) */
-body{ padding-top: var(--header-h); }
-
-/* 3) 섹션 점프 시 헤더에 가리지 않도록 여유 */
-[data-section]{ scroll-margin-top: calc(var(--header-h) + 12px); }
-
-/* 4) 초소형 화면에서 브랜드 줄바꿈만 허용 (오버플로우 방지) */
-@media (max-width: 420px){
-  .brand{ min-width:auto; white-space:normal; }
-}
-
-
-/* === Edge comfort: 모바일/좁은 창에서 좌우 여백 강화 (비파괴 오버라이드) === */
-:root{
-  --edge: 28px;
-}
-@media (max-width: 980px){
-  :root{ --edge: clamp(22px, 6vw, 32px); }
-}
-@supports (padding: max(0px)) {
-  :root{
-    --edgeL: max(env(safe-area-inset-left),  var(--edge));
-    --edgeR: max(env(safe-area-inset-right), var(--edge));
-  }
-}
-.container{
-  padding-left:  var(--edgeL, var(--edge)) !important;
-  padding-right: var(--edgeR, var(--edge)) !important;
-}
-.hero .container,
-footer .container{
-  padding-left:  var(--edgeL, var(--edge)) !important;
-  padding-right: var(--edgeR, var(--edge)) !important;
-}
-@media (max-width: 980px){
-  .section{ padding-left: 0; padding-right: 0; }
-  .section .grid{ gap: clamp(14px, 4vw, 22px); }
-}
-
-
-/* === Mobile visual polish: header alignment + CTA no-wrap + portfolio stack === */
-
-/* 0) 공통: 버튼은 한 줄 유지 (너무 좁으면 나중에 줄바꿈 대신 폭 유지) */
-.btn{ white-space: nowrap; line-height: 1; }
-
-/* 1) 헤더 정렬 안정화 */
-header .nav{ display:flex; align-items:center; gap:12px; }
-#hamb, .hamb{
-  margin-left:auto;
-  width:40px; height:40px;
-  display:inline-flex; align-items:center; justify-content:center;
-  line-height:1;
-}
-
-/* 2) 제목/문장 줄바꿈 품질 (한국어 단어가 어색하게 끊기지 않도록) */
-h1, h2{ word-break: keep-all; }
-p, .lede{ word-break: keep-all; overflow-wrap: anywhere; }
-
-/* 3) 포트폴리오 헤더행은 모바일에서 '제목 -> 버튼' 순서로 세로 스택 */
-@media (max-width: 980px){
-  #portfolio .grid{
-    grid-template-columns: 1fr !important;
-    align-items: start !important;
-  }
-  #portfolio .grid > .btn, #portfolio .grid a.btn{
-    justify-self: start;
-    margin-top: 8px;
-  }
-}
-
-/* 4) 버튼이 너무 커지지 않도록 최대 폭 제한 (컨테이너 내에서) */
-.btn{ max-width: 100%; }
-
-
-/* ===== NAV/HAMBURGER DESKTOP FIX ===== */
-/* Desktop(>980px): 햄버거 숨기고 메뉴는 인라인 유지 */
-@media (min-width: 981px){
-  #hamb, .hamb{ display:none !important; }
-  header .nav{ display:flex; align-items:center; gap:14px; }
-  nav.menu{
-    position: static !important;
-    display: flex !important;
-    align-items: center;
-    gap: 10px;
-    padding: 0;
-    border: none;
-    background: transparent;
-    box-shadow: none;
-    max-height: none;
-    overflow: visible;
-  }
-}
-
-/* Mobile(<=980px): 햄버거는 우측, 메뉴 패널은 토글 */
-@media (max-width: 980px){
-  header .nav{ display:flex; align-items:center; gap:12px; }
-  #hamb, .hamb{
-    margin-left:auto;
-    width:40px; height:40px;
-    display:inline-flex !important;
-    align-items:center; justify-content:center;
-    line-height:1;
-  }
-  nav.menu{ display:none; }
-  nav.menu.open{ display:flex; }
-}
-
-
-/* ===== INTERACTIVE AFFORDANCE (buttons/nav hover/active/ripple) ===== */
-
-/* Better tap feedback on mobile Safari */
-a, button, .btn{ -webkit-tap-highlight-color: rgba(255,255,255,.15); }
-
-/* Buttons */
-.btn{
-  position: relative;
-  overflow: hidden;           /* for ripple */
-  cursor: pointer;
-  user-select: none;
-  transition: transform .12s ease, box-shadow .2s ease, filter .2s ease, background-position .3s ease;
-  will-change: transform, box-shadow;
-  line-height: 1.05;
-  white-space: nowrap;
-}
-.btn:hover{ transform: translateY(-1px); }
-.btn:active{ transform: translateY(0); filter: brightness(.98); }
-
-/* Keyboard focus ring (accessibility) */
-.btn:focus-visible{
-  outline: 2px solid rgba(124,108,255,.9);
-  outline-offset: 2px;
-}
-
-/* Primary gradient button: subtle gradient shift + elevation */
-.btn.pri{
-  background-image: linear-gradient(90deg, #7c6cff, #a855f7);
-  background-size: 160% 100%;
-  background-position: 0% 0%;
-  box-shadow: 0 6px 20px rgba(108,100,255,.35);
-}
-.btn.pri:hover{
-  background-position: 100% 0%;
-  box-shadow: 0 10px 28px rgba(108,100,255,.45);
-}
-.btn.pri:active{
-  box-shadow: 0 4px 14px rgba(108,100,255,.30);
-}
-
-/* Outline button: hover/active feedback */
-.btn.out{
-  background: transparent;
-  border: 1px solid var(--line, #232044);
-}
-.btn.out:hover{
-  background: rgba(255,255,255,.06);
-}
-.btn.out:active{
-  background: rgba(255,255,255,.10);
-}
-
-/* Disabled */
-.btn[disabled], .btn:disabled{ opacity:.5; cursor:not-allowed; transform:none; box-shadow:none; filter:none; }
-
-/* Ripple element (created by JS) */
-.btn .rip{
-  position:absolute; pointer-events:none; border-radius:999px;
-  width:24px; height:24px; left:var(--rx, 50%); top:var(--ry, 50%);
-  transform: translate(-50%,-50%) scale(0);
-  background: radial-gradient(closest-side, rgba(255,255,255,.45), rgba(255,255,255,.18) 60%, transparent 70%);
-  opacity:0;
-}
-.btn.rippling .rip{
-  opacity:1; transform: translate(-50%,-50%) scale(12);
-  transition: transform .6s ease, opacity .6s ease;
-}
-
-/* Nav menu items */
-nav.menu a{
-  transition: background .2s ease, color .2s ease, transform .12s ease;
-  border-radius: 10px;
-}
-nav.menu a:hover{ background: rgba(255,255,255,.08); }
-nav.menu a:active{ transform: translateY(1px); }
-
-/* Hamburger */
-#hamb, .hamb{
-  transition: transform .12s ease, background-color .2s ease, box-shadow .2s ease;
-}
-#hamb:hover, .hamb:hover{ background: rgba(255,255,255,.12); }
-#hamb:active, .hamb:active{ transform: scale(.96); }
-
-
-/* ===== HAMBURGER: vivid like logo/primary button ===== */
-@media (max-width: 980px){
-  header .hamb{
-    width: 42px; height: 42px;
-    display: inline-flex; align-items: center; justify-content: center;
-    border-radius: 12px;
-    border: 0 !important;
-    background-image: linear-gradient(90deg, #7c6cff, #a855f7) !important; /* Chan's / 카톡 상담과 같은 톤 */
-    box-shadow: 0 6px 20px rgba(108,100,255,.35);
-    color: #fff; /* 아이콘(막대) 색상 */
-  }
-  header .hamb:hover{ filter: brightness(1.02); box-shadow: 0 10px 28px rgba(108,100,255,.45); }
-  header .hamb:active{ transform: scale(.96); box-shadow: 0 4px 14px rgba(108,100,255,.30); }
-
-  /* 아이콘 막대(기호)는 하얀색으로 */
-  header .hamb span{
-    width: 16px; height: 2px;
-    background: currentColor !important;
-    border-radius: 2px;
-    margin: 2px 0;
-    opacity: 1;
-  }
-}
-
 </style>
+
 </head>
 <body>
 
@@ -492,10 +263,10 @@ nav.menu a:active{ transform: translateY(1px); }
     <div class="grid">
       <div class="g6">
         <h2>진행 프로세스</h2>
-        <div class="step"><div class="n">1</div><div><strong>미팅</strong><p class="lede">목표/톤/문구·레퍼런스 상담 (카톡/디스코드)</p></div></div>
-        <div class="step"><div class="n">2</div><div><strong>시안</strong><p class="lede">맞춤 홍보물 제작·피드백 및 테스트지면 전달</p></div></div>
-        <div class="step"><div class="n">3</div><div><strong>적용</strong><p class="lede">홍보물 납품 및 사용법 안내</p></div></div>
-        <div class="step"><div class="n">4</div><div><strong>후관리</strong><p class="lede">시즌 종료까지 이슈 및 문의사항 대응</p></div></div>
+            <div class="step"><div class="n">1</div><div><strong>미팅</strong><p class="lede">목표/톤/문구·레퍼런스 상담 (카톡/디스코드)</p></div></div>
+            <div class="step"><div class="n">2</div><div><strong>시안</strong><p class="lede">맞춤 홍보물 제작·피드백 및 테스트지면 전달</p></div></div>
+            <div class="step"><div class="n">3</div><div><strong>적용</strong><p class="lede">홍보물 납품 및 사용법 안내</p></div></div>
+            <div class="step"><div class="n">4</div><div><strong>후관리</strong><p class="lede">시즌 종료까지 이슈 및 문의사항 대응</p></div></div>
       </div>
 
       <div class="g6 goals-col">
@@ -612,7 +383,6 @@ document.addEventListener('click', function(e){
   // Compute click position inside the button
   var rect = btn.getBoundingClientRect();
   var x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
-  var y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
   btn.style.setProperty('--rx', x + 'px');
   btn.style.setProperty('--ry', y + 'px');
   // Create or reuse ripple element
