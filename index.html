@@ -90,6 +90,10 @@
   .hero .wrap{position:relative;padding:120px 0 96px;color:#fff}
   .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.18);font-weight:800}
 
+  /* 히어로 제목 줄바꿈 품질 */
+  .hero h1{ word-break: keep-all; text-wrap: balance; }
+  .nowrap{ white-space: nowrap; }
+
   /* ===== Portfolio ===== */
   .tile{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#0b1220}
   .tile img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;transition:transform .5s ease}
@@ -117,20 +121,74 @@
   .step p.lede{margin:6px 0 0}
   .step + .step{margin-top:24px;padding-top:10px}
 
-  /* 👇 추가된 부분 */
-  #process .step:first-of-type {
-    margin-top: 40px;
-  }
+  /* 진행 프로세스: 제목과 첫 항목 사이 여백 */
+  #process .step:first-of-type { margin-top: 40px; }
 
   .metric{display:flex;flex-direction:column;gap:4px}
   .kpi{font-size:clamp(24px,3.2vw,36px);font-weight:900}
 
-  /* === 여기! 10시즌 목표: 제목은 그대로, 아래 내용(그리드)만 세로 중앙 === */
-  .goals-col{display:flex;flex-direction:column}
-  .goals{margin-block:auto}  /* 제목(h2)은 위, 그 밑 그리드만 세로 중앙 */
+  /* ===== Services: 데스크톱은 구분선 유지 ===== */
+  #services .service{
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+    margin-top: 14px;
+  }
+
+  /* === 모바일 좌우 여백(답답함 해소) + 안전영역 대응 === */
+  :root{ --edge: 28px; }
+  @supports (padding: max(0px)){
+    :root{
+      --edgeL: max(env(safe-area-inset-left),  var(--edge));
+      --edgeR: max(env(safe-area-inset-right), var(--edge));
+    }
+  }
+  @media (max-width: 980px){
+    .container{
+      padding-left:  var(--edgeL) !important;
+      padding-right: var(--edgeR) !important;
+    }
+    .hero .container{
+      padding-left:  var(--edgeL) !important;
+      padding-right: var(--edgeR) !important;
+    }
+  }
+
+  /* === Services: 모바일 2열 + 카드형(선 제거) === */
+  @media (max-width: 980px){
+    #services .g8 .g4{ grid-column: span 6 !important; } /* 12그리드의 절반 → 2열 */
+    #services .service{
+      background: rgba(255,255,255,.04);
+      border-radius: 12px;
+      padding: 14px;
+      border: none !important;
+      margin-top: 0;
+    }
+    #services .g8.grid{ gap: 12px; }
+  }
+
+  /* === Back-to-top 버튼: 항상 우하단 고정 === */
+  #topBtn{
+    position: fixed;
+    right: 18px; bottom: 18px;
+    width: 48px; height: 48px;
+    border-radius: 14px;
+    z-index: 1100;
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+    transition: opacity .25s ease, transform .25s ease, box-shadow .2s ease;
+    box-shadow: 0 10px 28px rgba(108,100,255,.45);
+  }
+  #topBtn.show{ opacity:1; transform:none; pointer-events:auto; }
+  @supports (padding: max(0px)){
+    #topBtn{
+      right:  max(env(safe-area-inset-right), 18px);
+      bottom: max(env(safe-area-inset-bottom), 18px);
+    }
+  }
 
   /* ===== Pricing spacing ===== */
-  #contact{padding-bottom:140px} /* 섹션 하단 여유 충분히 */
+  #contact{padding-bottom:140px}
   #contact h2{margin-bottom:6px}
   .pricing-grid{display:grid;gap:20px;margin-top:30px}
   .pricing-cta{margin-top:18px}
@@ -151,6 +209,57 @@
     .tile img{transition:none}
     [data-reveal]{transition:none}
   }
+/* 포트폴리오 헤더 버튼: 항상 한 줄 */
+#portfolio a.btn{ white-space: nowrap; }
+
+/* 화면이 아주 좁을 때는 버튼이 너무 커지지 않게 */
+@media (max-width: 420px){
+  #portfolio a.btn{ font-size: 14px; padding: 10px 12px; }
+}
+}
+/* 모바일: 서비스 섹션 2열 카드형 유지 */
+@media (max-width: 980px){
+  /* 2열 레이아웃 */
+  #services .g8 .g4{ grid-column: span 6 !important; }
+  #services .g8.grid{ gap: 12px; }
+
+  /* 카드 스타일 */
+  #services .service{
+    background: rgba(255,255,255,.04) !important;
+    border-radius: 12px !important;
+    padding: 14px !important;
+    border: none !important;
+    box-shadow: 0 6px 14px rgba(0,0,0,.18);
+  }
+}
+
+/* 모바일: 진행 프로세스/목표도 카드형으로 */
+@media (max-width: 980px){
+  #process .step{
+    padding:12px 14px;
+    border:1px solid var(--line);
+    border-radius:12px;
+    background: rgba(255,255,255,.03);
+  }
+  #process .step + .step{ margin-top:14px; padding-top:10px; }
+
+  .goals .metric{
+    padding:12px 14px;
+    border:1px solid var(--line);
+    border-radius:12px;
+    background: rgba(255,255,255,.03);
+  }
+  .goals .grid{ gap: 14px; }
+}
+/* 데스크톱: 컨테이너 오른쪽과 맞춰서 위치 */
+@media (min-width: 1200px){
+  #topBtn{
+    /* 화면 우측에서 '컨테이너 바깥 여백 + 18px' 만큼 떨어지게 */
+    right: calc((100vw - var(--max)) / 2 + 18px);
+  }
+}
+
+
 </style>
 
 </head>
@@ -175,7 +284,7 @@
 
 <section id="home" class="hero" data-section>
   <div class="container wrap">
-    <h1>[ 홍보페이지 · 보조프로그램 ]<br/>10시즌 홍보를 한번에 준비하자.</h1>
+    <h1>[ 홍보페이지 · 보조프로그램 ]<br/>10시즌 홍보를 한번에 준비하<span class="nowrap">자.</span></h1>
     <p class="lede">맞춤 홍보이미지 · 편한 사용법 · 보조 프로그램 · 무료 수정</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
       <a class="btn pri" data-kakao href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">카카오톡 상담하기</a>
@@ -188,12 +297,12 @@
   <!-- Services -->
   <section id="services" class="section container card pad24" data-section data-reveal>
     <div class="grid">
-      <div class="g4"><h2>서비스</h2><p class="lede">당신에게 맞는 단 한 장, 쉽고 빠른 적용</p></div>
+      <div class="g4"><h2>제공 서비스</h2><p class="lede">당신에게 맞는 단 한 장, 쉽고 빠른 적용</p></div>
       <div class="g8 grid">
         <div class="g4 service"><div><strong>전용 홍보 이미지</strong><p class="lede">톤·문구 요청대로 맞춤 제작<br>(PNG / GIF)</p></div></div>
         <div class="g4 service"><div><strong>사용 가이드 안내</strong><p class="lede">1:1 카톡으로 자세한 안내</p></div></div>
         <div class="g4 service"><div><strong>보조 프로그램</strong><p class="lede">귀찮은 반복 업무를 돕는 <br>안전한 보조 프로그램</p></div></div>
-        <div class="g4 service"><div><strong>무료 수정</strong><p class="lede">시즌 내 무료 수정 요청가능</p></div></div>
+        <div class="g4 service"><div><strong>무료 수정</strong><p class="lede">시즌 내 무료 수정 가능</p></div></div>
         <div class="g4 service"><div><strong>편한 게시물 작성</strong><p class="lede">편한 게시물 작성을 위한 <br>복붙용 코드 제공</p></div></div>
         <div class="g4 service"><div><strong>운영 컨설트</strong><p class="lede">그외 각종 상담 및<br>다방면의 컨설팅 지원</p></div></div>
       </div>
@@ -335,7 +444,7 @@
   const io=new IntersectionObserver((es)=>es.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('seen'); }),{threshold:.12});
   document.querySelectorAll('[data-reveal], .card, .section').forEach(el=>io.observe(el));
 
-  // Back to top
+  // Back to top (히어로 밖으로 벗어나면 표시)
   const topBtn=document.getElementById('topBtn');
   const topIO=new IntersectionObserver((es)=>{ es.forEach(e=>{ topBtn.classList.toggle('show', !e.isIntersecting); }); });
   topIO.observe(document.querySelector('#home'));
@@ -360,7 +469,6 @@
   document.querySelectorAll('.tile img, #lbImg').forEach(img=>{ img.setAttribute('draggable','false'); });
 </script>
 
-
 <script>
 (function(){
   var header = document.querySelector('header');
@@ -383,6 +491,7 @@ document.addEventListener('click', function(e){
   // Compute click position inside the button
   var rect = btn.getBoundingClientRect();
   var x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
+  var y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;   // ← FIXED!
   btn.style.setProperty('--rx', x + 'px');
   btn.style.setProperty('--ry', y + 'px');
   // Create or reuse ripple element
