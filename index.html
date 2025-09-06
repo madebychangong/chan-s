@@ -238,6 +238,149 @@ p, .lede{ word-break: keep-all; overflow-wrap: anywhere; }
 /* 4) 버튼이 너무 커지지 않도록 최대 폭 제한 (컨테이너 내에서) */
 .btn{ max-width: 100%; }
 
+
+/* ===== NAV/HAMBURGER DESKTOP FIX ===== */
+/* Desktop(>980px): 햄버거 숨기고 메뉴는 인라인 유지 */
+@media (min-width: 981px){
+  #hamb, .hamb{ display:none !important; }
+  header .nav{ display:flex; align-items:center; gap:14px; }
+  nav.menu{
+    position: static !important;
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+/* Mobile(<=980px): 햄버거는 우측, 메뉴 패널은 토글 */
+@media (max-width: 980px){
+  header .nav{ display:flex; align-items:center; gap:12px; }
+  #hamb, .hamb{
+    margin-left:auto;
+    width:40px; height:40px;
+    display:inline-flex !important;
+    align-items:center; justify-content:center;
+    line-height:1;
+  }
+  nav.menu{ display:none; }
+  nav.menu.open{ display:flex; }
+}
+
+
+/* ===== INTERACTIVE AFFORDANCE (buttons/nav hover/active/ripple) ===== */
+
+/* Better tap feedback on mobile Safari */
+a, button, .btn{ -webkit-tap-highlight-color: rgba(255,255,255,.15); }
+
+/* Buttons */
+.btn{
+  position: relative;
+  overflow: hidden;           /* for ripple */
+  cursor: pointer;
+  user-select: none;
+  transition: transform .12s ease, box-shadow .2s ease, filter .2s ease, background-position .3s ease;
+  will-change: transform, box-shadow;
+  line-height: 1.05;
+  white-space: nowrap;
+}
+.btn:hover{ transform: translateY(-1px); }
+.btn:active{ transform: translateY(0); filter: brightness(.98); }
+
+/* Keyboard focus ring (accessibility) */
+.btn:focus-visible{
+  outline: 2px solid rgba(124,108,255,.9);
+  outline-offset: 2px;
+}
+
+/* Primary gradient button: subtle gradient shift + elevation */
+.btn.pri{
+  background-image: linear-gradient(90deg, #7c6cff, #a855f7);
+  background-size: 160% 100%;
+  background-position: 0% 0%;
+  box-shadow: 0 6px 20px rgba(108,100,255,.35);
+}
+.btn.pri:hover{
+  background-position: 100% 0%;
+  box-shadow: 0 10px 28px rgba(108,100,255,.45);
+}
+.btn.pri:active{
+  box-shadow: 0 4px 14px rgba(108,100,255,.30);
+}
+
+/* Outline button: hover/active feedback */
+.btn.out{
+  background: transparent;
+  border: 1px solid var(--line, #232044);
+}
+.btn.out:hover{
+  background: rgba(255,255,255,.06);
+}
+.btn.out:active{
+  background: rgba(255,255,255,.10);
+}
+
+/* Disabled */
+.btn[disabled], .btn:disabled{ opacity:.5; cursor:not-allowed; transform:none; box-shadow:none; filter:none; }
+
+/* Ripple element (created by JS) */
+.btn .rip{
+  position:absolute; pointer-events:none; border-radius:999px;
+  width:24px; height:24px; left:var(--rx, 50%); top:var(--ry, 50%);
+  transform: translate(-50%,-50%) scale(0);
+  background: radial-gradient(closest-side, rgba(255,255,255,.45), rgba(255,255,255,.18) 60%, transparent 70%);
+  opacity:0;
+}
+.btn.rippling .rip{
+  opacity:1; transform: translate(-50%,-50%) scale(12);
+  transition: transform .6s ease, opacity .6s ease;
+}
+
+/* Nav menu items */
+nav.menu a{
+  transition: background .2s ease, color .2s ease, transform .12s ease;
+  border-radius: 10px;
+}
+nav.menu a:hover{ background: rgba(255,255,255,.08); }
+nav.menu a:active{ transform: translateY(1px); }
+
+/* Hamburger */
+#hamb, .hamb{
+  transition: transform .12s ease, background-color .2s ease, box-shadow .2s ease;
+}
+#hamb:hover, .hamb:hover{ background: rgba(255,255,255,.12); }
+#hamb:active, .hamb:active{ transform: scale(.96); }
+
+
+/* ===== HAMBURGER: vivid like logo/primary button ===== */
+@media (max-width: 980px){
+  header .hamb{
+    width: 42px; height: 42px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 12px;
+    border: 0 !important;
+    background-image: linear-gradient(90deg, #7c6cff, #a855f7) !important; /* Chan's / 카톡 상담과 같은 톤 */
+    box-shadow: 0 6px 20px rgba(108,100,255,.35);
+    color: #fff; /* 아이콘(막대) 색상 */
+  }
+  header .hamb:hover{ filter: brightness(1.02); box-shadow: 0 10px 28px rgba(108,100,255,.45); }
+  header .hamb:active{ transform: scale(.96); box-shadow: 0 4px 14px rgba(108,100,255,.30); }
+
+  /* 아이콘 막대(기호)는 하얀색으로 */
+  header .hamb span{
+    width: 16px; height: 2px;
+    background: currentColor !important;
+    border-radius: 2px;
+    margin: 2px 0;
+    opacity: 1;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -459,6 +602,33 @@ p, .lede{ word-break: keep-all; overflow-wrap: anywhere; }
   window.addEventListener('resize', setHeaderH, {passive:true});
   setHeaderH();
 })();
+</script>
+
+<script>
+// Click ripple on .btn (non-destructive)
+document.addEventListener('click', function(e){
+  var btn = e.target.closest('.btn');
+  if(!btn) return;
+  // Compute click position inside the button
+  var rect = btn.getBoundingClientRect();
+  var x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
+  var y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
+  btn.style.setProperty('--rx', x + 'px');
+  btn.style.setProperty('--ry', y + 'px');
+  // Create or reuse ripple element
+  var rip = btn.querySelector('.rip');
+  if(!rip){
+    rip = document.createElement('span');
+    rip.className = 'rip';
+    btn.appendChild(rip);
+  }
+  // Restart animation
+  btn.classList.remove('rippling');
+  void btn.offsetWidth;
+  btn.classList.add('rippling');
+  // Cleanup state
+  setTimeout(function(){ btn.classList.remove('rippling'); }, 600);
+}, {passive:true});
 </script>
 </body>
 </html>
