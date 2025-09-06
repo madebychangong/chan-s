@@ -154,6 +154,56 @@
     .tile img{transition:none}
     [data-reveal]{transition:none}
   }
+
+/* ====== STRICT MINIMAL PATCH: keep visuals, only fix header & anchors ====== */
+:root{ --header-h: 68px; }
+
+/* 1) 헤더 항상 상단 고정 (배경/색/폰트는 기존 그대로 유지) */
+header{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 2000;
+}
+
+/* 2) 헤더 높이만큼 본문 내려 주기 (겹침 방지) */
+body{ padding-top: var(--header-h); }
+
+/* 3) 섹션 점프 시 헤더에 가리지 않도록 여유 */
+[data-section]{ scroll-margin-top: calc(var(--header-h) + 12px); }
+
+/* 4) 초소형 화면에서 브랜드 줄바꿈만 허용 (오버플로우 방지) */
+@media (max-width: 420px){
+  .brand{ min-width:auto; white-space:normal; }
+}
+
+
+/* === Edge comfort: 모바일/좁은 창에서 좌우 여백 강화 (비파괴 오버라이드) === */
+:root{
+  --edge: 28px;
+}
+@media (max-width: 980px){
+  :root{ --edge: clamp(22px, 6vw, 32px); }
+}
+@supports (padding: max(0px)) {
+  :root{
+    --edgeL: max(env(safe-area-inset-left),  var(--edge));
+    --edgeR: max(env(safe-area-inset-right), var(--edge));
+  }
+}
+.container{
+  padding-left:  var(--edgeL, var(--edge)) !important;
+  padding-right: var(--edgeR, var(--edge)) !important;
+}
+.hero .container,
+footer .container{
+  padding-left:  var(--edgeL, var(--edge)) !important;
+  padding-right: var(--edgeR, var(--edge)) !important;
+}
+@media (max-width: 980px){
+  .section{ padding-left: 0; padding-right: 0; }
+  .section .grid{ gap: clamp(14px, 4vw, 22px); }
+}
+
 </style>
 </head>
 <body>
@@ -177,7 +227,7 @@
 
 <section id="home" class="hero" data-section>
   <div class="container wrap">
-    <h1>[ 홍보이미지 · 보조프로그램 ]<br/>10시즌 홍보를 한번에 준비하자.</h1>
+    <h1>[ 홍보페이지 · 보조프로그램 ]<br/>10시즌 홍보를 한번에 준비하자.</h1>
     <p class="lede">맞춤 홍보이미지 · 편한 사용법 · 보조 프로그램 · 무료 수정</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
       <a class="btn pri" data-kakao href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">카카오톡 상담하기</a>
@@ -362,6 +412,19 @@
   document.querySelectorAll('.tile img, #lbImg').forEach(img=>{ img.setAttribute('draggable','false'); });
 </script>
 
+
+<script>
+(function(){
+  var header = document.querySelector('header');
+  if(!header) return;
+  function setHeaderH(){
+    var h = header.offsetHeight || 68;
+    document.documentElement.style.setProperty('--header-h', h + 'px');
+  }
+  window.addEventListener('load', setHeaderH);
+  window.addEventListener('resize', setHeaderH, {passive:true});
+  setHeaderH();
+})();
+</script>
 </body>
 </html>
-
