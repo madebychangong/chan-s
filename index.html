@@ -258,7 +258,19 @@
     right: calc((100vw - var(--max)) / 2 + 18px);
   }
 }
+/* 10시즌 목표: 제목은 위, 목표 블록은 '아래로' 붙이기 */
+#process .goals-col{
+  display:flex;            /* 세로 레이아웃 */
+  flex-direction:column;
+}
+#process .goals{
+  margin-top:auto;         /* 아래쪽으로 밀착 (중앙이 아니라 '아래' 느낌) */
+}
 
+/* 모바일에서는 기본 흐름으로 (아래로 붙는 느낌 해제) */
+@media (max-width: 980px){
+  #process .goals{ margin-top: 12px; }  /* 필요하면 0~16px로 조절 */
+}
 
 </style>
 
