@@ -435,6 +435,28 @@ header:not(.head-transparent){
 }
 </style>
 
+
+<!-- ▼ 추가: 사사삭 애니메이션 CSS -->
+<style id="reveal-sasasak-css">
+  [data-reveal]{opacity:0;transform:translateY(26px) scale(.98);filter:blur(4px);}
+  [data-reveal].seen{
+    animation: reveal-up .72s cubic-bezier(.22,1,.36,1) var(--delay,0ms) both;
+  }
+  @keyframes reveal-up{
+    0%{opacity:0;transform:translateY(26px) scale(.98);filter:blur(4px);}
+    60%{opacity:1;transform:translateY(-2px) scale(1.001);filter:blur(0);}
+    100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}
+  }
+  .tile[data-reveal].seen{animation-duration:.78s;}
+  .service[data-reveal].seen{animation-duration:.70s;}
+  .step[data-reveal].seen{animation-duration:.66s;}
+  .metric[data-reveal].seen{animation-duration:.66s;}
+  .pricing-grid>div[data-reveal].seen{animation-duration:.76s;}
+  @media (prefers-reduced-motion: reduce){
+    [data-reveal]{opacity:1!important;transform:none!important;filter:none!important;animation:none!important;}
+  }
+</style>
+
 </head>
 <body>
 
@@ -741,6 +763,71 @@ document.addEventListener('click', function(e){
       if(e.target.closest('#topBtn')){ topBtn.classList.remove('show'); }
     }, true);
   }
+})();
+</script>
+
+
+<!-- ▼ 추가: 사사삭 애니메이션 JS -->
+<script id="reveal-sasasak-js">
+(function(){
+  // 스크롤 방향 추적
+  let lastY = window.scrollY;
+  let dir = 'down';
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y > lastY) dir = 'down';
+    else if (y < lastY) dir = 'up';
+    lastY = y;
+  }, { passive: true });
+
+  // 대상 그룹 & 스태거 설정
+  const groups = [
+    ['#services .g8.grid > *', 70],
+    ['#portfolio .grid > *', 80],
+    ['#process .step', 60],
+    ['#process .goals .metric', 60],
+    ['#contact .pricing-grid > div', 80]
+  ];
+  groups.forEach(([sel, gap])=>{
+    document.querySelectorAll(sel).forEach((el,i)=>{
+      el.setAttribute('data-reveal','');
+      el.style.setProperty('--delay',(i*gap)+'ms');
+    });
+  });
+
+  // 섹션 타이틀/리드
+  document.querySelectorAll('#home .wrap > *:not(.btn), section .container > h2, section .container > .lede')
+    .forEach((el,i)=>{
+      el.setAttribute('data-reveal','');
+      el.style.setProperty('--delay',(i*60)+'ms');
+    });
+
+  // 관찰자: 아래로 내릴 때만 재생
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting && dir === 'down'){
+        e.target.classList.remove('seen');
+        void e.target.offsetWidth; // reflow for restart
+        e.target.classList.add('seen');
+      }
+    });
+  }, { threshold: .16 });
+
+  // 관찰 시작
+  document.querySelectorAll('[data-reveal]').forEach(el=> io.observe(el));
+
+  // 초기 히어로는 즉시 보이게 (첫 화면 빈 화면 방지)
+  const revealNow = (el) => { 
+    el.classList.remove('seen'); 
+    void el.offsetWidth; 
+    el.classList.add('seen'); 
+  };
+  window.addEventListener('load', () => {
+    document.querySelectorAll('#home .wrap > *').forEach(el => {
+      if (!el.hasAttribute('data-reveal')) el.setAttribute('data-reveal','');
+      revealNow(el);
+    });
+  });
 })();
 </script>
 
