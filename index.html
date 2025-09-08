@@ -438,22 +438,28 @@ header:not(.head-transparent){
 
 <!-- ▼ 추가: 사사삭 애니메이션 CSS -->
 <style id="reveal-sasasak-css">
-  [data-reveal]{opacity:0;transform:translateY(26px) scale(.98);filter:blur(4px);}
+  /* LIGHTWEIGHT reveal for mobile/desktop */
+  [data-reveal]{
+    opacity: 0;
+    transform: translateY(18px);
+    will-change: transform, opacity;
+    transition: transform .44s cubic-bezier(.22,1,.36,1), opacity .44s cubic-bezier(.22,1,.36,1);
+    transition-delay: var(--delay, 0ms);
+  }
   [data-reveal].seen{
-    animation: reveal-up .72s cubic-bezier(.22,1,.36,1) var(--delay,0ms) both;
+    opacity: 1;
+    transform: translateY(0);
   }
-  @keyframes reveal-up{
-    0%{opacity:0;transform:translateY(26px) scale(.98);filter:blur(4px);}
-    60%{opacity:1;transform:translateY(-2px) scale(1.001);filter:blur(0);}
-    100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}
+  /* Slightly snappier on mobile to reduce jank */
+  @media (max-width: 980px){
+    [data-reveal]{
+      transform: translateY(14px);
+      transition-duration: .38s;
+    }
   }
-  .tile[data-reveal].seen{animation-duration:.78s;}
-  .service[data-reveal].seen{animation-duration:.70s;}
-  .step[data-reveal].seen{animation-duration:.66s;}
-  .metric[data-reveal].seen{animation-duration:.66s;}
-  .pricing-grid>div[data-reveal].seen{animation-duration:.76s;}
+  /* Reduced motion users */
   @media (prefers-reduced-motion: reduce){
-    [data-reveal]{opacity:1!important;transform:none!important;filter:none!important;animation:none!important;}
+    [data-reveal]{opacity:1 !important; transform:none !important; transition:none !important;}
   }
 </style>
 
@@ -770,17 +776,16 @@ document.addEventListener('click', function(e){
 <!-- ▼ 추가: 사사삭 애니메이션 JS -->
 <script id="reveal-sasasak-js">
 (function(){
-  // 스크롤 방향 추적
+  // Track scroll direction
   let lastY = window.scrollY;
   let dir = 'down';
   window.addEventListener('scroll', () => {
     const y = window.scrollY;
-    if (y > lastY) dir = 'down';
-    else if (y < lastY) dir = 'up';
+    dir = (y > lastY) ? 'down' : (y < lastY) ? 'up' : dir;
     lastY = y;
   }, { passive: true });
 
-  // 대상 그룹 & 스태거 설정
+  // Auto-register targets + stagger
   const groups = [
     ['#services .g8.grid > *', 70],
     ['#portfolio .grid > *', 80],
@@ -791,41 +796,35 @@ document.addEventListener('click', function(e){
   groups.forEach(([sel, gap])=>{
     document.querySelectorAll(sel).forEach((el,i)=>{
       el.setAttribute('data-reveal','');
-      el.style.setProperty('--delay',(i*gap)+'ms');
+      el.style.setProperty('--delay', (i * gap) + 'ms');
     });
   });
-
-  // 섹션 타이틀/리드
   document.querySelectorAll('#home .wrap > *:not(.btn), section .container > h2, section .container > .lede')
     .forEach((el,i)=>{
       el.setAttribute('data-reveal','');
-      el.style.setProperty('--delay',(i*60)+'ms');
+      el.style.setProperty('--delay', (i * 60) + 'ms');
     });
 
-  // 관찰자: 아래로 내릴 때만 재생
+  // Intersection observer: play only when scrolling down into view.
+  // Remove .seen when scrolling up and the element leaves, so it can play again later.
   const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting && dir === 'down'){
-        e.target.classList.remove('seen');
-        void e.target.offsetWidth; // reflow for restart
-        e.target.classList.add('seen');
+    entries.forEach(entry => {
+      const el = entry.target;
+      if (entry.isIntersecting && dir === 'down') {
+        el.classList.add('seen');
+      } else if (!entry.isIntersecting && dir === 'up') {
+        el.classList.remove('seen');
       }
     });
-  }, { threshold: .16 });
+  }, { threshold: 0.12 });
 
-  // 관찰 시작
-  document.querySelectorAll('[data-reveal]').forEach(el=> io.observe(el));
+  document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
 
-  // 초기 히어로는 즉시 보이게 (첫 화면 빈 화면 방지)
-  const revealNow = (el) => { 
-    el.classList.remove('seen'); 
-    void el.offsetWidth; 
-    el.classList.add('seen'); 
-  };
+  // Ensure hero contents are visible initially
   window.addEventListener('load', () => {
     document.querySelectorAll('#home .wrap > *').forEach(el => {
       if (!el.hasAttribute('data-reveal')) el.setAttribute('data-reveal','');
-      revealNow(el);
+      el.classList.add('seen');
     });
   });
 })();
