@@ -13,6 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" rel="stylesheet">
+
 <style>
   :root{
     --max:1200px;
@@ -30,7 +31,7 @@
   a{text-decoration:none;color:inherit}
   .container{max-width:var(--max);margin:0 auto;padding:24px 28px}
   .section{padding:72px 0}
-  [data-section]{scroll-margin-top:80px}
+  [data-section]{scroll-margin-top:var(--header-h,80px)}
   @media(max-width:980px){.section{padding:52px 0}}
   .grid{display:grid;gap:20px;grid-template-columns:repeat(12,1fr)}
   .g3{grid-column:span 3}.g4{grid-column:span 4}.g5{grid-column:span 5}.g6{grid-column:span 6}.g7{grid-column:span 7}.g8{grid-column:span 8}.g12{grid-column:span 12}
@@ -90,7 +91,6 @@
   .hero .wrap{position:relative;padding:120px 0 96px;color:#fff}
   .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.18);font-weight:800}
 
-  /* 히어로 제목 줄바꿈 품질 */
   .hero h1{ word-break: keep-all; text-wrap: balance; }
   .nowrap{ white-space: nowrap; }
 
@@ -121,7 +121,6 @@
   .step p.lede{margin:6px 0 0}
   .step + .step{margin-top:24px;padding-top:10px}
 
-  /* 진행 프로세스: 제목과 첫 항목 사이 여백 */
   #process .step:first-of-type { margin-top: 40px; }
 
   .metric{display:flex;flex-direction:column;gap:4px}
@@ -134,7 +133,7 @@
     margin-top: 14px;
   }
 
-  /* === 모바일 좌우 여백(답답함 해소) + 안전영역 대응 === */
+  /* === 모바일 좌우 여백 + 안전영역 === */
   :root{ --edge: 28px; }
   @supports (padding: max(0px)){
     :root{
@@ -153,20 +152,7 @@
     }
   }
 
-  /* === Services: 모바일 2열 + 카드형(선 제거) === */
-  @media (max-width: 980px){
-    #services .g8 .g4{ grid-column: span 6 !important; } /* 12그리드의 절반 → 2열 */
-    #services .service{
-      background: rgba(255,255,255,.04);
-      border-radius: 12px;
-      padding: 14px;
-      border: none !important;
-      margin-top: 0;
-    }
-    #services .g8.grid{ gap: 12px; }
-  }
-
-  /* === Back-to-top 버튼: 항상 우하단 고정 === */
+  /* === Back-to-top 버튼 === */
   #topBtn{
     position: fixed;
     right: 18px; bottom: 18px;
@@ -201,7 +187,7 @@
   [data-reveal]{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
   [data-reveal].seen{opacity:1;transform:none}
 
-  /* ===== Anti-save UX (best effort) ===== */
+  /* ===== Anti-save UX ===== */
   .tile img, .lb img{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 
   /* ===== Motion reduce ===== */
@@ -209,160 +195,113 @@
     .tile img{transition:none}
     [data-reveal]{transition:none}
   }
-/* 포트폴리오 헤더 버튼: 항상 한 줄 */
-#portfolio a.btn{ white-space: nowrap; }
 
-/* 화면이 아주 좁을 때는 버튼이 너무 커지지 않게 */
-@media (max-width: 420px){
-  #portfolio a.btn{ font-size: 14px; padding: 10px 12px; }
-}
-}
-/* 모바일: 서비스 섹션 2열 카드형 유지 */
-@media (max-width: 980px){
-  /* 2열 레이아웃 */
-  #services .g8 .g4{ grid-column: span 6 !important; }
-  #services .g8.grid{ gap: 12px; }
+  /* 포트폴리오 헤더 버튼: 한 줄 유지 */
+  #portfolio a.btn{ white-space: nowrap; }
 
-  /* 카드 스타일 */
-  #services .service{
-    background: rgba(255,255,255,.04) !important;
-    border-radius: 12px !important;
-    padding: 14px !important;
-    border: none !important;
-    box-shadow: 0 6px 14px rgba(0,0,0,.18);
+  @media (max-width: 420px){
+    #portfolio a.btn{ font-size: 14px; padding: 10px 12px; }
   }
-}
 
-/* 모바일: 진행 프로세스/목표도 카드형으로 */
-@media (max-width: 980px){
-  #process .step{
-    padding:12px 14px;
-    border:1px solid var(--line);
-    border-radius:12px;
-    background: rgba(255,255,255,.03);
+  /* 모바일: 서비스 섹션 2열 카드형 유지 (중복 정리) */
+  @media (max-width: 980px){
+    #services .g8 .g4{ grid-column: span 6 !important; }
+    #services .g8.grid{ gap: 12px; }
+    #services .service{
+      background: rgba(255,255,255,.04) !important;
+      border-radius: 12px !important;
+      padding: 14px !important;
+      border: none !important;
+      box-shadow: 0 6px 14px rgba(0,0,0,.18);
+      margin-top: 0 !important;
+    }
   }
-  #process .step + .step{ margin-top:14px; padding-top:10px; }
 
-  .goals .metric{
-    padding:12px 14px;
-    border:1px solid var(--line);
-    border-radius:12px;
-    background: rgba(255,255,255,.03);
+  /* 모바일: 진행 프로세스/목표 카드형 */
+  @media (max-width: 980px){
+    #process .step{
+      padding:12px 14px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background: rgba(255,255,255,.03);
+    }
+    #process .step + .step{ margin-top:14px; padding-top:10px; }
+
+    .goals .metric{
+      padding:12px 14px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background: rgba(255,255,255,.03);
+    }
+    .goals .grid{ gap: 14px; }
   }
-  .goals .grid{ gap: 14px; }
-}
-/* 데스크톱: 컨테이너 오른쪽과 맞춰서 위치 */
-@media (min-width: 1200px){
-  #topBtn{
-    /* 화면 우측에서 '컨테이너 바깥 여백 + 18px' 만큼 떨어지게 */
-    right: calc((100vw - var(--max)) / 2 + 18px);
+
+  @media (min-width: 1200px){
+    #topBtn{ right: calc((100vw - var(--max)) / 2 + 18px); }
   }
-}
-/* 시즌 목표: 제목은 위, 목표 블록은 '아래로' 붙이기 */
-#process .goals-col{
-  display:flex;            /* 세로 레이아웃 */
-  flex-direction:column;
-}
-#process .goals{
-  margin-top:50px;         /* 아래쪽으로 밀착 (중앙이 아니라 '아래' 느낌) */
-}
 
-/* 모바일에서는 기본 흐름으로 (아래로 붙는 느낌 해제) */
-@media (max-width: 980px){
-  #process .goals{ margin-top: 14px; }  /* 필요하면 0~16px로 조절 */
-}
-/* ===== Pricing cards: Glassmorphism (Apple-like) ===== */
-.pricing-grid > div{
-  position: relative;
-  padding: 18px 20px !important;
-  border-radius: 16px !important;
+  /* 시즌 목표: 제목은 위, 목표는 아래로 붙이기 */
+  #process .goals-col{ display:flex; flex-direction:column; }
+  #process .goals{ margin-top:50px; }
+  @media (max-width: 980px){ #process .goals{ margin-top: 14px; } }
 
-  /* 유리 배경 */
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03)) !important;
-  border: 1px solid rgba(255,255,255,.18) !important;
-
-  /* 유리 효과 핵심 */
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-
-  /* 깊이감 */
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.10),
-    0 12px 32px rgba(0,0,0,.35);
-  overflow: hidden;
-  transition: transform .25s ease, box-shadow .3s ease, border-color .3s ease, background .3s ease;
-}
-
-/* 카드 위쪽 유광 하이라이트 */
-.pricing-grid > div::before{
-  content:'';
-  position:absolute; inset:0;
-  background:
-    radial-gradient(120% 60% at 0% 0%, rgba(255,255,255,.22), transparent 60%),
-    radial-gradient(80% 50% at 100% -10%, rgba(168,85,247,.18), transparent 60%);
-  pointer-events:none;
-  mix-blend-mode: screen;
-  opacity:.35;
-}
-
-/* 살짝 살아 움직이는 호버 */
-.pricing-grid > div:hover{
-  transform: translateY(-2px);
-  border-color: rgba(255,255,255,.26) !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.12),
-    0 16px 44px rgba(0,0,0,.45);
-}
-
-/* 타이틀 살짝 더 선명하게 (선택) */
-.pricing-grid > div strong{
-  font-weight: 900;
-  letter-spacing: -.01em;
-}
-
-/* 모바일에서 카드 사이 여백 조금 넓게 (선택) */
-@media (max-width: 980px){
-  .pricing-grid{ gap: 22px; }
-}
-
+  /* ===== Pricing cards: Glass ===== */
+  .pricing-grid > div{
+    position: relative;
+    padding: 18px 20px !important;
+    border-radius: 16px !important;
+    background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03)) !important;
+    border: 1px solid rgba(255,255,255,.18) !important;
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.10), 0 12px 32px rgba(0,0,0,.35);
+    overflow: hidden;
+    transition: transform .25s ease, box-shadow .3s ease, border-color .3s ease, background .3s ease;
+  }
+  .pricing-grid > div::before{
+    content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(120% 60% at 0% 0%, rgba(255,255,255,.22), transparent 60%),
+      radial-gradient(80% 50% at 100% -10%, rgba(168,85,247,.18), transparent 60%);
+    pointer-events:none; mix-blend-mode: screen; opacity:.35;
+  }
+  .pricing-grid > div:hover{
+    transform: translateY(-2px);
+    border-color: rgba(255,255,255,.26) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 16px 44px rgba(0,0,0,.45);
+  }
+  .pricing-grid > div strong{ font-weight: 900; letter-spacing: -.01em; }
+  @media (max-width: 980px){ .pricing-grid{ gap: 22px; } }
 </style>
 
-
 <style id="chan-minpatch">
-/* A. Scrolled header color: apply only when NOT transparent */
+/* A. 스크롤된 헤더 색 */
 header:not(.head-transparent){
   background: linear-gradient(180deg, rgba(0,172,130,.92), rgba(0,172,130,.78)) !important;
 }
-
-/* B. Mobile: hide inline header menu so overlay doesn't overlap */
+/* B. 모바일: 기본 메뉴 숨김 */
 @media (max-width:1100px){
   header nav#menu, header .menu{ display:none !important; }
   #hamb, .hamb{ margin-left:auto !important; order:99; }
 }
-
-/* C. Hamburger look: remove border/shadow only; keep the rest of the site's design */
+/* C. 햄버거 스타일 */
 #hamb, .hamb{ border:none !important; box-shadow:none !important; background: linear-gradient(135deg, var(--pri, #6C64FF), var(--accent, #00AC82)) !important; color:#fff !important; }
-
-/* D. Top button: lock position & disable transforms */
+/* D. Top 버튼 고정 */
 #topBtn{ position:fixed !important; right:18px !important; left:auto !important; bottom:18px !important; transform:none !important; translate:none !important; will-change:auto !important; }
 #topBtn.show{ opacity:1 !important; }
 #topBtn:not(.show){ opacity:0 !important; }
-#topBtn .rip{ display:none !important; } /* prevent ripple visuals */
-
-/* E. Portfolio previews: always show TOP part */
+#topBtn .rip{ display:none !important; }
+/* E. 포트폴리오 프리뷰 상단 고정 */
 #portfolio img, #portfolio video, .tile img, .tile video{ object-position: top center !important; }
 </style>
 
-
-<!-- 퍼플·그린·옐로우 테마 오버라이드 -->
 <style id="theme-pgy-1">
   :root{
     --bg:#0E0A1F;
     --line:#26233F;
-    --pri:#7C5CFF;      /* 퍼플 */
-    --accent:#00AC82;   /* 그린 */
-    --chip:#FFD34D;     /* 옐로우 */
+    --pri:#7C5CFF;
+    --accent:#00AC82;
+    --chip:#FFD34D;
     --pri-ink:#fff;
     --chip-ink:#1A1300;
   }
@@ -388,20 +327,14 @@ header:not(.head-transparent){
     color: var(--pri-ink) !important;
     box-shadow: 0 12px 28px color-mix(in srgb, var(--pri) 30%, transparent) !important;
   }
-  .btn.out{
-    border: 1px solid color-mix(in srgb, var(--pri) 28%, var(--accent) 12%) !important;
-  }
-  .menu a:hover{
-    background: color-mix(in srgb, var(--pri) 16%, transparent) !important;
-  }
+  .btn.out{ border: 1px solid color-mix(in srgb, var(--pri) 28%, var(--accent) 12%) !important; }
+  .menu a:hover{ background: color-mix(in srgb, var(--pri) 16%, transparent) !important; }
   .menu a.active{
     background: linear-gradient(180deg, color-mix(in srgb, var(--pri) 32%, transparent),
                                          color-mix(in srgb, var(--accent) 22%, transparent)) !important;
-    color:#EDEBFF !important;
-    font-weight:800 !important;
+    color:#EDEBFF !important; font-weight:800 !important;
   }
-  #hamb, .hamb,
-  a#topBtn, #topBtn{
+  #hamb, .hamb, a#topBtn, #topBtn{
     background: linear-gradient(135deg, var(--pri), var(--accent)) !important;
     color: var(--pri-ink) !important;
   }
@@ -417,10 +350,8 @@ header:not(.head-transparent){
   }
 </style>
 
-
-
 <style id="header-style-option-A">
-/* Option A — Dark Glass for scrolled header (best readability) */
+/* Option A — Dark Glass */
 header:not(.head-transparent){
   background: linear-gradient(180deg, rgba(12,15,28,.85), rgba(12,15,28,.78)) !important;
   border-bottom: 1px solid color-mix(in srgb, var(--accent) 28%, transparent) !important;
@@ -435,10 +366,8 @@ header:not(.head-transparent){
 }
 </style>
 
-
-<!-- ▼ 추가: 사사삭 애니메이션 CSS -->
+<!-- 리빌 애니메이션 CSS -->
 <style id="reveal-sasasak-css">
-  /* LIGHTWEIGHT reveal for mobile/desktop */
   [data-reveal]{
     opacity: 0;
     transform: translateY(18px);
@@ -446,20 +375,28 @@ header:not(.head-transparent){
     transition: transform .44s cubic-bezier(.22,1,.36,1), opacity .44s cubic-bezier(.22,1,.36,1);
     transition-delay: var(--delay, 0ms);
   }
-  [data-reveal].seen{
-    opacity: 1;
-    transform: translateY(0);
-  }
-  /* Slightly snappier on mobile to reduce jank */
+  [data-reveal].seen{ opacity: 1; transform: translateY(0); }
   @media (max-width: 980px){
-    [data-reveal]{
-      transform: translateY(14px);
-      transition-duration: .38s;
-    }
+    [data-reveal]{ transform: translateY(14px); transition-duration: .38s; }
   }
-  /* Reduced motion users */
   @media (prefers-reduced-motion: reduce){
     [data-reveal]{opacity:1 !important; transform:none !important; transition:none !important;}
+  }
+</style>
+
+<!-- 버튼 리플 CSS -->
+<style id="btn-ripple-css">
+  .btn{ position: relative; overflow: hidden; }
+  .btn .rip{
+    position:absolute; left:var(--rx,50%); top:var(--ry,50%);
+    width:10px; height:10px; border-radius:50%; opacity:0;
+    transform: translate(-50%,-50%) scale(1);
+    background: rgba(255,255,255,.35); pointer-events:none;
+  }
+  .btn.rippling .rip{ animation: rip .6s ease-out; }
+  @keyframes rip{
+    from{ opacity:.4; transform: translate(-50%,-50%) scale(1); }
+    to{ opacity:0; transform: translate(-50%,-50%) scale(18); }
   }
 </style>
 
@@ -478,8 +415,7 @@ header:not(.head-transparent){
       <a href="#services">서비스</a>
       <a href="#portfolio">포트폴리오</a>
       <a href="#process">프로세스</a>
-      <a href="#pricing">패키지</a>
-      
+      <a href="#contact">패키지</a>
       <a class="btn pri" data-kakao href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">상담</a>
     </nav>
   </div>
@@ -507,7 +443,7 @@ header:not(.head-transparent){
         <div class="g4 service"><div><strong>보조 프로그램</strong><p class="lede">귀찮은 반복 업무를 돕는 <br>안전한 보조 프로그램</p></div></div>
         <div class="g4 service"><div><strong>무료 수정</strong><p class="lede">시즌 내 무료 수정 가능</p></div></div>
         <div class="g4 service"><div><strong>편한 게시물 작성</strong><p class="lede">편한 게시물 작성을 위한 <br>복붙용 코드 제공</p></div></div>
-        <div class="g4 service"><div><strong>운영 컨설트</strong><p class="lede">그외 각종 상담 및<br>다방면의 컨설팅 지원</p></div></div>
+        <div class="g4 service"><div><strong>운영 컨설팅</strong><p class="lede">그외 각종 상담 및<br>다방면의 컨설팅 지원</p></div></div>
       </div>
     </div>
   </section>
@@ -562,7 +498,7 @@ header:not(.head-transparent){
     </div>
   </section>
 
-  <!-- Lightbox (JS control) -->
+  <!-- Lightbox -->
   <div id="lb" class="lb" aria-modal="true" role="dialog" hidden>
     <a href="#" class="close" aria-label="닫기">×</a>
     <div class="frame" id="lbFrame">
@@ -595,11 +531,11 @@ header:not(.head-transparent){
     </div>
   </section>
 
-  <!-- Pricing ONLY -->
+  <!-- Pricing -->
   <section id="contact" class="section container" data-section data-reveal>
     <div class="grid">
       <div class="g12 card pad24">
-        <div id="pricing"></div><h2>패키지 · 가격</h2>
+        <h2>패키지 · 가격</h2>
         <div class="pricing-grid">
           <div style="border:1px dashed var(--line);border-radius:14px;padding:14px"><strong>기본 패키지</strong> — 시즌 맞춤 홍보물 · 게시글 복붙용 한줄 코드화 · <em>수정 1회</em> · <strong>50,000 ~</strong></div>
           <div style="border:1px dashed var(--line);border-radius:14px;padding:14px"><strong>몸편한 패키지</strong> — 시즌 맞춤 홍보물 · <strong>보조 프로그램 포함</strong> · 게시글 복붙용 한줄 코드화 · <em>수정 3회</em> · <strong>150,000 ~</strong></div>
@@ -635,15 +571,24 @@ header:not(.head-transparent){
   menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
 
   // Smooth scroll
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{ a.addEventListener('click',e=>{ const id=a.getAttribute('href'); if(!id || id.length<=1) return; const el=document.querySelector(id); if(!el) return; e.preventDefault(); el.scrollIntoView({behavior:'smooth',block:'start'}); }); });
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const id=a.getAttribute('href'); if(!id || id.length<=1) return;
+      const el=document.querySelector(id); if(!el) return;
+      e.preventDefault(); el.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  });
 
   // Scrollspy
   const sections=[...document.querySelectorAll('[data-section]')];
   const links=[...document.querySelectorAll('.menu a')];
-  const spy=()=>{ const y=window.scrollY+100; let current='#home'; sections.forEach(s=>{ if(s.offsetTop<=y) current='#'+s.id; }); links.forEach(l=>{ l.classList.toggle('active', l.getAttribute('href')===current); }); };
+  const spy=()=>{ const y=window.scrollY+100; let current='#home';
+    sections.forEach(s=>{ if(s.offsetTop<=y) current='#'+s.id; });
+    links.forEach(l=>{ l.classList.toggle('active', l.getAttribute('href')===current); });
+  };
   window.addEventListener('scroll',spy); spy();
 
-  // Reveal on scroll
+  // Reveal on scroll (observer for non-sasasak pieces, still ok)
   const io=new IntersectionObserver((es)=>es.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('seen'); }),{threshold:.12});
   document.querySelectorAll('[data-reveal], .card, .section').forEach(el=>io.observe(el));
 
@@ -657,17 +602,22 @@ header:not(.head-transparent){
   const toggleHeader=()=>{ headerEl.classList.toggle('head-transparent', window.scrollY < 60); };
   toggleHeader(); window.addEventListener('scroll', toggleHeader);
 
-  // ===== JS Lightbox (no hash) =====
+  // ===== JS Lightbox (이미지 클릭 시 닫힘 유지 - 의도) =====
   const lb = document.getElementById('lb');
   const lbImg = document.getElementById('lbImg');
   const lbOpenEls = document.querySelectorAll('.lb-open');
   function openLB(src, alt){ lbImg.src = src; lbImg.alt = alt || ''; lb.classList.add('open'); lb.removeAttribute('hidden'); document.body.style.overflow='hidden'; }
   function closeLB(){ lb.classList.remove('open'); lb.setAttribute('hidden',''); lbImg.src=''; document.body.style.overflow=''; }
   lbOpenEls.forEach(el=>{ el.addEventListener('click', (e)=>{ e.preventDefault(); openLB(el.dataset.src, el.dataset.alt); }); });
-  lb.addEventListener('click', (e)=>{ const clickedBackdrop = (e.target === lb); const clickedImg = (e.target === lbImg); const clickedClose = e.target.closest('.close'); if(clickedBackdrop || clickedImg || clickedClose){ e.preventDefault(); closeLB(); } });
+  lb.addEventListener('click', (e)=>{
+    const clickedBackdrop = (e.target === lb);
+    const clickedImg = (e.target === lbImg);            // ← 이미지 클릭시 닫힘 유지
+    const clickedClose = e.target.closest('.close');
+    if(clickedBackdrop || clickedImg || clickedClose){ e.preventDefault(); closeLB(); }
+  });
   document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && lb.classList.contains('open')) closeLB(); });
 
-  // Anti-save UX (best effort)
+  // Anti-save UX
   document.addEventListener('contextmenu',(e)=>{ if(e.target.closest('.tile img') || e.target.closest('#lbImg')) e.preventDefault(); });
   document.querySelectorAll('.tile img, #lbImg').forEach(img=>{ img.setAttribute('draggable','false'); });
 </script>
@@ -687,35 +637,31 @@ header:not(.head-transparent){
 </script>
 
 <script>
-// Click ripple on .btn (non-destructive)
+// Click ripple on .btn
 document.addEventListener('click', function(e){
   var btn = e.target.closest('.btn');
   if(!btn) return;
-  // Compute click position inside the button
   var rect = btn.getBoundingClientRect();
   var x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
-  var y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;   // ← FIXED!
+  var y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
   btn.style.setProperty('--rx', x + 'px');
   btn.style.setProperty('--ry', y + 'px');
-  // Create or reuse ripple element
   var rip = btn.querySelector('.rip');
   if(!rip){
     rip = document.createElement('span');
     rip.className = 'rip';
     btn.appendChild(rip);
   }
-  // Restart animation
   btn.classList.remove('rippling');
   void btn.offsetWidth;
   btn.classList.add('rippling');
-  // Cleanup state
   setTimeout(function(){ btn.classList.remove('rippling'); }, 600);
 }, {passive:true});
 </script>
 
 <script id="chan-minpatch-js">
 (function(){
-  // 1) Build a single overlay drawer and intercept hamburger clicks (capture phase)
+  // Overlay drawer for hamburger
   var hamb = document.getElementById('hamb') || document.querySelector('.hamb');
   if(hamb){
     var drawer = document.getElementById('chan-drawer');
@@ -724,7 +670,8 @@ document.addEventListener('click', function(e){
       drawer.id = 'chan-drawer';
       drawer.innerHTML = '<div class="chan-scrim" tabindex="-1"></div><nav class="chan-panel" role="menu"></nav>';
       var css = document.createElement('style');
-      css.textContent = '#chan-drawer{position:fixed;inset:0;z-index:1200;pointer-events:none}' +
+      css.textContent =
+        '#chan-drawer{position:fixed;inset:0;z-index:1200;pointer-events:none}' +
         '#chan-drawer .chan-scrim{position:absolute;inset:0;background:rgba(0,0,0,.35);backdrop-filter:blur(2px);opacity:0;transition:opacity .2s ease}' +
         '#chan-drawer .chan-panel{position:absolute;top:64px;right:0;width:min(86vw,320px);padding:14px;border:1px solid rgba(255,255,255,.06);border-right:none;border-radius:14px 0 0 14px;background:var(--bg,#0E0A1F);transform:translateX(12px);opacity:0;pointer-events:none;transition:transform .28s ease,opacity .28s ease;display:flex;flex-direction:column;gap:10px;box-shadow:0 18px 44px rgba(0,0,0,.35)}' +
         '#chan-drawer.show{pointer-events:auto}#chan-drawer.show .chan-scrim{opacity:1}#chan-drawer.show .chan-panel{transform:none;opacity:1;pointer-events:auto}' +
@@ -762,7 +709,7 @@ document.addEventListener('click', function(e){
     document.addEventListener('keydown', function(e){ if(e.key==='Escape') setOpen(false); });
   }
 
-  // 2) Ensure topBtn doesn't nudge on click
+  // Ensure topBtn doesn't nudge on click
   var topBtn = document.getElementById('topBtn');
   if(topBtn){
     document.addEventListener('click', function(e){
@@ -772,11 +719,10 @@ document.addEventListener('click', function(e){
 })();
 </script>
 
-
-<!-- ▼ 추가: 사사삭 애니메이션 JS -->
+<!-- ▼ 수정된 사사삭 애니메이션 JS (위로 이동해도 표시) -->
 <script id="reveal-sasasak-js">
 (function(){
-  // Track scroll direction
+  // 스크롤 방향
   let lastY = window.scrollY;
   let dir = 'down';
   window.addEventListener('scroll', () => {
@@ -785,7 +731,14 @@ document.addEventListener('click', function(e){
     lastY = y;
   }, { passive: true });
 
-  // Auto-register targets + stagger
+  // 앵커 클릭 시 잠시 강제 표시
+  let navJumpUntil = 0;
+  document.addEventListener('click', (e)=>{
+    const a = e.target.closest('a[href^="#"]');
+    if (a) navJumpUntil = Date.now() + 1200;
+  }, true);
+
+  // 대상 등록 + 지연
   const groups = [
     ['#services .g8.grid > *', 70],
     ['#portfolio .grid > *', 80],
@@ -805,12 +758,12 @@ document.addEventListener('click', function(e){
       el.style.setProperty('--delay', (i * 60) + 'ms');
     });
 
-  // Intersection observer: play only when scrolling down into view.
-  // Remove .seen when scrolling up and the element leaves, so it can play again later.
+  // 방향과 무관하게 '보이기', 위로 벗어날 때만 '숨김'
   const io = new IntersectionObserver((entries)=>{
+    const now = Date.now();
     entries.forEach(entry => {
       const el = entry.target;
-      if (entry.isIntersecting && dir === 'down') {
+      if (entry.isIntersecting || now < navJumpUntil) {
         el.classList.add('seen');
       } else if (!entry.isIntersecting && dir === 'up') {
         el.classList.remove('seen');
@@ -820,7 +773,7 @@ document.addEventListener('click', function(e){
 
   document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
 
-  // Ensure hero contents are visible initially
+  // 최초 히어로 표시
   window.addEventListener('load', () => {
     document.querySelectorAll('#home .wrap > *').forEach(el => {
       if (!el.hasAttribute('data-reveal')) el.setAttribute('data-reveal','');
@@ -832,6 +785,3 @@ document.addEventListener('click', function(e){
 
 </body>
 </html>
-
-
-
