@@ -309,7 +309,9 @@
                             <th style="width: 60px;">번호</th>
                             <th>이메일</th>
                             <th>가입일</th>
+                            <th>가입 IP</th>
                             <th>최근 로그인</th>
+                            <th>로그인 IP</th>
                             <th>활성화 일수</th>
                             <th>만료일</th>
                             <th style="width: 100px;">상태</th>
@@ -318,7 +320,7 @@
                     </thead>
                     <tbody id="users-tbody">
                         <tr>
-                            <td colspan="8" style="text-align: center; color: #999;">로딩 중...</td>
+                            <td colspan="10" style="text-align: center; color: #999;">로딩 중...</td>
                         </tr>
                     </tbody>
                 </table>
@@ -407,7 +409,10 @@
                         status: data.status || 'pending',
                         createdAt: data.createdAt || null,
                         lastLogin: data.lastLogin || null,
-                        expiryDate: data.expiryDate || null
+                        lastLoginAt: data.lastLoginAt || null,
+                        expiryDate: data.expiryDate || null,
+                        signupIP: data.signupIP || 'unknown',
+                        lastLoginIP: data.lastLoginIP || 'N/A'
                     });
                 });
 
@@ -495,7 +500,9 @@
                     <td style="text-align: center;">${totalCount - index}</td>
                     <td>${user.email}</td>
                     <td>${formatDate(user.createdAt)}</td>
-                    <td>${formatDate(user.lastLogin)}</td>
+                    <td style="text-align: center; font-family: monospace; font-size: 12px;">${user.signupIP}</td>
+                    <td>${formatDate(user.lastLoginAt || user.lastLogin)}</td>
+                    <td style="text-align: center; font-family: monospace; font-size: 12px;">${user.lastLoginIP}</td>
                     <td style="text-align: center;">${activeDaysDisplay}</td>
                     <td>${expiryDisplay}</td>
                     <td><span class="status ${user.status}">${getStatusText(user.status)}</span></td>
