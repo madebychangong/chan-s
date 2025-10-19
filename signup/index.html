@@ -414,15 +414,28 @@
         // 사용자 정보를 Firestore에 저장
         async function saveUserToFirestore(user, email) {
             try {
+                // IP 주소 가져오기
+                let ipAddress = 'unknown';
+                try {
+                    const ipResponse = await fetch('https://api.ipify.org?format=json');
+                    const ipData = await ipResponse.json();
+                    ipAddress = ipData.ip;
+                } catch (ipError) {
+                    console.warn('IP 주소 가져오기 실패:', ipError);
+                }
+                
                 await db.collection('users').doc(user.uid).set({
                     email: email,
                     status: 'pending', // pending, approved, rejected
                     createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    signupIP: ipAddress, // 회원가입 IP
+                    lastLoginIP: null,
+                    lastLoginAt: null,
                     approvedBy: null,
                     approvedAt: null,
                     rejectionReason: null
                 });
-                console.log('✅ Firestore에 사용자 정보 저장 완료:', user.uid);
+                console.log('✅ Firestore에 사용자 정보 저장 완료:', user.uid, 'IP:', ipAddress);
             } catch (error) {
                 console.error('❌ 사용자 정보 저장 실패:', error);
                 throw error;
