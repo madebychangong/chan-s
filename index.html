@@ -187,6 +187,18 @@
   [data-reveal]{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
   [data-reveal].seen{opacity:1;transform:none}
 
+  /* ===== Modal (macro) ===== */
+  .md{position:fixed;inset:0;z-index:1200;display:none}
+  .md.show{display:block}
+  .md-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(2px)}
+  .md-panel{
+    position:absolute; inset:auto 50% 10% 50%; transform:translate(-50%,0);
+    width:min(960px, calc(100vw - 40px)); max-height:70vh; overflow:auto;
+    border-radius:16px; background:#0b1220; border:1px solid var(--line);
+    padding:18px 18px 20px; box-shadow:0 30px 90px rgba(0,0,0,.55);
+  }
+  .md-close{position:absolute;right:14px;top:12px;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:#0b1220;color:#fff;text-decoration:none}
+
   /* ===== Anti-save UX ===== */
   .tile img, .lb img{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 
@@ -444,7 +456,7 @@ header:not(.head-transparent){
           <div>
             <strong>게시글 매크로</strong>
             <p class="lede">귀찮은 반복 업무를 돕는 <br>안전한 게시글 매크로</p>
-            <a href="#macro-details" class="btn out" data-macro-toggle style="margin-top:8px;padding:8px 10px;font-size:14px">자세히 보기</a>
+            <a href="#" class="btn pri" data-macro-open style="margin-top:8px;padding:10px 12px;font-size:14px">자세히 보기 · 기능/요금</a>
           </div>
         </div>
         <div class="g4 service"><div><strong>무료 수정</strong><p class="lede">시즌 내 무료 수정 가능</p></div></div>
@@ -454,61 +466,40 @@ header:not(.head-transparent){
     </div>
   </section>
 
-  <!-- Macro details (expandable) -->
-  <section id="macro-details" class="section container card pad24" data-section data-reveal style="display:none">
-    <div class="grid">
-      <div class="g12">
-        <h2>게시글 매크로 — 주요 기능</h2>
-        <div class="grid" style="gap:12px;margin-top:8px">
-          <div class="g6" style="border:1px solid var(--line);border-radius:12px;padding:12px">
-            <strong>인벤 게시글 자동 등록</strong>
-            <p class="lede" style="margin-top:6px">맞춤 설정한 내용으로 자동 게시</p>
-          </div>
-          <div class="g6" style="border:1px solid var(--line);border-radius:12px;padding:12px">
-            <strong>재업로드 기능</strong>
-            <p class="lede" style="margin-top:6px">원하는 시간(초)마다 자동으로 글 업로드</p>
-          </div>
-          <div class="g6" style="border:1px solid var(--line);border-radius:12px;padding:12px">
-            <strong>게시글 3개 유지</strong>
-            <p class="lede" style="margin-top:6px">1일 게시글 제한에 걸리지 않도록 3개만 유지</p>
-          </div>
-          <div class="g6" style="border:1px solid var(--line);border-radius:12px;padding:12px">
-            <strong>다중 계정 지원</strong>
-            <p class="lede" style="margin-top:6px">최대 10개 계정을 동시에 관리</p>
-          </div>
-          <div class="g6" style="border:1px solid var(--line);border-radius:12px;padding:12px">
-            <strong>개인화 사용</strong>
-            <p class="lede" style="margin-top:6px">로그인 기반으로 어디서든 내 설정 사용</p>
-          </div>
-          <div class="g6" style="border:1px solid var(--line);border-radius:12px;padding:12px">
-            <strong>깔끔·가벼움</strong>
-            <p class="lede" style="margin-top:6px">다른 프로그램과 병행해도 지장 없는 경량</p>
-          </div>
-        </div>
-
-        <h2 style="margin-top:20px">이런 분들께 추천합니다</h2>
-        <ul class="lede" style="margin-top:8px;line-height:1.8">
-          <li>디아4 시즌마다 홍보하시는 분</li>
-          <li>인벤에 정기적으로 홍보글을 올리시는 분</li>
-          <li>반복 작업 시간을 줄이고 싶으신 분</li>
-          <li>여러 커뮤니티를 동시에 관리하고 싶으신 분</li>
-        </ul>
-
-        <h2 style="margin-top:20px">설치·이용 안내</h2>
-        <ol class="lede" style="margin-top:8px;line-height:1.8;padding-left:18px">
-          <li>상단 메뉴의 상담 버튼으로 문의 후 안내받기</li>
-          <li>프로그램 설치 → 로그인</li>
-          <li>템플릿 문구/주기 설정 후 자동 등록 시작</li>
-        </ol>
-
-        <div class="pricing-cta" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn pri" data-kakao href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">카카오톡 상담하기</a>
-          <a class="btn out" href="#contact">요금 보기</a>
-          <a class="btn out" data-macro-toggle href="#macro-details">닫기</a>
-        </div>
+  <!-- Macro Modal (popup) -->
+  <div id="macroModal" class="md" hidden>
+    <div class="md-backdrop" data-macro-close></div>
+    <div class="md-panel" role="dialog" aria-modal="true" aria-labelledby="macroModalTitle">
+      <a href="#" class="md-close" aria-label="닫기" data-macro-close>×</a>
+      <h2 id="macroModalTitle">게시글 매크로 — 주요 기능</h2>
+      <div class="grid" style="gap:12px;margin-top:8px">
+        <div class="g6" style="border:1px solid var(--line);border-radius:12px;padding:12px"><strong>인벤 게시글 자동 등록</strong><p class="lede" style="margin-top:6px">맞춤 설정한 내용으로 자동 게시</p></div>
+        <div class="g6" style="border:1px solid var(--line);border-radius:12px;padding:12px"><strong>재업로드 기능</strong><p class="lede" style="margin-top:6px">원하는 시간(초)마다 자동으로 글 업로드</p></div>
+        <div class="g6" style="border:1px solid var(--line);border-radius:12px;padding:12px"><strong>게시글 3개 유지</strong><p class="lede" style="margin-top:6px">1일 게시글 제한 방지용 3개 유지</p></div>
+        <div class="g6" style="border:1px solid var(--line);border-radius:12px;padding:12px"><strong>다중 계정 지원</strong><p class="lede" style="margin-top:6px">최대 10개 계정을 동시에 관리</p></div>
+        <div class="g6" style="border:1px solid var(--line);border-radius:12px;padding:12px"><strong>개인화 사용</strong><p class="lede" style="margin-top:6px">로그인 기반으로 어디서든 내 설정 사용</p></div>
+        <div class="g6" style="border:1px solid var(--line);border-radius:12px;padding:12px"><strong>깔끔·가벼움</strong><p class="lede" style="margin-top:6px">다른 프로그램과 병행해도 지장 없는 경량</p></div>
+      </div>
+      <h2 style="margin-top:20px">이런 분들께 추천합니다</h2>
+      <ul class="lede" style="margin-top:8px;line-height:1.8">
+        <li>디아4 시즌마다 홍보하시는 분</li>
+        <li>인벤에 정기적으로 홍보글을 올리시는 분</li>
+        <li>반복 작업 시간을 줄이고 싶으신 분</li>
+        <li>여러 커뮤니티를 동시에 관리하고 싶으신 분</li>
+      </ul>
+      <h2 style="margin-top:20px">설치·이용 안내</h2>
+      <ol class="lede" style="margin-top:8px;line-height:1.8;padding-left:18px">
+        <li>상단 메뉴의 상담 버튼으로 문의 후 안내받기</li>
+        <li>프로그램 설치 → 로그인</li>
+        <li>템플릿 문구/주기 설정 후 자동 등록 시작</li>
+      </ol>
+      <div class="pricing-cta" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn pri" data-kakao href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">카카오톡 상담하기</a>
+        <a class="btn out" href="#contact">요금 보기</a>
+        <a class="btn out" href="#" data-macro-close>닫기</a>
       </div>
     </div>
-  </section>
+  </div>
   <!-- Portfolio -->
   <section id="portfolio" class="section container" data-section data-reveal>
     <div style="display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:10px">
@@ -684,15 +675,13 @@ header:not(.head-transparent){
   const toggleHeader=()=>{ headerEl.classList.toggle('head-transparent', window.scrollY < 60); };
   toggleHeader(); window.addEventListener('scroll', toggleHeader);
 
-  // Macro details toggle
-  function setMacroOpen(open){
-    const sec = document.getElementById('macro-details');
-    if(!sec) return;
-    sec.style.display = open ? '' : 'none';
-    if(open){ sec.scrollIntoView({behavior:'smooth', block:'start'}); }
-  }
-  document.querySelectorAll('[data-macro-toggle]')
-    .forEach(el=>el.addEventListener('click', (e)=>{ e.preventDefault(); const open = document.getElementById('macro-details')?.style.display==='none'; setMacroOpen(open); }));
+  // Macro modal
+  const macroModal = document.getElementById('macroModal');
+  function openMacro(){ macroModal?.classList.add('show'); macroModal?.removeAttribute('hidden'); document.body.style.overflow='hidden'; }
+  function closeMacro(){ macroModal?.classList.remove('show'); macroModal?.setAttribute('hidden',''); document.body.style.overflow=''; }
+  document.querySelectorAll('[data-macro-open]').forEach(el=>el.addEventListener('click', (e)=>{ e.preventDefault(); openMacro(); }));
+  document.addEventListener('click', (e)=>{ if(e.target.closest('[data-macro-close]')){ e.preventDefault(); closeMacro(); } });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && macroModal?.classList.contains('show')) closeMacro(); });
 
   // ===== JS Lightbox (이미지 클릭 시 닫힘 유지 - 의도) =====
   const lb = document.getElementById('lb');
