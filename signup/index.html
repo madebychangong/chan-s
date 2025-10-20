@@ -253,6 +253,12 @@
             </div>
 
             <div class="form-group">
+                <label for="nickname">닉네임 <small style="color:#666;">(2~20자)</small></label>
+                <input type="text" id="nickname" name="nickname" required minlength="2" maxlength="20" placeholder="표시할 닉네임">
+                <div class="error-message" id="nicknameError">닉네임은 2~20자로 입력해주세요.</div>
+            </div>
+
+            <div class="form-group">
                 <label for="password">비밀번호</label>
                 <input type="password" id="password" name="password" required minlength="6">
                 <div class="error-message" id="passwordError">비밀번호는 6자 이상이어야 합니다.</div>
@@ -317,12 +323,13 @@
             
             // 입력값 가져오기
             const email = document.getElementById('email').value.trim();
+            const nickname = document.getElementById('nickname').value.trim();
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
             const agreeTerms = document.getElementById('agreeTerms').checked;
 
             // 유효성 검사
-            if (!validateForm(email, password, confirmPassword, agreeTerms)) {
+            if (!validateForm(email, nickname, password, confirmPassword, agreeTerms)) {
                 return;
             }
 
@@ -334,7 +341,7 @@
                 const userCredential = await auth.createUserWithEmailAndPassword(email, password);
                 
                 // 사용자 정보를 Firestore에 저장 (승인 대기 상태)
-                await saveUserToFirestore(userCredential.user, email);
+                await saveUserToFirestore(userCredential.user, email, nickname);
                 
                 // 성공 메시지 표시 (승인 대기 안내)
                 showPendingApproval(email);
@@ -348,8 +355,15 @@
         });
 
         // 폼 유효성 검사
-        function validateForm(email, password, confirmPassword, agreeTerms) {
+        function validateForm(email, nickname, password, confirmPassword, agreeTerms) {
             let isValid = true;
+            // 닉네임 검사
+            if (nickname.length < 2 || nickname.length > 20) {
+                showFieldError('nickname', '닉네임은 2~20자로 입력해주세요.');
+                isValid = false;
+            } else {
+                hideFieldError('nickname');
+            }
 
             // 이메일 검사
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -412,7 +426,7 @@
         }
 
         // 사용자 정보를 Firestore에 저장
-        async function saveUserToFirestore(user, email) {
+        async function saveUserToFirestore(user, email, nickname) {
             try {
                 // IP 주소 가져오기
                 let ipAddress = 'unknown';
@@ -426,6 +440,7 @@
                 
                 await db.collection('users').doc(user.uid).set({
                     email: email,
+                    nickname: nickname,
                     status: 'pending', // pending, approved, rejected
                     createdAt: firebase.firestore.FieldValue.serverTimestamp(),
                     signupIP: ipAddress, // 회원가입 IP
