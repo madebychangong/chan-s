@@ -193,9 +193,9 @@
   .md-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(2px)}
   .md-panel{
     position:absolute; inset:auto 50% 10% 50%; transform:translate(-50%,0);
-    width:min(960px, calc(100vw - 40px)); max-height:70vh; overflow:auto;
-    border-radius:16px; background:#0b1220; border:1px solid var(--line);
-    padding:18px 18px 20px; box-shadow:0 30px 90px rgba(0,0,0,.55);
+    width:min(960px, calc(100vw - 56px)); max-height:72vh; overflow:auto;
+    border-radius:18px; background:#0b1220; border:1px solid var(--line);
+    padding:24px 24px 26px; box-shadow:0 30px 90px rgba(0,0,0,.55);
   }
   .md-close{position:absolute;right:14px;top:12px;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:#0b1220;color:#fff;text-decoration:none}
 
@@ -475,27 +475,28 @@ header:not(.head-transparent){
       <div class="grid" style="gap:12px;margin-top:8px">
         <div class="g6" style="border:1px solid var(--line);border-radius:12px;padding:12px"><strong>인벤 게시글 자동 등록</strong><p class="lede" style="margin-top:6px">맞춤 설정한 내용으로 자동 게시</p></div>
         <div class="g6" style="border:1px solid var(--line);border-radius:12px;padding:12px"><strong>재업로드 기능</strong><p class="lede" style="margin-top:6px">원하는 시간(초)마다 자동으로 글 업로드</p></div>
-        <div class="g6" style="border:1px solid var(--line);border-radius:12px;padding:12px"><strong>게시글 3개 유지</strong><p class="lede" style="margin-top:6px">1일 게시글 제한 방지용 3개 유지</p></div>
+        <div class="g6" style="border:1px solid var(--line);border-radius:12px;padding:12px"><strong>게시글 3개 유지</strong><p class="lede" style="margin-top:6px">1일 게시글 제한 방지 자동관리</p></div>
         <div class="g6" style="border:1px solid var(--line);border-radius:12px;padding:12px"><strong>다중 계정 지원</strong><p class="lede" style="margin-top:6px">최대 10개 계정을 동시에 관리</p></div>
-        <div class="g6" style="border:1px solid var(--line);border-radius:12px;padding:12px"><strong>개인화 사용</strong><p class="lede" style="margin-top:6px">로그인 기반으로 어디서든 내 설정 사용</p></div>
-        <div class="g6" style="border:1px solid var(--line);border-radius:12px;padding:12px"><strong>깔끔·가벼움</strong><p class="lede" style="margin-top:6px">다른 프로그램과 병행해도 지장 없는 경량</p></div>
+        <div class="g6" style="border:1px solid var(--line);border-radius:12px;padding:12px"><strong>개인화 사용</strong><p class="lede" style="margin-top:6px">로그인 기반으로 어디서든 사용가능</p></div>
+        <div class="g6" style="border:1px solid var(--line);border-radius:12px;padding:12px"><strong>깔끔 · 가벼움</strong><p class="lede" style="margin-top:6px">깔끔한 UI의 가벼운 프로그램</p></div>
       </div>
       <h2 style="margin-top:20px">이런 분들께 추천합니다</h2>
       <ul class="lede" style="margin-top:8px;line-height:1.8">
-        <li>디아4 시즌마다 홍보하시는 분</li>
+        <li>디아4, 피오이2 등 게임시즌마다 홍보하시는 분</li>
         <li>인벤에 정기적으로 홍보글을 올리시는 분</li>
-        <li>반복 작업 시간을 줄이고 싶으신 분</li>
+        <li>수동, 반복 작업 시간을 줄이고 싶으신 분</li>
         <li>여러 커뮤니티를 동시에 관리하고 싶으신 분</li>
+        <li>게임과 동시에 실행하고 싶으신 분</li>
       </ul>
-      <h2 style="margin-top:20px">설치·이용 안내</h2>
-      <ol class="lede" style="margin-top:8px;line-height:1.8;padding-left:18px">
-        <li>상단 메뉴의 상담 버튼으로 문의 후 안내받기</li>
-        <li>프로그램 설치 → 로그인</li>
-        <li>템플릿 문구/주기 설정 후 자동 등록 시작</li>
+      <h2 style="margin-top:20px">설치 · 이용 안내</h2>
+      <ol class="lede" style="margin-top:10px;line-height:1.95;padding-left:26px">
+        <li style="margin-left:6px">상단 메뉴의 상담 버튼으로 문의 후 결제</li>
+        <li style="margin-left:6px">프로그램 설치 → 회원가입 → 로그인</li>
+        <li style="margin-left:6px">원하는대로 설정 후 자동 등록 시작</li>
       </ol>
       <div class="pricing-cta" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
         <a class="btn pri" data-kakao href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">카카오톡 상담하기</a>
-        <a class="btn out" href="#contact">요금 보기</a>
+        <a class="btn out" href="#contact" data-macro-close>요금 보기</a>
         <a class="btn out" href="#" data-macro-close>닫기</a>
       </div>
     </div>
@@ -593,30 +594,20 @@ header:not(.head-transparent){
           <div style="border:1px dashed var(--line);border-radius:14px;padding:14px"><strong>몸편한 패키지</strong> — 시즌 맞춤 홍보물 · <strong>게시글 매크로 포함</strong> · 게시글 복붙용 한줄 코드화 · <em>수정 3회</em> · <strong>120,000원 ~</strong></div>
           <div style="border:1px dashed var(--line);border-radius:14px;padding:14px"><strong>맘까지 편한 패키지</strong> — 시즌 맞춤 홍보물 · 게시글 매크로 포함 · 게시글 복붙용 한줄 코드화 · <em>수정 5회 및 재제작 1회</em>  · <strong>150,000원 ~</strong></div>
         </div>
-
-        <div class="pricing-cta" style="display:flex;gap:10px;flex-wrap:wrap">
+        <p class="pricing-note lede" style="margin-top:12px">※ 맞춤 홍보물 크기에, 기능에 따라 가격이 상이합니다.<br>※ 가격대별이 아닌 전체 패키지 총 10건만 제작합니다.<br>※ 수정: 텍스트/색상/간단 문구만 포함 (이미지 교체는 재제작 필요)</p>
+        <div class="pricing-cta" style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
           <a class="btn pri" data-kakao href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">카카오톡 상담하기</a>
         </div>
-        <p class="pricing-note lede">※ 맞춤 홍보물 크기에, 기능에 따라 가격이 상이합니다.<br>※ 가격대별이 아닌 전체 패키지 총 10건만 제작합니다.<br>※ 수정: 텍스트/색상/간단 문구만 포함 (이미지 교체는 재제작 필요)</p>
       
-      <!-- 매크로 요금 안내 -->
-      <div class="pricing-grid" style="margin-top:22px">
-        <div class="g12">
-          <h2>게시글 매크로 이용요금</h2>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px">
-            <div style="border:1px solid var(--line);border-radius:14px;padding:12px">
-              <div style="font-weight:900;font-size:16px">1개월</div>
-              <div class="lede" style="margin-top:2px;font-size:14px">30,000원</div>
-            </div>
-            <div style="border:1px solid var(--line);border-radius:14px;padding:12px">
-              <div style="font-weight:900;font-size:16px">3개월</div>
-              <div class="lede" style="margin-top:2px;font-size:14px">80,000원</div>
-            </div>
-            <div style="border:1px solid var(--line);border-radius:14px;padding:12px">
-              <div style="font-weight:900;font-size:16px">영구</div>
-              <div class="lede" style="margin-top:2px;font-size:14px">200,000원</div>
-            </div>
-          </div>
+      </div>
+      <!-- 매크로 요금 안내: 카드 밖 분리 + 세로 배치 -->
+      <div class="g12" style="margin-top:30px"></div>
+      <div class="g12">
+        <h2>게시글 매크로 이용요금</h2>
+        <div class="pricing-grid" style="margin-top:12px">
+          <div style="border:1px solid var(--line);border-radius:14px;padding:12px"><strong>1개월</strong><div class="lede" style="margin-top:4px">30,000원</div></div>
+          <div style="border:1px solid var(--line);border-radius:14px;padding:12px"><strong>3개월</strong><div class="lede" style="margin-top:4px">80,000원</div></div>
+          <div style="border:1px solid var(--line);border-radius:14px;padding:12px"><strong>영구</strong><div class="lede" style="margin-top:4px">200,000원</div></div>
         </div>
       </div>
       </div>
@@ -680,7 +671,18 @@ header:not(.head-transparent){
   function openMacro(){ macroModal?.classList.add('show'); macroModal?.removeAttribute('hidden'); document.body.style.overflow='hidden'; }
   function closeMacro(){ macroModal?.classList.remove('show'); macroModal?.setAttribute('hidden',''); document.body.style.overflow=''; }
   document.querySelectorAll('[data-macro-open]').forEach(el=>el.addEventListener('click', (e)=>{ e.preventDefault(); openMacro(); }));
-  document.addEventListener('click', (e)=>{ if(e.target.closest('[data-macro-close]')){ e.preventDefault(); closeMacro(); } });
+  document.addEventListener('click', (e)=>{
+    const closeBtn = e.target.closest('[data-macro-close]');
+    if(closeBtn){
+      e.preventDefault();
+      const goPricing = closeBtn.matches('[href="#contact"], [href="#contact"] *');
+      closeMacro();
+      if(goPricing){
+        const sec = document.querySelector('#contact');
+        sec && sec.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    }
+  });
   document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && macroModal?.classList.contains('show')) closeMacro(); });
 
   // ===== JS Lightbox (이미지 클릭 시 닫힘 유지 - 의도) =====
