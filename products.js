@@ -468,6 +468,40 @@ const products = [
             <a class="btn pri" href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">카카오톡 상담하기</a>
           </div>
         `
+      },
+      {
+        name: '제공 예시',
+        content: `
+          <h2>📌 제공 예시</h2>
+          <p class="lede">ColdAPP으로 작성된 블로그 포스팅을 직접 확인해보세요</p>
+          
+          <div style="margin-top:30px;max-width:600px">
+            <div class="feature-card" style="padding:24px">
+              <strong style="font-size:18px;display:block;margin-bottom:12px">AI 자동 작성 블로그 예시</strong>
+              <p class="lede" style="margin-bottom:20px">실제 ColdAPP이 자동으로 작성한 블로그 포스팅입니다</p>
+              <a class="btn pri" href="https://blog.naver.com/shoping_72/224060436914" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px">
+                블로그 보러가기 →
+              </a>
+            </div>
+          </div>
+        `
+      },
+      {
+        name: '실구매자 사례',
+        content: `
+          <h2>👥 실구매자 사례</h2>
+          <p class="lede">실제 구매자분들이 ColdAPP으로 작성한 블로그입니다</p>
+          
+          <div style="margin-top:30px;max-width:600px">
+            <div class="feature-card" style="padding:24px">
+              <strong style="font-size:18px;display:block;margin-bottom:12px">실구매자 작성 블로그</strong>
+              <p class="lede" style="margin-bottom:20px">ColdAPP을 구매하신 고객님의 실제 사용 사례입니다</p>
+              <a class="btn pri" href="https://blog.naver.com/coco_hodu_/224055705061" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px">
+                블로그 보러가기 →
+              </a>
+            </div>
+          </div>
+        `
       }
     ]
   }
