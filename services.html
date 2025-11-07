@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>서비스 안내 — 찬공's Studio</title>
+  <meta name="description" content="시즌 홍보 페이지, ColdHawk 게시글 자동화, ColdAPP AI 블로그 자동화 서비스를 제공합니다.">
+  <meta property="og:title" content="찬공's Studio 서비스 안내">
+  <meta property="og:description" content="디아블로4 전문 홍보 솔루션">
+  <meta name="theme-color" content="#0E0A1F">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --max:1200px;
+      --ink:#ECEAF7; --mut:#A1A0B3; --line:#232044; --bg:#0E0A1F;
+      --pri:#6C64FF; --accent:#A855F7; --pri-ink:#ffffff;
+      --chip:#5347C2; --chip-ink:#F5F3FF;
+      --radius:16px; --shadow:0 12px 36px rgba(0,0,0,.38);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{
+      font:16px/1.6 'Pretendard Variable','Inter','Noto Sans KR',ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Apple SD Gothic Neo",sans-serif;
+      color:var(--ink); background:var(--bg); letter-spacing:.01em;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{max-width:var(--max);margin:0 auto;padding:24px 28px}
+    .section{padding:72px 0}
+    @media(max-width:980px){.section{padding:52px 0}}
+    .grid{display:grid;gap:20px;grid-template-columns:repeat(12,1fr)}
+    .g3{grid-column:span 3}.g4{grid-column:span 4}.g6{grid-column:span 6}.g12{grid-column:span 12}
+    @media(max-width:980px){.g3,.g4,.g6{grid-column:span 12}}
+    h1{font-size:clamp(34px,5vw,60px);line-height:1.05;margin:0 0 10px;letter-spacing:-.02em}
+    h2{font-size:clamp(22px,2.6vw,34px);line-height:1.16;margin:0 0 16px;letter-spacing:-.01em}
+    h3{font-size:clamp(18px,2vw,24px);line-height:1.3;margin:0 0 8px}
+    .lede{color:var(--mut);margin:6px 0 0;line-height:1.8}
+    p{line-height:1.8;margin:0 0 20px}
+    ul{line-height:1.8;padding-left:24px}
+    li{margin-bottom:12px}
+    @supports (font-variation-settings: normal){ h1,h2,h3{font-variation-settings:'wght' 800} }
+
+    /* Header */
+    header{
+      position:sticky;top:0;z-index:60;backdrop-filter:saturate(120%) blur(10px);
+      background:linear-gradient(180deg,rgba(12,15,28,.85),rgba(12,15,28,.78));
+      border-bottom:1px solid var(--line);
+    }
+    .nav{display:flex;align-items:center;justify-content:flex-start;gap:14px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:900;flex:0 0 auto;min-width:max-content;white-space:nowrap}
+    .logo{
+      display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:12px;
+      background:conic-gradient(from 210deg,#6C64FF,#A855F7,#6C64FF);
+      color:#fff;font-weight:900;font-size:clamp(16px,2vw,20px);line-height:1;
+    }
+    .menu{margin-left:auto;display:flex;gap:6px;align-items:center}
+    .menu a{padding:10px 12px;border-radius:10px;color:#ECEAF7;transition:all .2s ease}
+    .menu a:hover{background:rgba(255,255,255,.08)}
+    .menu a.active{background:rgba(108,100,255,.2);color:#E7E5FF}
+    .btn{display:inline-flex;gap:8px;align-items:center;justify-content:center;padding:12px 16px;border-radius:12px;font-weight:800;transition:all .2s ease}
+    .btn.pri{background:linear-gradient(90deg,var(--pri),var(--accent));color:var(--pri-ink);box-shadow:var(--shadow)}
+    .btn.pri:hover{transform:translateY(-2px);box-shadow:0 16px 42px rgba(108,100,255,.5)}
+    .btn.out{border:1px solid var(--line)}
+    .btn.out:hover{border-color:var(--pri);background:rgba(108,100,255,.1)}
+
+    /* Mobile menu */
+    .hamb{display:none;border:none;background:linear-gradient(135deg, var(--pri), var(--accent));color:#fff;cursor:pointer}
+    @media(max-width:1100px){
+      .hamb{display:block;padding:10px 14px;border-radius:10px;font-size:18px}
+      .menu{display:none}
+    }
+
+    /* Hero */
+    .hero{
+      position:relative;min-height:40vh;display:flex;align-items:center;overflow:hidden;border-bottom:1px solid var(--line);
+      background:radial-gradient(900px 520px at 72% -8%, rgba(124,92,255,.24), transparent 60%),
+                radial-gradient(700px 420px at 14% 6%, rgba(0,172,130,.24), transparent 60%),
+                linear-gradient(180deg,#0F0B22,#0E0A1F);
+    }
+    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.24) 40%,rgba(0,0,0,.3))}
+    .hero .wrap{position:relative;padding:60px 0;color:#fff}
+
+    /* Service card */
+    .service-section{
+      padding:80px 0;
+      border-bottom:1px solid var(--line);
+    }
+    .service-section:last-child{border-bottom:none}
+
+    .feature-card{
+      padding:24px;border-radius:14px;
+      background:rgba(255,255,255,.04);border:1px solid var(--line);
+      transition:all .25s ease;
+    }
+    .feature-card:hover{
+      background:rgba(255,255,255,.07);
+      border-color:rgba(168,85,247,.3);
+      transform:translateY(-2px);
+    }
+
+    .icon-badge{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:64px;height:64px;border-radius:16px;
+      background:linear-gradient(135deg, rgba(108,100,255,.2), rgba(168,85,247,.15));
+      border:1px solid rgba(168,85,247,.3);
+      font-size:32px;
+      margin-bottom:20px;
+    }
+
+    .pricing-card{
+      position:relative;padding:24px;border-radius:16px;
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.18);
+      backdrop-filter:blur(14px);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.10), 0 12px 32px rgba(0,0,0,.35);
+      transition:all .3s ease;
+    }
+    .pricing-card:hover{
+      transform:translateY(-3px);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 16px 44px rgba(0,0,0,.45);
+    }
+    .pricing-card.featured{border-color:rgba(168,85,247,.4)}
+    .badge-featured{
+      position:absolute;top:12px;right:12px;
+      padding:6px 12px;border-radius:20px;
+      background:linear-gradient(90deg,var(--pri),var(--accent));
+      color:#fff;font-size:12px;font-weight:800;
+    }
+    .price{font-size:28px;font-weight:900;margin-top:12px;color:var(--pri)}
+    .pricing-note{font-size:14px;line-height:1.8;margin-top:16px;opacity:.8}
+
+    footer{border-top:1px solid var(--line);background:linear-gradient(180deg,transparent,#00000008);color:var(--mut);padding:40px 0}
+
+    @media(max-width:980px){
+      .container{padding-left:max(env(safe-area-inset-left), 20px);padding-right:max(env(safe-area-inset-right), 20px)}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <span class="logo" aria-label="Chan's">Chan's</span><span>찬공's Studio</span>
+    </a>
+    <button class="hamb" id="hamb" aria-label="메뉴" onclick="alert('메뉴는 PC 버전에서 이용하세요')">☰</button>
+    <nav class="menu" id="menu">
+      <a href="index.html">홈</a>
+      <a href="about.html">소개</a>
+      <a href="services.html" class="active">서비스</a>
+      <a href="faq.html">FAQ</a>
+      <a href="guide.html">가이드</a>
+      <a class="btn pri" href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">상담</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container wrap">
+    <h1>제공 서비스</h1>
+    <p class="lede">여러분의 게임 라이프를 더 편하게 만들어드립니다</p>
+  </div>
+</section>
+
+<!-- 서비스 1: 시즌 홍보 페이지 -->
+<section class="service-section">
+  <div class="container">
+    <div class="icon-badge">🎨</div>
+    <h2>시즌 홍보 페이지</h2>
+    <p class="lede" style="font-size:18px;margin-bottom:40px">
+      맞춤형 홍보 이미지로 더 많은 멤버를 모집하세요
+    </p>
+
+    <h3 style="margin-top:50px">서비스 소개</h3>
+    <p>
+      디아블로4 시즌이 시작될 때마다 가장 중요한 것은 무엇일까요? 바로 팀 멤버 모집입니다. 
+      하지만 인벤 게시판에는 수많은 홍보 글들이 경쟁하고 있습니다. 
+      어떻게 하면 여러분의 팀이 돋보일 수 있을까요?
+    </p>
+    <p>
+      답은 전문적이고 눈에 띄는 홍보 이미지입니다. 
+      찬공's Studio는 여러분의 팀 컨셉과 분위기에 딱 맞는 맞춤형 홍보 페이지를 제작해드립니다. 
+      단순히 예쁜 이미지를 만드는 것을 넘어, 효과적으로 멤버를 모집할 수 있는 
+      전략적인 디자인을 제공합니다.
+    </p>
+
+    <h3 style="margin-top:50px">주요 기능</h3>
+    <div class="grid" style="margin-top:30px">
+      <div class="g4 feature-card">
+        <strong>맞춤형 디자인</strong>
+        <p class="lede" style="margin-top:8px">
+          팀의 컨셉, 색감, 분위기에 맞춘 전용 홍보 이미지를 제작합니다. 
+          PNG와 GIF 형식 모두 지원하며, 원하시는 스타일로 작업합니다.
+        </p>
+      </div>
+      <div class="g4 feature-card">
+        <strong>빠른 제작</strong>
+        <p class="lede" style="margin-top:8px">
+          평균 1-3일 내에 초안을 전달해드립니다. 
+          급하게 멤버를 모집해야 하는 상황에도 빠르게 대응합니다.
+        </p>
+      </div>
+      <div class="g4 feature-card">
+        <strong>무제한 수정</strong>
+        <p class="lede" style="margin-top:8px">
+          시즌이 진행되는 동안 수정이 필요하면 언제든 요청하세요. 
+          텍스트, 색상, 간단한 문구 변경은 무료로 지원합니다.
+        </p>
+      </div>
+      <div class="g4 feature-card">
+        <strong>복붙용 코드 제공</strong>
+        <p class="lede" style="margin-top:8px">
+          인벤 게시글 작성이 처음이어도 걱정 없습니다. 
+          한 줄만 복사해서 붙여넣으면 되는 간편한 코드를 제공합니다.
+        </p>
+      </div>
+      <div class="g4 feature-card">
+        <strong>사용 가이드</strong>
+        <p class="lede" style="margin-top:8px">
+          카카오톡으로 1:1 상담하며 자세한 사용법을 안내해드립니다. 
+          효과적인 홍보 전략도 함께 조언합니다.
+        </p>
+      </div>
+      <div class="g4 feature-card">
+        <strong>운영 컨설팅</strong>
+        <p class="lede" style="margin-top:8px">
+          홍보 이미지 제작뿐만 아니라 팀 운영, 멤버 관리 등 
+          커뮤니티 운영 전반에 대한 조언을 제공합니다.
+        </p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:50px">이런 분께 추천합니다</h3>
+    <ul style="margin-top:20px">
+      <li><strong>시즌마다 멤버 모집에 어려움을 겪는 길드장님</strong> - 전문적인 홍보로 더 많은 지원자를 모집하세요</li>
+      <li><strong>디자인에 자신이 없는 팀 리더</strong> - 직접 만들 필요 없이 전문가에게 맡기세요</li>
+      <li><strong>다른 팀과 차별화하고 싶은 커뮤니티</strong> - 독특하고 눈에 띄는 이미지로 주목받으세요</li>
+      <li><strong>시간이 부족한 바쁜 운영진</strong> - 홍보 준비 시간을 절약하고 게임에 집중하세요</li>
+    </ul>
+
+    <h3 style="margin-top:50px">패키지 및 가격</h3>
+    <div class="grid" style="margin-top:30px">
+      <div class="g4 pricing-card">
+        <strong>기본 패키지</strong>
+        <p class="lede" style="margin-top:8px">시즌 맞춤 홍보물 · 게시글 복붙용 한줄 코드화 · 수정 1회</p>
+        <div class="price">50,000원 ~</div>
+      </div>
+      <div class="g4 pricing-card">
+        <strong>몸편한 패키지</strong>
+        <p class="lede" style="margin-top:8px">시즌 맞춤 홍보물 · <strong>게시글 매크로 포함</strong> · 게시글 복붙용 한줄 코드화 · 수정 3회</p>
+        <div class="price">120,000원 ~</div>
+      </div>
+      <div class="g4 pricing-card featured">
+        <div class="badge-featured">추천</div>
+        <strong>맘까지 편한 패키지</strong>
+        <p class="lede" style="margin-top:8px">시즌 맞춤 홍보물 · 게시글 매크로 포함 · 게시글 복붙용 한줄 코드화 · 수정 5회 및 재제작 1회</p>
+        <div class="price">150,000원 ~</div>
+      </div>
+    </div>
+    <p class="pricing-note lede" style="margin-top:20px">
+      ※ 맞춤 홍보물 크기와 기능에 따라 가격이 상이합니다.<br>
+      ※ 가격대별이 아닌 전체 패키지 총 10건만 제작합니다.<br>
+      ※ 수정: 텍스트/색상/간단 문구만 포함 (이미지 교체는 재제작 필요)
+    </p>
+  </div>
+</section>
+
+<!-- 서비스 2: ColdHawk -->
+<section class="service-section">
+  <div class="container">
+    <div class="icon-badge">🦅</div>
+    <h2>인벤 게시글 매크로 - ColdHawk</h2>
+    <p class="lede" style="font-size:18px;margin-bottom:40px">
+      안전하고 효율적인 게시글 자동화 프로그램
+    </p>
+
+    <h3 style="margin-top:50px">서비스 소개</h3>
+    <p>
+      디아블로4 커뮤니티를 운영하다 보면 가장 번거로운 일 중 하나가 바로 
+      인벤 게시판에 꾸준히 홍보 글을 올리는 것입니다. 
+      매일 같은 글을 복사해서 붙여넣고, 여러 게시판을 돌아다니며 글을 올리는 작업은 
+      정말 시간이 많이 걸리고 귀찮은 일입니다.
+    </p>
+    <p>
+      ColdHawk는 이런 반복적인 작업을 자동화해주는 프로그램입니다. 
+      한 번 설정해두면 정해진 시간마다 자동으로 게시글을 올려주고, 
+      오래된 글은 자동으로 삭제하여 항상 3개의 최신 글을 유지합니다. 
+      이제 게시글 관리에 시간을 쓰지 말고, 게임에 집중하세요.
+    </p>
+
+    <h3 style="margin-top:50px">주요 기능</h3>
+    <div class="grid" style="margin-top:30px">
+      <div class="g6 feature-card">
+        <strong>자동 게시글 등록</strong>
+        <p class="lede" style="margin-top:8px">
+          설정한 내용으로 자동으로 게시글을 작성하고 등록합니다. 
+          제목, 본문, 이미지까지 모두 자동으로 처리됩니다.
+        </p>
+      </div>
+      <div class="g6 feature-card">
+        <strong>재업로드 기능</strong>
+        <p class="lede" style="margin-top:8px">
+          원하는 시간 간격으로 자동으로 글을 재업로드합니다. 
+          항상 최상단에 여러분의 글이 노출되도록 유지합니다.
+        </p>
+      </div>
+      <div class="g6 feature-card">
+        <strong>게시글 3개 자동 관리</strong>
+        <p class="lede" style="margin-top:8px">
+          인벤의 1일 게시글 제한 규정을 자동으로 관리합니다. 
+          오래된 글은 자동 삭제하고 새 글을 올려 항상 3개를 유지합니다.
+        </p>
+      </div>
+      <div class="g6 feature-card">
+        <strong>다중 계정 지원</strong>
+        <p class="lede" style="margin-top:8px">
+          최대 10개의 계정을 동시에 관리할 수 있습니다. 
+          여러 게시판에 효율적으로 홍보하세요.
+        </p>
+      </div>
+      <div class="g6 feature-card">
+        <strong>어디서든 사용 가능</strong>
+        <p class="lede" style="margin-top:8px">
+          로그인 기반 시스템으로 어떤 컴퓨터에서든 
+          본인의 설정으로 프로그램을 사용할 수 있습니다.
+        </p>
+      </div>
+      <div class="g6 feature-card">
+        <strong>깔끔하고 가벼운 프로그램</strong>
+        <p class="lede" style="margin-top:8px">
+          직관적인 UI로 누구나 쉽게 사용할 수 있으며, 
+          시스템 리소스를 거의 사용하지 않아 부담이 없습니다.
+        </p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:50px">이런 분께 추천합니다</h3>
+    <ul style="margin-top:20px">
+      <li><strong>매일 홍보 글을 올리는 것이 번거로운 길드장</strong> - 자동화로 시간을 절약하세요</li>
+      <li><strong>여러 게시판에 동시에 홍보해야 하는 운영진</strong> - 한 번에 모든 게시판 관리가 가능합니다</li>
+      <li><strong>PC 앞에 있지 않아도 홍보를 지속하고 싶은 분</strong> - 설정해두면 자동으로 계속 작동합니다</li>
+      <li><strong>게시글 규정을 지키면서 효율적으로 홍보하고 싶은 팀</strong> - 자동으로 규정을 준수합니다</li>
+    </ul>
+
+    <h3 style="margin-top:50px">이용 요금</h3>
+    <div class="grid" style="margin-top:30px">
+      <div class="g4 pricing-card">
+        <strong>7일 이용권</strong>
+        <div class="price" style="margin-top:12px">19,000원</div>
+        <p class="lede" style="margin-top:8px">단기 사용 및 체험용</p>
+      </div>
+      <div class="g4 pricing-card">
+        <strong>1개월 이용권</strong>
+        <div class="price" style="margin-top:12px">49,000원</div>
+        <p class="lede" style="margin-top:8px">한 시즌 동안 사용</p>
+      </div>
+      <div class="g4 pricing-card featured">
+        <div class="badge-featured">인기</div>
+        <strong>3개월 이용권</strong>
+        <div class="price" style="margin-top:12px">120,000원</div>
+        <p class="lede" style="margin-top:8px">여러 시즌 사용 가능</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 서비스 3: ColdAPP -->
+<section class="service-section">
+  <div class="container">
+    <div class="icon-badge">📝</div>
+    <h2>AI 네이버 블로그 자동화 - ColdAPP</h2>
+    <p class="lede" style="font-size:18px;margin-bottom:40px">
+      링크 하나로 AI가 자동으로 블로그 포스팅을 완성합니다
+    </p>
+
+    <h3 style="margin-top:50px">서비스 소개</h3>
+    <p>
+      네이버 블로그를 운영하면서 가장 힘든 점은 무엇인가요? 
+      바로 꾸준히 양질의 콘텐츠를 작성하는 것입니다. 
+      특히 브랜드커넥트 상품 리뷰나 체험단 후기를 작성할 때는 
+      제품 정보를 찾아보고, 사진을 정리하고, 자연스러운 글을 쓰는 데 
+      많은 시간이 소요됩니다.
+    </p>
+    <p>
+      ColdAPP은 이 모든 과정을 AI가 자동으로 처리해주는 프로그램입니다. 
+      네이버 브랜드커넥트 상품 링크만 입력하면, 
+      AI가 상품 정보를 분석하고 자연스러운 후기 글을 작성하여 
+      자동으로 블로그에 발행합니다. 30분 걸리던 작업을 3분으로 단축시켜드립니다.
+    </p>
+
+    <h3 style="margin-top:50px">작동 방식</h3>
+    <div class="grid" style="margin-top:30px">
+      <div class="g3 feature-card">
+        <strong>1단계</strong>
+        <p class="lede" style="margin-top:8px">
+          네이버 브랜드커넥트 상품 링크를 입력합니다. 
+          (naver.me/... 형식의 짧은 링크)
+        </p>
+      </div>
+      <div class="g3 feature-card">
+        <strong>2단계</strong>
+        <p class="lede" style="margin-top:8px">
+          AI가 상품명, 가격, 설명, 이미지를 
+          자동으로 분석하고 수집합니다.
+        </p>
+      </div>
+      <div class="g3 feature-card">
+        <strong>3단계</strong>
+        <p class="lede" style="margin-top:8px">
+          AI가 자연스러운 후기 형식의 
+          블로그 글을 자동으로 작성합니다.
+        </p>
+      </div>
+      <div class="g3 feature-card">
+        <strong>4단계</strong>
+        <p class="lede" style="margin-top:8px">
+          이미지, 해시태그와 함께 
+          블로그에 자동으로 발행됩니다.
+        </p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:50px">주요 장점</h3>
+    <ul style="margin-top:20px">
+      <li><strong>시간 절약</strong> - 30분 걸리던 포스팅 작업을 3분으로 단축합니다</li>
+      <li><strong>자연스러운 글</strong> - AI가 사람처럼 자연스러운 후기 글을 작성합니다</li>
+      <li><strong>꾸준한 업로드</strong> - 매일 빠르게 포스팅하여 블로그 활동성을 높입니다</li>
+      <li><strong>자동 이미지 처리</strong> - 상품 이미지를 자동으로 수집하고 최적화하여 삽입합니다</li>
+      <li><strong>SEO 최적화</strong> - 자동으로 적절한 해시태그를 생성하여 검색 노출을 높입니다</li>
+    </ul>
+
+    <h3 style="margin-top:50px">이런 분께 추천합니다</h3>
+    <ul style="margin-top:20px">
+      <li><strong>브랜드커넥트로 자동 수익을 만들고 싶은 분</strong> - 자동화로 효율적인 블로그 운영이 가능합니다</li>
+      <li><strong>쇼핑몰 사장님</strong> - 상품 홍보 글을 빠르고 쉽게 작성하세요</li>
+      <li><strong>마케터</strong> - 체험단 글과 후기 글을 꾸준히 올려야 하는 마케터에게 최적입니다</li>
+      <li><strong>블로그를 키우고 싶은 분</strong> - 글 쓰기는 부담스럽지만 블로그는 키우고 싶은 모든 분들께 추천합니다</li>
+    </ul>
+
+    <h3 style="margin-top:50px">이용 요금</h3>
+    <div class="grid" style="margin-top:30px">
+      <div class="g4 pricing-card">
+        <strong>1주일</strong>
+        <div class="price" style="margin-top:12px">29,000원</div>
+        <p class="lede" style="margin-top:8px">단기 사용 및 체험용</p>
+      </div>
+      <div class="g4 pricing-card">
+        <strong>1개월</strong>
+        <div class="price" style="margin-top:12px">79,000원</div>
+        <p class="lede" style="margin-top:8px">한달간의 정기 리뷰로 블로그 관리</p>
+      </div>
+      <div class="g4 pricing-card featured">
+        <div class="badge-featured">인기</div>
+        <strong>6개월</strong>
+        <div class="price" style="margin-top:12px">400,000원</div>
+        <p class="lede" style="margin-top:8px">완벽한 리뷰 블로거로 거듭나기</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section container" style="text-align:center;padding-top:40px">
+  <h2>지금 바로 시작하세요</h2>
+  <p class="lede" style="margin-bottom:30px">
+    여러분에게 필요한 서비스가 있나요?<br>
+    카카오톡으로 편하게 상담받으세요.
+  </p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+    <a class="btn pri" href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">카카오톡 상담하기</a>
+    <a class="btn out" href="faq.html">자주 묻는 질문 보기</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+    <p class="lede" style="margin:0">© 2025 Changong's Studio — 시즌 홍보를 퀄리티있고 편하게</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="about.html" style="color:var(--mut)">소개</a>
+      <a href="services.html" style="color:var(--mut)">서비스</a>
+      <a href="faq.html" style="color:var(--mut)">FAQ</a>
+      <a href="guide.html" style="color:var(--mut)">가이드</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
