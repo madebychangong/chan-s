@@ -448,19 +448,19 @@ const products = [
           <div class="pricing-grid" style="margin-top:30px">
             <div class="pricing-card">
               <strong>1주일 체험권</strong>
-              <div class="price" style="margin-top:12px">29,000원</div>
+              <div class="price" style="margin-top:12px">49,000원</div>
               <p class="lede" style="margin-top:8px">기능 테스트 및 단기 사용</p>
             </div>
             <div class="pricing-card">
               <strong>1개월 이용권</strong>
-              <div class="price" style="margin-top:12px">79,000원</div>
+              <div class="price" style="margin-top:12px">199,000원</div>
               <p class="lede" style="margin-top:8px">본격적인 블로그 성장 관리</p>
             </div>
             <div class="pricing-card featured">
               <div class="badge-featured">베스트</div>
               <strong>6개월 이용권</strong>
-              <div class="price" style="margin-top:12px">400,000원</div>
-              <p class="lede" style="margin-top:8px">월 6만원대로 누리는 자동화 (최고 효율)</p>
+              <div class="price" style="margin-top:12px">799,000원</div>
+              <p class="lede" style="margin-top:8px">최고 가성비로 누리는 자동화</p>
             </div>
           </div>
           <div style="margin-top:30px;display:flex;gap:12px;flex-wrap:wrap">
