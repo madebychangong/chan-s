@@ -1,7 +1,6 @@
 // ============================================
-// 상품 데이터 파일
+// 상품 데이터 파일 (수정본: 마케팅 최적화 & 광고 정책 준수)
 // ============================================
-// 새 상품을 추가하려면 아래 배열에 같은 형식으로 추가하세요!
 
 const products = [
   // ========== 상품 1: 시즌 홍보 페이지 ==========
@@ -122,13 +121,13 @@ const products = [
             </div>
             <div class="pricing-card">
               <strong>몸편한 패키지</strong>
-              <p class="lede" style="margin-top:8px">시즌 맞춤 홍보물 · <strong>게시글 매크로 포함</strong> · 게시글 복붙용 한줄 코드화 · <em>수정 3회</em></p>
+              <p class="lede" style="margin-top:8px">시즌 맞춤 홍보물 · <strong>자동 등록 툴 포함</strong> · 게시글 복붙용 한줄 코드화 · <em>수정 3회</em></p>
               <div class="price">120,000원 ~</div>
             </div>
             <div class="pricing-card featured">
               <div class="badge-featured">추천</div>
               <strong>맘까지 편한 패키지</strong>
-              <p class="lede" style="margin-top:8px">시즌 맞춤 홍보물 · 게시글 매크로 포함 · 게시글 복붙용 한줄 코드화 · <em>수정 5회 및 재제작 1회</em></p>
+              <p class="lede" style="margin-top:8px">시즌 맞춤 홍보물 · 자동 등록 툴 포함 · 게시글 복붙용 한줄 코드화 · <em>수정 5회 및 재제작 1회</em></p>
               <div class="price">150,000원 ~</div>
             </div>
           </div>
@@ -145,12 +144,12 @@ const products = [
     ]
   },
 
-  // ========== 상품 2: 게시글 매크로 ==========
+  // ========== 상품 2: 게시글 자동화 (구: 매크로) ==========
   {
     id: 'macro',
-    name: '인벤 게시글 매크로',
-    shortDesc: '안전한 인벤용 게시글 매크로 ColdHawk',
-    icon: 'assets/hawk_icon_256x256.png',  // 이미지 경로
+    name: '커뮤니티 자동 게시 툴',
+    shortDesc: '안전하고 스마트한 인벤 게시글 관리 솔루션 ColdHawk',
+    icon: 'assets/hawk_icon_256x256.png',
     tabs: [
       {
         name: '주요 기능',
@@ -159,28 +158,28 @@ const products = [
           <p class="lede">귀찮은 반복 업무를 자동화하는 스마트한 솔루션</p>
           <div class="grid" style="gap:16px;margin-top:30px">
             <div class="g6 feature-card">
-              <strong>인벤 게시글 자동 등록</strong>
-              <p class="lede" style="margin-top:8px">맞춤 설정한 내용으로 자동 게시</p>
+              <strong>게시글 자동 등록</strong>
+              <p class="lede" style="margin-top:8px">맞춤 설정한 내용으로 정해진 시간에 자동 게시</p>
             </div>
             <div class="g6 feature-card">
-              <strong>재업로드 기능</strong>
-              <p class="lede" style="margin-top:8px">원하는 시간(초)마다 자동으로 글 업로드</p>
+              <strong>스마트 스케줄링</strong>
+              <p class="lede" style="margin-top:8px">원하는 시간 간격으로 자연스럽게 업로드</p>
             </div>
             <div class="g6 feature-card">
               <strong>게시글 3개 유지</strong>
-              <p class="lede" style="margin-top:8px">1일 게시글 제한 방지 자동관리</p>
+              <p class="lede" style="margin-top:8px">1일 게시글 제한 규정을 자동으로 준수</p>
             </div>
             <div class="g6 feature-card">
               <strong>다중 계정 지원</strong>
-              <p class="lede" style="margin-top:8px">최대 10개 계정을 동시에 관리</p>
+              <p class="lede" style="margin-top:8px">최대 10개 계정을 동시에 효율적으로 관리</p>
             </div>
             <div class="g6 feature-card">
               <strong>개인화 사용</strong>
-              <p class="lede" style="margin-top:8px">로그인 기반으로 어디서든 사용가능</p>
+              <p class="lede" style="margin-top:8px">로그인 기반으로 어디서든 편리하게 접속</p>
             </div>
             <div class="g6 feature-card">
-              <strong>깔끔 · 가벼움</strong>
-              <p class="lede" style="margin-top:8px">깔끔한 UI의 가벼운 프로그램</p>
+              <strong>최적화 UI</strong>
+              <p class="lede" style="margin-top:8px">리소스 점유율이 낮은 가벼운 프로그램</p>
             </div>
           </div>
         `
@@ -194,36 +193,36 @@ const products = [
               <li>
                 <span class="icon">✅</span>
                 <div>
-                  <strong>정기 홍보를 하시는 분</strong>
-                  <p class="lede">디아4, 피오이2 등 게임시즌마다 홍보하시는 분</p>
+                  <strong>정기 홍보가 필요한 분</strong>
+                  <p class="lede">디아4, POE2 등 시즌마다 반복 홍보가 필수인 분</p>
                 </div>
               </li>
               <li>
                 <span class="icon">✅</span>
                 <div>
-                  <strong>인벤 유저</strong>
-                  <p class="lede">인벤에 정기적으로 홍보글을 올리시는 분</p>
+                  <strong>커뮤니티 셀러/길드장</strong>
+                  <p class="lede">인벤 등 커뮤니티에서 꾸준한 노출이 필요한 분</p>
                 </div>
               </li>
               <li>
                 <span class="icon">✅</span>
                 <div>
-                  <strong>시간 절약</strong>
-                  <p class="lede">수동, 반복 작업 시간을 줄이고 싶으신 분</p>
+                  <strong>시간이 부족한 분</strong>
+                  <p class="lede">반복적인 수동 게시 작업에서 해방되고 싶은 분</p>
                 </div>
               </li>
               <li>
                 <span class="icon">✅</span>
                 <div>
-                  <strong>다중 커뮤니티 관리</strong>
-                  <p class="lede">여러 커뮤니티를 동시에 관리하고 싶으신 분</p>
+                  <strong>효율적 관리</strong>
+                  <p class="lede">여러 계정과 커뮤니티를 한 번에 관리하고 싶은 분</p>
                 </div>
               </li>
               <li>
                 <span class="icon">✅</span>
                 <div>
-                  <strong>게임과 동시 실행</strong>
-                  <p class="lede">게임과 동시에 실행하고 싶으신 분</p>
+                  <strong>게이머</strong>
+                  <p class="lede">게임을 플레이하면서 홍보는 자동으로 맡기고 싶은 분</p>
                 </div>
               </li>
             </ul>
@@ -237,16 +236,16 @@ const products = [
           <p class="lede">3단계로 간편하게 시작하세요</p>
           <div style="margin-top:40px">
             <div class="step"><div class="n">1</div><div><strong>문의 & 결제</strong><p class="lede">상단 메뉴의 상담 버튼으로 문의 후 결제</p></div></div>
-            <div class="step"><div class="n">2</div><div><strong>설치 & 가입</strong><p class="lede">프로그램 설치 → 회원가입 → 로그인</p></div></div>
-            <div class="step"><div class="n">3</div><div><strong>설정 & 시작</strong><p class="lede">원하는대로 설정 후 자동 등록 시작</p></div></div>
+            <div class="step"><div class="n">2</div><div><strong>설치 & 가입</strong><p class="lede">전용 프로그램 설치 → 회원가입 → 로그인</p></div></div>
+            <div class="step"><div class="n">3</div><div><strong>설정 & 시작</strong><p class="lede">게시글 내용 설정 후 '시작' 버튼만 누르면 끝</p></div></div>
           </div>
           
           <div style="margin-top:50px;padding:20px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:16px">
-            <h3 style="margin:0 0 10px 0">💡 주의사항</h3>
+            <h3 style="margin:0 0 10px 0">💡 안전한 사용 가이드</h3>
             <ul class="lede" style="line-height:1.9;margin:10px 0 0 20px">
-              <li>안전한 사용을 위해 과도한 재업로드는 자제해주세요</li>
-              <li>커뮤니티 규칙을 준수하여 사용해주세요</li>
-              <li>기술 지원은 카카오톡으로 문의 가능합니다</li>
+              <li>커뮤니티 이용 규칙을 준수하여 안전하게 사용하세요</li>
+              <li>과도한 도배보다는 적절한 시간 간격을 권장합니다</li>
+              <li>기술 지원은 카카오톡으로 언제든 문의 가능합니다</li>
             </ul>
           </div>
         `
@@ -254,24 +253,24 @@ const products = [
       {
         name: '이용 요금',
         content: `
-          <h2>게시글 매크로 이용요금</h2>
-          <p class="lede">사용 기간에 따라 선택하세요</p>
+          <h2>자동화 툴 이용요금</h2>
+          <p class="lede">합리적인 가격으로 시간을 구매하세요</p>
           <div class="pricing-grid" style="margin-top:30px">
             <div class="pricing-card">
               <strong>1개월</strong>
               <div class="price" style="margin-top:12px">30,000원</div>
-              <p class="lede" style="margin-top:8px">단기 시즌용</p>
+              <p class="lede" style="margin-top:8px">단기 시즌 집중 홍보용</p>
             </div>
             <div class="pricing-card">
               <strong>3개월</strong>
               <div class="price" style="margin-top:12px">80,000원</div>
-              <p class="lede" style="margin-top:8px">월 26,666원 (11% 할인)</p>
+              <p class="lede" style="margin-top:8px">월 26,000원대 (가성비 추천)</p>
             </div>
             <div class="pricing-card featured">
               <div class="badge-featured">인기</div>
               <strong>영구 이용권</strong>
               <div class="price" style="margin-top:12px">200,000원</div>
-              <p class="lede" style="margin-top:8px">장기 사용시 가장 경제적</p>
+              <p class="lede" style="margin-top:8px">평생 소장 (장기적으로 가장 경제적)</p>
             </div>
           </div>
           <div style="margin-top:30px;display:flex;gap:12px;flex-wrap:wrap">
@@ -285,9 +284,9 @@ const products = [
   // ========== 상품 3: ColdAPP (네이버 블로그 자동 포스팅) ==========
   {
     id: 'coldapp',
-    name: 'AI 네이버 블로그 포스팅',
-    shortDesc: '링크 하나로 시원하게 한번에! ColdAPP',
-    icon: 'assets/coldapp_icon_256x256.png',  // 이미지 경로
+    name: 'AI 블로그 자동 포스팅',
+    shortDesc: '링크만 넣으면 글/이미지/태그까지 한 번에! ColdAPP',
+    icon: 'assets/coldapp_icon_256x256.png',
     tabs: [
       {
         name: '주요 기능',
@@ -297,35 +296,35 @@ const products = [
           <div class="grid" style="gap:16px;margin-top:30px">
             <div class="g6 feature-card">
               <strong>🧠 AI 자동 글쓰기</strong>
-              <p class="lede" style="margin-top:8px">직접 쓰지 않아도 자연스러운 후기 완성</p>
+              <p class="lede" style="margin-top:8px">직접 쓰지 않아도 전문가 수준의 리뷰 완성</p>
             </div>
             <div class="g6 feature-card">
-              <strong>🛍️ 상품 자동 인식</strong>
-              <p class="lede" style="margin-top:8px">링크만 넣으면 제목·가격·이미지 모두 자동 추출</p>
+              <strong>🛍️ 상품 자동 분석</strong>
+              <p class="lede" style="margin-top:8px">링크만 넣으면 제목·가격·상세정보 자동 추출</p>
             </div>
             <div class="g6 feature-card">
-              <strong>📸 이미지 자동 첨부</strong>
-              <p class="lede" style="margin-top:8px">최대 6장까지 다양한 형태로 예쁘게 배치</p>
+              <strong>📸 스마트 이미지 배치</strong>
+              <p class="lede" style="margin-top:8px">최대 6장까지 최적의 위치에 자동 첨부</p>
             </div>
             <div class="g6 feature-card">
-              <strong>🔠 강조 자동 적용</strong>
-              <p class="lede" style="margin-top:8px">중요한 문장은 AI가 알아서 굵게 · 컬러 스타일강조</p>
+              <strong>🔠 자동 강조 스타일링</strong>
+              <p class="lede" style="margin-top:8px">핵심 키워드는 굵게/컬러로 자동 하이라이트</p>
             </div>
             <div class="g6 feature-card">
-              <strong>🏷️ 해시태그 생성</strong>
-              <p class="lede" style="margin-top:8px">유입에 도움되는 태그를 자동 추천</p>
+              <strong>🏷️ SEO 해시태그</strong>
+              <p class="lede" style="margin-top:8px">검색 노출에 유리한 태그를 AI가 자동 추천</p>
             </div>
             <div class="g6 feature-card">
-              <strong>🔐 로그인 & 관리</strong>
-              <p class="lede" style="margin-top:8px">개별 닉네임 부여로 1PC가 아닌 여러곳에서 사용가능</p>
+              <strong>🔐 멀티 디바이스</strong>
+              <p class="lede" style="margin-top:8px">아이디/비번 방식이라 어디서든 접속 가능</p>
             </div>
           </div>
 
           <div style="margin-top:50px;padding:24px;background:linear-gradient(135deg, rgba(108,100,255,.15), rgba(168,85,247,.1));border:1px solid rgba(168,85,247,.3);border-radius:16px">
-            <h3 style="margin:0 0 12px 0;color:var(--pri)">⏰ 평균 소요시간: 3~5분</h3>
+            <h3 style="margin:0 0 12px 0;color:var(--pri)">⏰ 포스팅 시간: 30분 → 3분</h3>
             <p class="lede" style="margin:0;line-height:1.8">
-              글 한 편에 30분 걸리던 시간이 <strong>몇분으로 단축</strong><br>
-              하루 한 편씩, 매일 꾸준한 포스팅이 가능합니다.
+              글 쓰기 스트레스에서 해방되세요.<br>
+              하루 한 편씩, 매일 꾸준한 '1일 1포'가 쉬워집니다.
             </p>
           </div>
         `
@@ -339,50 +338,50 @@ const products = [
             <div class="step">
               <div class="n">1</div>
               <div>
-                <strong>URL을 붙여넣어요</strong>
-                <p class="lede">네이버 브랜드커넥트 링크(naver.me/...) 하나면 충분합니다</p>
+                <strong>URL 붙여넣기</strong>
+                <p class="lede">네이버 브랜드커넥트 등 상품 링크 하나면 준비 끝</p>
               </div>
             </div>
             <div class="step">
               <div class="n">2</div>
               <div>
-                <strong>AI가 알아서 분석</strong>
-                <p class="lede">상품명, 가격, 설명, 이미지까지 자동으로 수집합니다</p>
+                <strong>AI 심층 분석</strong>
+                <p class="lede">상품명, 가격, 특징, 이미지를 AI가 순식간에 파악</p>
               </div>
             </div>
             <div class="step">
               <div class="n">3</div>
               <div>
-                <strong>AI가 글을 써줘요</strong>
-                <p class="lede">후기 형식으로 자연스럽고 사람 같은 글을 완성합니다</p>
+                <strong>고퀄리티 글 작성</strong>
+                <p class="lede">후기 스타일의 자연스러운 글을 AI가 작성</p>
               </div>
             </div>
             <div class="step">
               <div class="n">4</div>
               <div>
-                <strong>자동 발행으로 마무리!</strong>
-                <p class="lede">이미지, 해시태그도 자동작성되어 블로그에 바로 올라갑니다</p>
+                <strong>자동 발행 완료</strong>
+                <p class="lede">사진 배치, 태그 입력까지 완료된 글이 블로그에 등록</p>
               </div>
             </div>
           </div>
 
-          <h2 style="margin-top:60px">ColdAPP을 쓰면 생기는 변화</h2>
+          <h2 style="margin-top:60px">ColdAPP 도입 효과</h2>
           <div class="grid" style="gap:20px;margin-top:30px">
             <div class="g6 metric-card">
-              <span class="kpi">⏳ 30분 → 3분</span>
-              <span class="lede">작업 시간 대폭 단축</span>
+              <span class="kpi">⏳ 시간 단축</span>
+              <span class="lede">단 3분 만에 포스팅 완료</span>
             </div>
             <div class="g6 metric-card">
-              <span class="kpi">📈 노출률 상승</span>
-              <span class="lede">양질의 꾸준한 포스팅으로</span>
+              <span class="kpi">📈 방문자 상승</span>
+              <span class="lede">꾸준한 업로드로 지수 상승</span>
             </div>
             <div class="g6 metric-card">
-              <span class="kpi">💬 브랜드 신뢰도 향상</span>
-              <span class="lede">일정한 품질의 글작성으로</span>
+              <span class="kpi">💰 수익 증대</span>
+              <span class="lede">체험단/기자단 더 많이 수행</span>
             </div>
             <div class="g6 metric-card">
-              <span class="kpi">🎯 매일 업로드</span>
-              <span class="lede">아이디어 고민 없이 클릭한번으로</span>
+              <span class="kpi">🎯 스트레스 제로</span>
+              <span class="lede">창작의 고통 없이 클릭만으로</span>
             </div>
           </div>
         `
@@ -396,29 +395,29 @@ const products = [
               <li>
                 <span class="icon">✅</span>
                 <div>
-                  <strong>브랜드커넥트 자동운영</strong>
-                  <p class="lede">자동화된 부업으로 판매 수익금을 원하시는분</p>
+                  <strong>N잡러/부업러</strong>
+                  <p class="lede">브랜드커넥트 등 수익형 포스팅을 자동으로 하고 싶은 분</p>
                 </div>
               </li>
               <li>
                 <span class="icon">✅</span>
                 <div>
                   <strong>쇼핑몰 사장님</strong>
-                  <p class="lede">상품 홍보 글이 부담스러운 쇼핑몰 사장님</p>
+                  <p class="lede">상품 홍보글 쓸 시간은 없고 광고비는 아끼고 싶은 분</p>
                 </div>
               </li>
               <li>
                 <span class="icon">✅</span>
                 <div>
-                  <strong>마케터</strong>
-                  <p class="lede">체험단 글, 후기 글을 꾸준히 올려야 하는 마케터</p>
+                  <strong>마케터/대행사</strong>
+                  <p class="lede">수십 개의 체험단/기자단 원고를 빠르게 처리해야 하는 분</p>
                 </div>
               </li>
               <li>
                 <span class="icon">✅</span>
                 <div>
-                  <strong>블로그 키우고 싶은 분</strong>
-                  <p class="lede">"글은 쓰기 싫은데 블로그는 키우고 싶은" 모든 분들</p>
+                  <strong>초보 블로거</strong>
+                  <p class="lede">글재주가 없어 포스팅이 막막하신 분</p>
                 </div>
               </li>
             </ul>
@@ -428,14 +427,14 @@ const products = [
             <h3 style="margin:0 0 16px 0">💬 실제 사용자 후기</h3>
             <div style="margin-bottom:20px;padding:16px;background:rgba(255,255,255,.02);border-radius:12px">
               <p class="lede" style="margin:0;line-height:1.8;font-style:italic">
-                "이불 추천 글을 써야 했는데, 제품 설명보고 링크만 넣었어요.<br>
-                AI가 소재 · 가격 · 후기 · 꿀팁까지 전부 정리해줬어요!"
+                "이불 추천 글을 써야 했는데, 제품 링크만 넣으니까...<br>
+                AI가 소재부터 세탁법, 꿀팁까지 완벽하게 정리해줬어요! 대박입니다."
               </p>
             </div>
             <div style="padding:16px;background:rgba(255,255,255,.02);border-radius:12px">
               <p class="lede" style="margin:0;line-height:1.8;font-style:italic">
-                "리뷰 포스팅, 제품 사용해보고 글작성하고 너무 귀찮고 피곤했는데,<br>
-                이제 커피 한 잔 마시면서 몇개나 포스팅을 할 수 있어요."
+                "퇴근하고 블로그 쓰기 너무 피곤했는데,<br>
+                이제 씻고 나와서 버튼 하나 누르면 끝나요. 삶의 질이 달라졌습니다."
               </p>
             </div>
           </div>
@@ -444,24 +443,24 @@ const products = [
       {
         name: '이용 요금',
         content: `
-          <h2>AI 포스팅 프로그램 이용요금</h2>
-          <p class="lede">사용 기간에 따라 선택하세요</p>
+          <h2>AI 포스팅 솔루션 요금</h2>
+          <p class="lede">합리적인 투자로 블로그를 키워보세요</p>
           <div class="pricing-grid" style="margin-top:30px">
             <div class="pricing-card">
-              <strong>1주일</strong>
+              <strong>1주일 체험권</strong>
               <div class="price" style="margin-top:12px">29,000원</div>
-              <p class="lede" style="margin-top:8px">단기 사용 및 체험용</p>
+              <p class="lede" style="margin-top:8px">기능 테스트 및 단기 사용</p>
             </div>
             <div class="pricing-card">
-              <strong>1개월</strong>
+              <strong>1개월 이용권</strong>
               <div class="price" style="margin-top:12px">79,000원</div>
-              <p class="lede" style="margin-top:8px">한달간의 정기리뷰로 블로그 관리용</p>
+              <p class="lede" style="margin-top:8px">본격적인 블로그 성장 관리</p>
             </div>
             <div class="pricing-card featured">
-              <div class="badge-featured">인기</div>
-              <strong>6개월</strong>
+              <div class="badge-featured">베스트</div>
+              <strong>6개월 이용권</strong>
               <div class="price" style="margin-top:12px">400,000원</div>
-              <p class="lede" style="margin-top:8px">완벽한 리뷰블로거로 거듭나기위한 최선의선택</p>
+              <p class="lede" style="margin-top:8px">월 6만원대로 누리는 자동화 (최고 효율)</p>
             </div>
           </div>
           <div style="margin-top:30px;display:flex;gap:12px;flex-wrap:wrap">
@@ -472,32 +471,32 @@ const products = [
       {
         name: '제공 예시',
         content: `
-          <h2>📌 제공 예시</h2>
-          <p class="lede">ColdAPP으로 작성된 블로그 포스팅을 직접 확인해보세요</p>
+          <h2>📌 AI 작성 예시</h2>
+          <p class="lede">ColdAPP이 작성한 실제 포스팅 퀄리티를 확인하세요</p>
           
           <div style="margin-top:30px;max-width:600px">
             <div class="feature-card" style="padding:24px">
-              <strong style="font-size:18px;display:block;margin-bottom:12px">AI 자동 작성 블로그 예시</strong>
-              <p class="lede" style="margin-bottom:20px">실제 ColdAPP이 자동으로 작성한 블로그 포스팅입니다</p>
+              <strong style="font-size:18px;display:block;margin-bottom:12px">AI 자동 생성 포스팅</strong>
+              <p class="lede" style="margin-bottom:20px">사람이 쓴 것처럼 자연스러운 문맥과 구성을 확인해보세요.</p>
               <a class="btn pri" href="https://blog.naver.com/shoping_72/224060436914" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px">
-                블로그 보러가기 →
+                예시 블로그 보러가기 →
               </a>
             </div>
           </div>
         `
       },
       {
-        name: '실구매자 사례',
+        name: '성공 사례',
         content: `
-          <h2>👥 실구매자 사례</h2>
-          <p class="lede">실제 구매자분들이 ColdAPP으로 작성한 블로그입니다</p>
+          <h2>👥 고객 성공 사례</h2>
+          <p class="lede">ColdAPP으로 블로그를 운영 중인 실제 고객님의 글입니다</p>
           
           <div style="margin-top:30px;max-width:600px">
             <div class="feature-card" style="padding:24px">
-              <strong style="font-size:18px;display:block;margin-bottom:12px">실구매자 작성 블로그</strong>
-              <p class="lede" style="margin-bottom:20px">ColdAPP을 구매하신 고객님의 실제 사용 사례입니다</p>
+              <strong style="font-size:18px;display:block;margin-bottom:12px">실구매자 활용 사례</strong>
+              <p class="lede" style="margin-bottom:20px">꾸준한 포스팅으로 방문자가 늘고 있는 실제 사례입니다.</p>
               <a class="btn pri" href="https://blog.naver.com/coco_hodu_/224055705061" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px">
-                블로그 보러가기 →
+                사례 보러가기 →
               </a>
             </div>
           </div>
@@ -505,12 +504,4 @@ const products = [
       }
     ]
   }
-
-  // ========== 새 상품 추가 템플릿 (복사해서 사용하세요!) ==========
-  /*
-  ,{
-   
-
-  }
-  */
 ];
