@@ -448,7 +448,7 @@ const products = [
           <div class="pricing-grid" style="margin-top:30px">
             <div class="pricing-card">
               <strong>1주일 체험권</strong>
-              <div class="price" style="margin-top:12px">49,000원</div>
+              <div class="price" style="margin-top:12px">59,000원</div>
               <p class="lede" style="margin-top:8px">기능 테스트 및 단기 사용</p>
             </div>
             <div class="pricing-card">
