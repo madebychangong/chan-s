@@ -488,9 +488,88 @@ const products = [
       {
         name: '성공 사례',
         content: `
-          <h2>👥 고객 성공 사례</h2>
+          <h2>💰 실제 수익 증명</h2>
+          <p class="lede">ColdAPP으로 블로그 자동 포스팅만으로 벌어들인 실제 수익입니다</p>
+
+          <div style="margin-top:40px">
+            <div class="grid" style="gap:24px">
+              <div class="g6">
+                <div class="feature-card" style="padding:20px">
+                  <img src="스크린샷 2025-12-02 183006.png" alt="브랜드커넥트 수익 66만원" style="width:100%;height:auto;border-radius:12px;margin-bottom:16px">
+                  <div style="display:flex;justify-content:space-around;gap:12px;margin-top:12px">
+                    <div style="text-align:center">
+                      <div style="font-size:13px;color:var(--mut);margin-bottom:4px">계좌 지급액</div>
+                      <div style="font-size:20px;font-weight:700;color:#FFD34D">66만원</div>
+                    </div>
+                    <div style="text-align:center">
+                      <div style="font-size:13px;color:var(--mut);margin-bottom:4px">정산 대상</div>
+                      <div style="font-size:20px;font-weight:700;color:#FFD34D">1,241만원</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="g6">
+                <div class="feature-card" style="padding:20px">
+                  <img src="KakaoTalk_20251202_184139765.jpg" alt="브랜드커넥트 수익 35만원" style="width:100%;height:auto;border-radius:12px;margin-bottom:16px">
+                  <div style="display:flex;justify-content:space-around;gap:12px;margin-top:12px">
+                    <div style="text-align:center">
+                      <div style="font-size:13px;color:var(--mut);margin-bottom:4px">계좌 지급액</div>
+                      <div style="font-size:20px;font-weight:700;color:#FFD34D">35만원</div>
+                    </div>
+                    <div style="text-align:center">
+                      <div style="font-size:13px;color:var(--mut);margin-bottom:4px">정산 대상</div>
+                      <div style="font-size:20px;font-weight:700;color:#FFD34D">402만원</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="g12">
+                <div class="feature-card" style="padding:20px">
+                  <img src="KakaoTalk_20251125_005129063.png" alt="브랜드커넥트 판매 268개" style="width:100%;max-width:800px;height:auto;border-radius:12px;margin:0 auto 16px;display:block">
+                  <div style="display:flex;justify-content:center;gap:32px;margin-top:12px;flex-wrap:wrap">
+                    <div style="text-align:center">
+                      <div style="font-size:13px;color:var(--mut);margin-bottom:4px">판매 개수</div>
+                      <div style="font-size:20px;font-weight:700;color:#FFD34D">268개</div>
+                    </div>
+                    <div style="text-align:center">
+                      <div style="font-size:13px;color:var(--mut);margin-bottom:4px">판매 금액</div>
+                      <div style="font-size:20px;font-weight:700;color:#FFD34D">513만원</div>
+                    </div>
+                    <div style="text-align:center">
+                      <div style="font-size:13px;color:var(--mut);margin-bottom:4px">예상 수익</div>
+                      <div style="font-size:20px;font-weight:700;color:#FFD34D">46만원</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="g12">
+                <div class="feature-card" style="padding:20px">
+                  <img src="KakaoTalk_20251109_005056559.png" alt="브랜드커넥트 판매 43개" style="width:100%;max-width:800px;height:auto;border-radius:12px;margin:0 auto 16px;display:block">
+                  <div style="display:flex;justify-content:center;gap:32px;margin-top:12px;flex-wrap:wrap">
+                    <div style="text-align:center">
+                      <div style="font-size:13px;color:var(--mut);margin-bottom:4px">판매 건수</div>
+                      <div style="font-size:20px;font-weight:700;color:#FFD34D">43개</div>
+                    </div>
+                    <div style="text-align:center">
+                      <div style="font-size:13px;color:var(--mut);margin-bottom:4px">판매 금액</div>
+                      <div style="font-size:20px;font-weight:700;color:#FFD34D">60.6만원</div>
+                    </div>
+                    <div style="text-align:center">
+                      <div style="font-size:13px;color:var(--mut);margin-bottom:4px">예상 수익</div>
+                      <div style="font-size:20px;font-weight:700;color:#FFD34D">5.9만원</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h2 style="margin-top:60px">👥 고객 성공 사례</h2>
           <p class="lede">ColdAPP으로 블로그를 운영 중인 실제 고객님의 글입니다</p>
-          
+
           <div style="margin-top:30px;max-width:600px">
             <div class="feature-card" style="padding:24px">
               <strong style="font-size:18px;display:block;margin-bottom:12px">실구매자 활용 사례</strong>
