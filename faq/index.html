@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>자주 묻는 질문 — 찬공's Studio</title>
+  <meta name="description" content="찬공's Studio 서비스 이용에 대한 자주 묻는 질문과 답변을 확인하세요.">
+  <meta property="og:title" content="찬공's Studio FAQ">
+  <meta property="og:description" content="자주 묻는 질문과 답변">
+  <meta name="theme-color" content="#0E0A1F">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --max: 1200px;
+      --ink: #ECEAF7;
+      --mut: #A1A0B3;
+      --line: #232044;
+      --bg: #0E0A1F;
+      --pri: #6C64FF;
+      --accent: #A855F7;
+      --pri-ink: #ffffff;
+      --chip: #5347C2;
+      --chip-ink: #F5F3FF;
+      --radius: 16px;
+      --shadow: 0 12px 36px rgba(0, 0, 0, .38);
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      margin: 0
+    }
+
+    body {
+      font: 16px/1.6 'Pretendard Variable', 'Inter', 'Noto Sans KR', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Apple SD Gothic Neo", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      letter-spacing: .01em;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit
+    }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 24px 28px
+    }
+
+    .section {
+      padding: 72px 0
+    }
+
+    @media(max-width:980px) {
+      .section {
+        padding: 52px 0
+      }
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 60px);
+      line-height: 1.05;
+      margin: 0 0 10px;
+      letter-spacing: -.02em
+    }
+
+    h2 {
+      font-size: clamp(22px, 2.6vw, 34px);
+      line-height: 1.16;
+      margin: 0 0 16px;
+      letter-spacing: -.01em
+    }
+
+    h3 {
+      font-size: clamp(18px, 2vw, 24px);
+      line-height: 1.3;
+      margin: 0 0 8px
+    }
+
+    .lede {
+      color: var(--mut);
+      margin: 6px 0 0;
+      line-height: 1.8
+    }
+
+    p {
+      line-height: 1.8;
+      margin: 0 0 20px
+    }
+
+    @supports (font-variation-settings: normal) {
+
+      h1,
+      h2,
+      h3 {
+        font-variation-settings: 'wght' 800
+      }
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      backdrop-filter: saturate(120%) blur(10px);
+      background: linear-gradient(180deg, rgba(12, 15, 28, .85), rgba(12, 15, 28, .78));
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 14px
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      flex: 0 0 auto;
+      min-width: max-content;
+      white-space: nowrap
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 12px;
+      background: conic-gradient(from 210deg, #6C64FF, #A855F7, #6C64FF);
+      color: #fff;
+      font-weight: 900;
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1;
+    }
+
+    .menu {
+      margin-left: auto;
+      display: flex;
+      gap: 6px;
+      align-items: center
+    }
+
+    .menu a {
+      padding: 10px 12px;
+      border-radius: 10px;
+      color: #ECEAF7;
+      transition: all .2s ease
+    }
+
+    .menu a:hover {
+      background: rgba(255, 255, 255, .08)
+    }
+
+    .menu a.active {
+      background: rgba(108, 100, 255, .2);
+      color: #E7E5FF
+    }
+
+    .btn {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 800;
+      transition: all .2s ease
+    }
+
+    .btn.pri {
+      background: linear-gradient(90deg, var(--pri), var(--accent));
+      color: var(--pri-ink);
+      box-shadow: var(--shadow)
+    }
+
+    .btn.pri:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 42px rgba(108, 100, 255, .5)
+    }
+
+    .btn.out {
+      border: 1px solid var(--line)
+    }
+
+    .btn.out:hover {
+      border-color: var(--pri);
+      background: rgba(108, 100, 255, .1)
+    }
+
+    /* Mobile menu */
+    .hamb {
+      display: none;
+      border: none;
+      background: linear-gradient(135deg, var(--pri), var(--accent));
+      color: #fff;
+      cursor: pointer
+    }
+
+    @media(max-width:1100px) {
+      .hamb {
+        display: block;
+        padding: 10px 14px;
+        border-radius: 10px;
+        font-size: 18px
+      }
+
+      .menu {
+        display: none
+      }
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 40vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+      background: radial-gradient(900px 520px at 72% -8%, rgba(124, 92, 255, .24), transparent 60%),
+        radial-gradient(700px 420px at 14% 6%, rgba(0, 172, 130, .24), transparent 60%),
+        linear-gradient(180deg, #0F0B22, #0E0A1F);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, .1), rgba(0, 0, 0, .24) 40%, rgba(0, 0, 0, .3))
+    }
+
+    .hero .wrap {
+      position: relative;
+      padding: 60px 0;
+      color: #fff
+    }
+
+    /* FAQ Item */
+    .faq-item {
+      padding: 32px;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .03));
+      border: 1px solid rgba(255, 255, 255, .18);
+      backdrop-filter: blur(14px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .10), 0 12px 32px rgba(0, 0, 0, .35);
+      transition: all .3s ease;
+    }
+
+    .faq-item:hover {
+      transform: translateY(-2px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 16px 44px rgba(0, 0, 0, .45);
+    }
+
+    .faq-question {
+      font-size: clamp(18px, 2vw, 22px);
+      font-weight: 800;
+      color: var(--pri);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .faq-question::before {
+      content: 'Q';
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--pri), var(--accent));
+      color: #fff;
+      font-size: 18px;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .faq-answer {
+      padding-left: 44px;
+      line-height: 1.8;
+      color: var(--ink);
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      background: linear-gradient(180deg, transparent, #00000008);
+      color: var(--mut);
+      padding: 40px 0
+    }
+
+    @media(max-width:980px) {
+      .container {
+        padding-left: max(env(safe-area-inset-left), 20px);
+        padding-right: max(env(safe-area-inset-right), 20px)
+      }
+
+      .faq-item {
+        padding: 24px
+      }
+
+      .faq-answer {
+        padding-left: 0;
+        margin-top: 12px
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="/" class="brand">
+        <span class="logo" aria-label="Chan's">Chan's</span><span>찬공's Studio</span>
+      </a>
+      <button class="hamb" id="hamb" aria-label="메뉴" onclick="alert('메뉴는 PC 버전에서 이용하세요')">☰</button>
+      <nav class="menu" id="menu">
+        <a href="/">홈</a>
+        <a href="/about">소개</a>
+        <a href="/services">서비스</a>
+        <a href="/faq" class="active">FAQ</a>
+        <a href="/guide">가이드</a>
+        <a class="btn pri" href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">상담</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container wrap">
+      <h1>자주 묻는 질문</h1>
+      <p class="lede">궁금하신 점이 있으신가요? 여기서 답을 찾아보세요</p>
+    </div>
+  </section>
+
+  <section class="section container">
+
+    <!-- FAQ 1 -->
+    <div class="faq-item">
+      <div class="faq-question">제작 기간은 얼마나 걸리나요?</div>
+      <div class="faq-answer">
+        <p>
+          <strong>시즌 홍보 페이지</strong>의 경우, 평균적으로 상담 후 1-3일 내에 초안을 전달해드립니다.
+          초안 확인 후 수정 요청사항을 반영하여 최종본까지는 보통 5-7일 정도 소요됩니다.
+          다만 시즌 시작 직전에는 주문이 몰려 조금 더 오래 걸릴 수 있으니 가급적 미리 신청해주시면 감사하겠습니다.
+        </p>
+        <p>
+          <strong>ColdHawk</strong>와 <strong>ColdAPP</strong> 같은 프로그램은 결제 후 즉시 사용 가능합니다.
+          로그인 정보를 전달해드리면 바로 다운로드하여 사용하실 수 있으며,
+          사용법에 대한 가이드와 1:1 상담도 함께 제공됩니다.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ 2 -->
+    <div class="faq-item">
+      <div class="faq-question">결제 방법은 어떻게 되나요?</div>
+      <div class="faq-answer">
+        <p>
+          편리하게 다양한 결제 방법을 지원하고 있습니다:
+        </p>
+        <p>
+          • <strong>계좌 이체</strong> - 가장 일반적인 방법입니다. 상담 후 계좌번호를 안내해드립니다<br>
+          • <strong>카카오페이</strong> - 카카오톡 상담 중 간편하게 결제하실 수 있습니다<br>
+          • <strong>토스페이</strong> - 토스 앱으로 빠르게 결제 가능합니다<br>
+        </p>
+        <p>
+          결제는 서비스 시작 전에 선불로 진행되며, 결제 확인 후 바로 작업을 시작합니다.
+          프로그램 이용권의 경우 결제 확인 즉시 계정 정보를 전달해드립니다.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ 3 -->
+    <div class="faq-item">
+      <div class="faq-question">환불 규정이 궁금해요</div>
+      <div class="faq-answer">
+        <p>
+          고객님의 만족을 최우선으로 하지만, 서비스 특성상 아래와 같은 환불 규정이 있습니다:
+        </p>
+        <p>
+          <strong>시즌 홍보 페이지</strong><br>
+          • 작업 시작 전 (초안 전달 전): 100% 환불 가능<br>
+          • 초안 전달 후: 환불 불가 (단, 수정 요청은 패키지별 횟수만큼 가능)<br>
+          • 제작물에 명백한 하자가 있는 경우: 재제작 또는 환불 협의
+        </p>
+        <p>
+          <strong>ColdHawk / ColdAPP 프로그램</strong><br>
+          • 결제 후 계정 정보 전달 전: 100% 환불 가능<br>
+          • 계정 정보 전달 후: 환불 불가 (단, 프로그램 오류 시 기술 지원 제공)<br>
+          • 프로그램 치명적 오류로 사용 불가 시: 환불 또는 이용 기간 연장 협의
+        </p>
+        <p>
+          모든 환불 요청은 카카오톡을 통해 접수해주시면 신속하게 처리해드립니다.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ 4 -->
+    <div class="faq-item">
+      <div class="faq-question">프로그램은 어떤 환경에서 작동하나요?</div>
+      <div class="faq-answer">
+        <p>
+          <strong>ColdHawk</strong>와 <strong>ColdAPP</strong> 모두 <strong>Windows 10 이상</strong>에서 작동합니다.
+        </p>
+        <p>
+          <strong>권장 사양:</strong><br>
+          • 운영체제: Windows 10 64bit 이상 (Windows 11 지원)<br>
+          • CPU: 인텔 i3 또는 AMD 동급 이상<br>
+          • RAM: 4GB 이상 (8GB 권장)<br>
+          • 저장공간: 500MB 이상 여유 공간<br>
+          • 인터넷: 안정적인 인터넷 연결 필수
+        </p>
+        <p>
+          Mac 사용자의 경우 현재 직접 지원은 하지 않지만,
+          Parallels나 BootCamp를 통한 Windows 환경에서 사용 가능합니다.
+          다만 이 경우 기술 지원이 제한적일 수 있습니다.
+        </p>
+        <p>
+          모바일 버전은 제공하지 않으며, PC 환경에서만 사용 가능합니다.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ 5 -->
+    <div class="faq-item">
+      <div class="faq-question">개인정보는 안전하게 관리되나요?</div>
+      <div class="faq-answer">
+        <p>
+          저희가 요구하는 개인정보는 없습니다.
+          다른 정보도 철저하게 암호화되어 안전하게 관리됩니다.
+        </p>
+        <p>
+          <strong>수집하는 정보:</strong><br>
+          • 카카오톡으로 주고받은 연락처 (상담 및 서비스 제공 목적)<br>
+          • 결제하신 계좌 정보 (결제 확인 목적, 저장하지 않음)<br><br>
+          프로그램 사용에 필요한 인벤/네이버 계정 정보는 고객님의 컴퓨터에 저장되며 저희가 수집하지 않습니다.
+        </p>
+        <p>
+          <strong>보안 조치:</strong><br>
+          • 가입하신 계정, 비밀번호는 암호화하여 저장됩니다<br>
+          • 서버는 보안 인증을 받은 안전한 클라우드 서비스를 사용합니다<br>
+          • 서비스 종료 시 모든 암호화 된 정보 또한 즉시 삭제합니다
+        </p>
+        <p>
+          프로그램 사용 중 계정 정보는 오직 해당 프로그램 작동을 위해서만 사용되며,
+          다른 용도로 수집, 사용되지 않습니다.
+          궁금한 점이 있으시면 언제든 문의해주세요.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ 6 -->
+    <div class="faq-item">
+      <div class="faq-question">시즌 중간에도 신청 가능한가요?</div>
+      <div class="faq-answer">
+        <p>
+          네, 시즌 중간에도 신청 가능합니다!
+          다만 시즌마다 총 10팀으로 제한하고 있어서, 신청 가능 여부는 확인이 필요합니다.
+        </p>
+        <p>
+          <strong>시즌 홍보 페이지</strong>의 경우, 시즌 시작 전에 미리 신청하시는 것을 권장합니다.
+          시즌 시작 직전과 시작 직후에는 주문이 몰려 대기 시간이 길어질 수 있습니다.
+          하지만 시즌 중간에 멤버 충원이 필요하시다면 언제든 연락주세요.
+          가능한 한 빠르게 작업해드리겠습니다.
+        </p>
+        <p>
+          <strong>ColdHawk</strong>와 <strong>ColdAPP</strong> 같은 프로그램은
+          시즌과 관계없이 언제든 신청하고 바로 사용하실 수 있습니다.
+          이미 시즌이 시작된 후라도 즉시 효과를 보실 수 있습니다.
+        </p>
+        <p>
+          현재 신청 가능 여부는 카카오톡으로 문의주시면 바로 안내해드리겠습니다.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ 7 -->
+    <div class="faq-item">
+      <div class="faq-question">찬공's Studio는 어떤 곳인가요?</div>
+      <div class="faq-answer">
+        <p>
+          찬공's Studio는 2023년부터
+          전문 홍보 솔루션을 제공하고 있는 스튜디오입니다.
+        </p>
+        <p>
+          게임을 사랑하는 마음으로 시작하여 블로그 등 다양한 홍보 솔루션을 제공하였고, 현재까지 20개 이상의 팀과 함께
+          성공적인 행보를 만들어왔습니다.<br>
+          단순히 홍보 이미지, 프로그램을 만드는 것을 넘어
+          더 많은 사람들에게 더 풍부한 서비스를 제공 할 수 있도록 전략적인 접근과
+          효율적인 도구를 함께 제공합니다.
+        </p>
+        <p>
+          우리의 핵심 가치는 <strong>퀄리티</strong>, <strong>효율성</strong>, 그리고 <strong>파트너십</strong>입니다.
+          모든 고객에게 최고 품질의 서비스를 제공하며, <br>
+          반복적인 작업은 자동화로 해결하여 여러분이 게임 또는 업무에 집중할 수 있도록 돕습니다.
+          일회성 거래가 아닌 장기적인 파트너로서 함께합니다.
+        </p>
+        <p>
+          더 자세한 내용은 <a href="/about" style="color:var(--pri);text-decoration:underline">소개 페이지</a>에서 확인하실 수 있습니다.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ 8 -->
+    <div class="faq-item">
+      <div class="faq-question">서비스 이용 중 문제가 생기면 어떻게 하나요?</div>
+      <div class="faq-answer">
+        <p>
+          문제가 발생하면 언제든 카카오톡으로 연락주세요.
+          빠르게 해결할 수 있도록 최선을 다하겠습니다.
+        </p>
+        <p>
+          <strong>지원 채널:</strong><br>
+          • 카카오톡 오픈채팅방: 가장 빠른 응답 (평균 1시간 이내)<br>
+          • 1:1 카카오톡 상담: 개인적인 문의나 민감한 내용<br>
+          • 평일 오전 10시 ~ 오후 10시 실시간 지원<br>
+          • 주말 및 공휴일도 긴급 문의 대응 가능
+        </p>
+        <p>
+          <strong>일반적인 문제 해결:</strong><br>
+          • 홍보 이미지 수정 필요: 패키지별 수정 횟수 내에서 무료 수정<br>
+          • 프로그램 오류: 원격 지원 또는 업데이트 파일 제공<br>
+          • 계정 문제: 즉시 확인 후 조치<br>
+          • 사용법 문의: 상세한 가이드 제공 및 화면 공유 지원
+        </p>
+        <p>
+          특히 프로그램 관련 기술적 문제는 우선적으로 처리 할 것 입니다.
+          여러분의 만족이 저희의 최우선 목표입니다.
+        </p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align:center;margin-top:80px">
+      <h2>더 궁금한 점이 있으신가요?</h2>
+      <p class="lede" style="margin-bottom:30px">
+        위 질문 외에 궁금한 점이 있으시면<br>
+        카카오톡으로 편하게 문의해주세요.
+      </p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a class="btn pri" href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">카카오톡
+          상담하기</a>
+        <a class="btn out" href="/guide">이용 가이드 보기</a>
+      </div>
+    </div>
+
+  </section>
+
+  <footer>
+    <div class="container"
+      style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <p class="lede" style="margin:0">© 2025 Changong's Studio — 시즌 홍보를 퀄리티있고 편하게</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="/about" style="color:var(--mut)">소개</a>
+        <a href="/services" style="color:var(--mut)">서비스</a>
+        <a href="/faq" style="color:var(--mut)">FAQ</a>
+        <a href="/guide" style="color:var(--mut)">가이드</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
