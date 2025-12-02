@@ -391,21 +391,19 @@
     </div>
     <button class="hamb" id="hamb" aria-label="메뉴" onclick="alert('메뉴는 PC 버전에서 이용하세요')">☰</button>
     <nav class="menu" id="menu">
-      <a href="index.html">홈</a>
-      <a href="about.html">소개</a>
-      <a href="services.html">서비스</a>
-      <a href="faq.html">FAQ</a>
-      <a href="guide.html">가이드</a>
+      <a href="/">홈</a>
+      <a href="/about">소개</a>
+      <a href="/services">서비스</a>
+      <a href="/faq">FAQ</a>
+      <a href="/guide">가이드</a>
       <a class="btn pri" href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">상담</a>
     </nav>
   </div>
 </header>
 
-<!-- Hero Carousel -->
 <section class="hero-carousel" id="heroCarousel">
 
-  <!-- Slide 1: 실적 66만원 (세로형) - ColdAPP -->
-  <div class="hero-slide active" data-link="index.html#coldapp">
+  <div class="hero-slide active" data-link="/services#coldapp">
     <div class="content">
       <div class="result-showcase vertical">
         <div class="screenshot">
@@ -438,8 +436,7 @@
     </div>
   </div>
 
-  <!-- Slide 2: 후기 1 - ColdAPP -->
-  <div class="hero-slide" data-link="index.html#coldapp">
+  <div class="hero-slide" data-link="/services#coldapp">
     <div class="content">
       <div class="review-showcase">
         <span class="program-tag">🤖 ColdAPP - AI 블로그 자동 포스팅</span>
@@ -458,8 +455,7 @@
     </div>
   </div>
 
-  <!-- Slide 3: 실적 268개 판매 (가로형) - ColdAPP -->
-  <div class="hero-slide" data-link="index.html#coldapp">
+  <div class="hero-slide" data-link="services.html#coldapp">
     <div class="content">
       <div class="result-showcase horizontal">
         <span class="program-tag">🤖 ColdAPP - AI 블로그 자동 포스팅</span>
@@ -488,8 +484,7 @@
     </div>
   </div>
 
-  <!-- Slide 4: 후기 2 - ColdAPP -->
-  <div class="hero-slide" data-link="index.html#coldapp">
+  <div class="hero-slide" data-link="services.html#coldapp">
     <div class="content">
       <div class="review-showcase">
         <span class="program-tag">🤖 ColdAPP - AI 블로그 자동 포스팅</span>
@@ -508,8 +503,7 @@
     </div>
   </div>
 
-  <!-- Slide 5: 실적 35만원 (세로형) - ColdAPP -->
-  <div class="hero-slide" data-link="index.html#coldapp">
+  <div class="hero-slide" data-link="services.html#coldapp">
     <div class="content">
       <div class="result-showcase vertical">
         <div class="screenshot">
@@ -542,8 +536,7 @@
     </div>
   </div>
 
-  <!-- Slide 6: 후기 3 - ColdHawk -->
-  <div class="hero-slide" data-link="index.html#macro">
+  <div class="hero-slide" data-link="/services#macro">
     <div class="content">
       <div class="review-showcase">
         <span class="program-tag">🦅 ColdHawk - 커뮤니티 자동 게시 툴</span>
@@ -562,8 +555,7 @@
     </div>
   </div>
 
-  <!-- Slide 7: 실적 60만원 (가로형) - ColdAPP -->
-  <div class="hero-slide" data-link="index.html#coldapp">
+  <div class="hero-slide" data-link="services.html#coldapp">
     <div class="content">
       <div class="result-showcase horizontal">
         <span class="program-tag">🤖 ColdAPP - AI 블로그 자동 포스팅</span>
@@ -592,40 +584,34 @@
     </div>
   </div>
 
-  <!-- Indicators -->
   <div class="hero-indicators" id="heroIndicators"></div>
 
-  <!-- Pause Indicator -->
   <div class="pause-indicator" id="pauseIndicator">⏸ 일시정지</div>
 </section>
 
-<!-- 제공 서비스 -->
 <section class="section container">
   <h2>제공 서비스</h2>
-  <p class="lede">당신의 프로젝트에 필요한 솔루션을 선택하세요</p>
+  <p class="lede">필요한 거 골라서 쓰세요</p>
 
   <div class="product-cards">
-    <!-- Card 1 -->
-    <div class="product-card" onclick="location.href='index.html#season'">
+    <div class="product-card" onclick="location.href='/services#season'">
       <span class="icon">🎨</span>
       <h3>시즌 홍보 페이지</h3>
       <p class="desc">맞춤 홍보이미지로 시즌을 효과적으로 홍보하세요</p>
       <span class="arrow">자세히 보기 →</span>
     </div>
 
-    <!-- Card 2 -->
-    <div class="product-card" onclick="location.href='index.html#macro'">
+    <div class="product-card" onclick="location.href='/services#macro'">
       <span class="icon"><img src="assets/hawk_icon_256x256.png" alt="ColdHawk"></span>
-      <h3>커뮤니티 자동 게시 툴</h3>
-      <p class="desc">안전하고 스마트한 인벤 게시글 관리 솔루션</p>
+      <h3>인벤 게시 매크로</h3>
+      <p class="desc">인벤에 자동으로 글 올려주는 매크로</p>
       <span class="arrow">자세히 보기 →</span>
     </div>
 
-    <!-- Card 3 -->
-    <div class="product-card" onclick="location.href='index.html#coldapp'">
+    <div class="product-card" onclick="location.href='/services#coldapp'">
       <span class="icon"><img src="assets/coldapp_icon_256x256.png" alt="ColdAPP"></span>
-      <h3>AI 블로그 자동 포스팅</h3>
-      <p class="desc">링크만 넣으면 글/이미지/태그까지 한 번에 완성</p>
+      <h3>브랜드커넥트 AI 포스팅</h3>
+      <p class="desc">링크만 넣으면 AI가 자동으로 블로그 글 써줌</p>
       <span class="arrow">자세히 보기 →</span>
     </div>
   </div>
@@ -635,10 +621,10 @@
   <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
     <p class="lede" style="margin:0">© <span id="y"></span> Changong's Studio — 시즌 홍보를 퀄리티있고 편하게</p>
     <div style="display:flex;gap:12px;flex-wrap:wrap">
-      <a href="about.html" style="color:var(--mut)">소개</a>
-      <a href="services.html" style="color:var(--mut)">서비스</a>
-      <a href="faq.html" style="color:var(--mut)">FAQ</a>
-      <a href="guide.html" style="color:var(--mut)">가이드</a>
+      <a href="/about" style="color:var(--mut)">소개</a>
+      <a href="/services" style="color:var(--mut)">서비스</a>
+      <a href="/faq" style="color:var(--mut)">FAQ</a>
+      <a href="/guide" style="color:var(--mut)">가이드</a>
     </div>
   </div>
 </footer>
