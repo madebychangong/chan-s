@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,704 +13,932 @@
   <meta name="theme-color" content="#0E0A1F" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css"
+    rel="stylesheet">
 
-<style>
-  :root{
-    --max:1200px;
-    --ink:#ECEAF7; --mut:#A1A0B3; --line:#232044; --bg:#0E0A1F;
-    --pri:#6C64FF; --accent:#A855F7; --pri-ink:#ffffff;
-    --radius:16px; --shadow:0 12px 36px rgba(0,0,0,.38);
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0}
-  body{
-    font:16px/1.6 'Pretendard Variable','Inter','Noto Sans KR',ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Apple SD Gothic Neo",sans-serif;
-    color:var(--ink); background:var(--bg); letter-spacing:.01em;
-  }
-  a{text-decoration:none;color:inherit}
-  .container{max-width:var(--max);margin:0 auto;padding:24px 28px}
-  .section{padding:72px 0}
-  @media(max-width:980px){.section{padding:52px 0}}
-  h1{font-size:clamp(34px,5vw,60px);line-height:1.05;margin:0 0 10px;letter-spacing:-.02em}
-  h2{font-size:clamp(22px,2.6vw,34px);line-height:1.16;margin:0 0 6px;letter-spacing:-.01em}
-  h3{font-size:clamp(18px,2vw,24px);line-height:1.3;margin:0 0 8px}
-  .lede{color:var(--mut);margin:6px 0 0}
-  @supports (font-variation-settings: normal){ h1,h2,h3{font-variation-settings:'wght' 800} }
+  <style>
+    :root {
+      --max: 1200px;
+      --ink: #ECEAF7;
+      --mut: #A1A0B3;
+      --line: #232044;
+      --bg: #0E0A1F;
+      --pri: #6C64FF;
+      --accent: #A855F7;
+      --pri-ink: #ffffff;
+      --radius: 16px;
+      --shadow: 0 12px 36px rgba(0, 0, 0, .38);
+    }
 
-  /* Header */
-  header{
-    position:sticky;top:0;z-index:60;backdrop-filter:saturate(120%) blur(10px);
-    background:linear-gradient(180deg,rgba(12,15,28,.85),rgba(12,15,28,.78));
-    border-bottom:1px solid var(--line);
-  }
-  .nav{display:flex;align-items:center;justify-content:flex-start;gap:14px}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:900;flex:0 0 auto;min-width:max-content;white-space:nowrap}
-  .logo{
-    display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:12px;
-    background:conic-gradient(from 210deg,#6C64FF,#A855F7,#6C64FF);
-    color:#fff;font-weight:900;font-size:clamp(16px,2vw,20px);line-height:1;
-  }
-  .menu{margin-left:auto;display:flex;gap:6px;align-items:center}
-  .menu a{padding:10px 12px;border-radius:10px;color:#ECEAF7}
-  .menu a:hover{background:rgba(255,255,255,.08)}
-  .btn{display:inline-flex;gap:8px;align-items:center;justify-content:center;padding:12px 16px;border-radius:12px;font-weight:800;transition:all .2s ease}
-  .btn.pri{background:linear-gradient(90deg,var(--pri),var(--accent));color:var(--pri-ink);box-shadow:var(--shadow)}
-  .btn.pri:hover{transform:translateY(-2px);box-shadow:0 16px 42px rgba(108,100,255,.5)}
+    * {
+      box-sizing: border-box
+    }
 
-  .hamb{display:none;border:none;background:linear-gradient(135deg,var(--pri),var(--accent));color:#fff;cursor:pointer}
-  @media(max-width:1100px){
-    .hamb{display:block;padding:10px 14px;border-radius:10px;font-size:18px}
-    .menu{display:none}
-  }
+    html,
+    body {
+      margin: 0
+    }
 
-  /* Hero Carousel - Full Screen Slides */
-  .hero-carousel{
-    position:relative;
-    min-height:85vh;
-    overflow:hidden;
-    border-bottom:1px solid var(--line);
-  }
+    body {
+      font: 16px/1.6 'Pretendard Variable', 'Inter', 'Noto Sans KR', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Apple SD Gothic Neo", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      letter-spacing: .01em;
+    }
 
-  .hero-slide{
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    min-height:85vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    opacity:0;
-    transform:translateX(30px);
-    transition:opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
-    pointer-events:none;
-    background:radial-gradient(900px 520px at 72% -8%,rgba(124,92,255,.24),transparent 60%),
-              radial-gradient(700px 420px at 14% 6%,rgba(0,172,130,.24),transparent 60%),
-              linear-gradient(180deg,#0F0B22,#0E0A1F);
-    cursor:pointer;
-  }
+    a {
+      text-decoration: none;
+      color: inherit
+    }
 
-  .hero-slide::before{
-    content:'';
-    position:absolute;
-    inset:0;
-    background:linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.24) 40%,rgba(0,0,0,.3));
-  }
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 24px 28px
+    }
 
-  .hero-slide.active{
-    opacity:1;
-    transform:translateX(0);
-    pointer-events:auto;
-  }
+    .section {
+      padding: 72px 0
+    }
 
-  .hero-slide .content{
-    position:relative;
-    width:100%;
-    max-width:900px;
-    margin:0 auto;
-    padding:60px 28px;
-    text-align:center;
-    color:#fff;
-  }
+    @media(max-width:980px) {
+      .section {
+        padding: 52px 0
+      }
+    }
 
-  /* Result Card (실적 증명) */
-  .result-showcase{
-    max-width:900px;
-    margin:0 auto;
-  }
+    h1 {
+      font-size: clamp(34px, 5vw, 60px);
+      line-height: 1.05;
+      margin: 0 0 10px;
+      letter-spacing: -.02em
+    }
 
-  .result-showcase .program-tag{
-    display:inline-block;
-    padding:8px 16px;
-    border-radius:16px;
-    background:linear-gradient(90deg,var(--pri),var(--accent));
-    color:#fff;
-    font-size:14px;
-    font-weight:700;
-    margin-bottom:12px;
-  }
+    h2 {
+      font-size: clamp(22px, 2.6vw, 34px);
+      line-height: 1.16;
+      margin: 0 0 6px;
+      letter-spacing: -.01em
+    }
 
-  .result-showcase .label{
-    display:inline-block;
-    padding:8px 16px;
-    border-radius:16px;
-    background:rgba(255,211,77,.2);
-    color:#FFD34D;
-    font-size:14px;
-    font-weight:700;
-    margin-bottom:24px;
-  }
+    h3 {
+      font-size: clamp(18px, 2vw, 24px);
+      line-height: 1.3;
+      margin: 0 0 8px
+    }
 
-  /* 세로형 이미지 (긴 스크린샷) - 가로 레이아웃 */
-  .result-showcase.vertical{
-    display:flex;
-    gap:32px;
-    align-items:center;
-    max-width:1000px;
-  }
+    .lede {
+      color: var(--mut);
+      margin: 6px 0 0
+    }
 
-  .result-showcase.vertical .screenshot{
-    flex:0 0 auto;
-    max-width:320px;
-    max-height:50vh;
-    border-radius:12px;
-    overflow:hidden;
-    box-shadow:0 8px 24px rgba(0,0,0,.4);
-  }
+    @supports (font-variation-settings: normal) {
 
-  .result-showcase.vertical .screenshot img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    display:block;
-  }
+      h1,
+      h2,
+      h3 {
+        font-variation-settings: 'wght' 800
+      }
+    }
 
-  .result-showcase.vertical .info-section{
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    gap:24px;
-  }
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      backdrop-filter: saturate(120%) blur(10px);
+      background: linear-gradient(180deg, rgba(12, 15, 28, .85), rgba(12, 15, 28, .78));
+      border-bottom: 1px solid var(--line);
+    }
 
-  /* 가로형 이미지 */
-  .result-showcase.horizontal .screenshot{
-    max-width:700px;
-    margin:0 auto 20px;
-    border-radius:12px;
-    overflow:hidden;
-    box-shadow:0 8px 24px rgba(0,0,0,.4);
-  }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 14px
+    }
 
-  .result-showcase.horizontal .screenshot img{
-    width:100%;
-    height:auto;
-    display:block;
-  }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      flex: 0 0 auto;
+      min-width: max-content;
+      white-space: nowrap
+    }
 
-  /* 간단한 정보 표시 */
-  .result-showcase .info{
-    display:flex;
-    justify-content:center;
-    gap:32px;
-    flex-wrap:wrap;
-  }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 12px;
+      background: conic-gradient(from 210deg, #6C64FF, #A855F7, #6C64FF);
+      color: #fff;
+      font-weight: 900;
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1;
+    }
 
-  .result-showcase .info-item{
-    text-align:center;
-  }
+    .menu {
+      margin-left: auto;
+      display: flex;
+      gap: 6px;
+      align-items: center
+    }
 
-  .result-showcase .info-item .label{
-    display:block;
-    font-size:13px;
-    color:var(--mut);
-    margin-bottom:4px;
-  }
+    .menu a {
+      padding: 10px 12px;
+      border-radius: 10px;
+      color: #ECEAF7
+    }
 
-  .result-showcase .info-item .value{
-    display:block;
-    font-size:20px;
-    font-weight:700;
-    color:#FFD34D;
-  }
+    .menu a:hover {
+      background: rgba(255, 255, 255, .08)
+    }
 
-  /* Review Card (후기) */
-  .review-showcase{
-    max-width:700px;
-    margin:0 auto;
-    padding:48px 36px;
-    border-radius:16px;
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.15);
-  }
+    .btn {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 800;
+      transition: all .2s ease
+    }
 
-  .review-showcase .program-tag{
-    display:inline-block;
-    padding:8px 16px;
-    border-radius:16px;
-    background:linear-gradient(90deg,var(--pri),var(--accent));
-    color:#fff;
-    font-size:14px;
-    font-weight:700;
-    margin-bottom:12px;
-  }
+    .btn.pri {
+      background: linear-gradient(90deg, var(--pri), var(--accent));
+      color: var(--pri-ink);
+      box-shadow: var(--shadow)
+    }
 
-  .review-showcase .label{
-    display:inline-block;
-    padding:8px 16px;
-    border-radius:16px;
-    background:rgba(108,100,255,.2);
-    color:var(--pri);
-    font-size:14px;
-    font-weight:700;
-    margin-bottom:24px;
-  }
+    .btn.pri:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 42px rgba(108, 100, 255, .5)
+    }
 
-  .review-showcase .text{
-    font-size:clamp(22px,3vw,28px);
-    line-height:1.5;
-    margin-bottom:20px;
-    font-weight:700;
-    color:#fff;
-  }
+    .hamb {
+      display: none;
+      border: none;
+      background: linear-gradient(135deg, var(--pri), var(--accent));
+      color: #fff;
+      cursor: pointer
+    }
 
-  .review-showcase .subtext{
-    font-size:clamp(15px,2vw,17px);
-    line-height:1.7;
-    margin-bottom:20px;
-    color:var(--ink);
-    font-weight:400;
-  }
+    @media(max-width:1100px) {
+      .hamb {
+        display: block;
+        padding: 10px 14px;
+        border-radius: 10px;
+        font-size: 18px
+      }
 
-  .review-showcase .author{
-    font-size:14px;
-    color:var(--mut);
-    font-weight:400;
-  }
+      .menu {
+        display: none
+      }
+    }
 
-  /* Carousel Indicators */
-  .hero-indicators{
-    position:absolute;
-    bottom:40px;
-    left:50%;
-    transform:translateX(-50%);
-    display:flex;
-    gap:12px;
-    z-index:10;
-  }
+    /* Hero Carousel - Full Screen Slides */
+    .hero-carousel {
+      position: relative;
+      min-height: 85vh;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
 
-  .hero-indicators button{
-    width:10px;
-    height:10px;
-    border-radius:50%;
-    border:none;
-    background:rgba(255,255,255,.3);
-    cursor:pointer;
-    transition:all .3s ease;
-    padding:0;
-  }
+    .hero-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateX(30px);
+      transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+      pointer-events: none;
+      background: radial-gradient(900px 520px at 72% -8%, rgba(124, 92, 255, .24), transparent 60%),
+        radial-gradient(700px 420px at 14% 6%, rgba(0, 172, 130, .24), transparent 60%),
+        linear-gradient(180deg, #0F0B22, #0E0A1F);
+      cursor: pointer;
+    }
 
-  .hero-indicators button.active{
-    width:32px;
-    border-radius:5px;
-    background:linear-gradient(90deg,var(--pri),var(--accent));
-  }
+    .hero-slide::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, .1), rgba(0, 0, 0, .24) 40%, rgba(0, 0, 0, .3));
+    }
 
-  .hero-indicators button:hover{
-    background:rgba(255,255,255,.6);
-  }
+    .hero-slide.active {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+    }
 
-  /* Pause Indicator */
-  .pause-indicator{
-    position:absolute;
-    top:20px;
-    right:20px;
-    padding:8px 16px;
-    border-radius:20px;
-    background:rgba(0,0,0,.7);
-    color:#FFD34D;
-    font-size:14px;
-    font-weight:700;
-    opacity:0;
-    transition:opacity .3s ease;
-    pointer-events:none;
-    z-index:10;
-  }
+    .hero-slide .content {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 28px;
+      text-align: center;
+      color: #fff;
+    }
 
-  .pause-indicator.show{
-    opacity:1;
-  }
+    /* Result Card (실적 증명) */
+    .result-showcase {
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-  /* CTA Button */
-  .hero-cta{
-    margin-top:40px;
-  }
+    .result-showcase .program-tag {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 16px;
+      background: linear-gradient(90deg, var(--pri), var(--accent));
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
 
-  /* Product Cards */
-  .product-cards{
-    display:grid;
-    gap:24px;
-    margin-top:40px;
-  }
-  @media(min-width:768px){
-    .product-cards{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
-  }
+    .result-showcase .label {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 16px;
+      background: rgba(255, 211, 77, .2);
+      color: #FFD34D;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
 
-  .product-card{
-    position:relative;
-    padding:30px;
-    border-radius:20px;
-    background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
-    border:1px solid rgba(255,255,255,.18);
-    backdrop-filter:blur(14px) saturate(140%);
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 12px 32px rgba(0,0,0,.35);
-    overflow:hidden;
-    transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
-    cursor:pointer;
-  }
+    /* 세로형 이미지 (긴 스크린샷) - 가로 레이아웃 */
+    .result-showcase.vertical {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      max-width: 1000px;
+    }
 
-  .product-card::before{
-    content:'';position:absolute;inset:0;
-    background:radial-gradient(120% 60% at 0% 0%,rgba(255,255,255,.22),transparent 60%),
-              radial-gradient(80% 50% at 100% -10%,rgba(168,85,247,.18),transparent 60%);
-    pointer-events:none;mix-blend-mode:screen;opacity:.35;
-  }
+    .result-showcase.vertical .screenshot {
+      flex: 0 0 auto;
+      max-width: 320px;
+      max-height: 50vh;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .4);
+    }
 
-  .product-card:hover{
-    transform:translateY(-4px);
-    border-color:rgba(255,255,255,.26);
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 20px 50px rgba(0,0,0,.45);
-  }
+    .result-showcase.vertical .screenshot img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
 
-  .product-card .icon{font-size:48px;margin-bottom:16px;display:block;position:relative}
-  .product-card .icon img{width:64px;height:64px;object-fit:contain}
-  .product-card h3{position:relative;margin-bottom:10px}
-  .product-card .desc{position:relative;color:var(--mut);line-height:1.7}
-  .product-card .arrow{
-    position:relative;margin-top:16px;color:var(--pri);font-weight:800;
-    display:inline-flex;align-items:center;gap:6px;
-  }
+    .result-showcase.vertical .info-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
 
-  footer{border-top:1px solid var(--line);background:linear-gradient(180deg,transparent,#00000008);color:var(--mut);padding:40px 0}
+    /* 가로형 이미지 */
+    .result-showcase.horizontal .screenshot {
+      max-width: 700px;
+      margin: 0 auto 20px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .4);
+    }
 
-  @media(max-width:980px){
-    .container{padding-left:max(env(safe-area-inset-left),20px);padding-right:max(env(safe-area-inset-right),20px)}
-    .product-card{padding:24px}
-    .result-showcase{padding:32px 24px}
-    .review-showcase{padding:40px 28px}
-  }
-</style>
+    .result-showcase.horizontal .screenshot img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* 간단한 정보 표시 */
+    .result-showcase .info {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .result-showcase .info-item {
+      text-align: center;
+    }
+
+    .result-showcase .info-item .label {
+      display: block;
+      font-size: 13px;
+      color: var(--mut);
+      margin-bottom: 4px;
+    }
+
+    .result-showcase .info-item .value {
+      display: block;
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFD34D;
+    }
+
+    /* Review Card (후기) */
+    .review-showcase {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 48px 36px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .15);
+    }
+
+    .review-showcase .program-tag {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 16px;
+      background: linear-gradient(90deg, var(--pri), var(--accent));
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .review-showcase .label {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 16px;
+      background: rgba(108, 100, 255, .2);
+      color: var(--pri);
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .review-showcase .text {
+      font-size: clamp(22px, 3vw, 28px);
+      line-height: 1.5;
+      margin-bottom: 20px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .review-showcase .subtext {
+      font-size: clamp(15px, 2vw, 17px);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      color: var(--ink);
+      font-weight: 400;
+    }
+
+    .review-showcase .author {
+      font-size: 14px;
+      color: var(--mut);
+      font-weight: 400;
+    }
+
+    /* Carousel Indicators */
+    .hero-indicators {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      z-index: 10;
+    }
+
+    .hero-indicators button {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, .3);
+      cursor: pointer;
+      transition: all .3s ease;
+      padding: 0;
+    }
+
+    .hero-indicators button.active {
+      width: 32px;
+      border-radius: 5px;
+      background: linear-gradient(90deg, var(--pri), var(--accent));
+    }
+
+    .hero-indicators button:hover {
+      background: rgba(255, 255, 255, .6);
+    }
+
+    /* Pause Indicator */
+    .pause-indicator {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, .7);
+      color: #FFD34D;
+      font-size: 14px;
+      font-weight: 700;
+      opacity: 0;
+      transition: opacity .3s ease;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .pause-indicator.show {
+      opacity: 1;
+    }
+
+    /* CTA Button */
+    .hero-cta {
+      margin-top: 40px;
+    }
+
+    /* Product Cards */
+    .product-cards {
+      display: grid;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    @media(min-width:768px) {
+      .product-cards {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))
+      }
+    }
+
+    .product-card {
+      position: relative;
+      padding: 30px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .03));
+      border: 1px solid rgba(255, 255, 255, .18);
+      backdrop-filter: blur(14px) saturate(140%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .10), 0 12px 32px rgba(0, 0, 0, .35);
+      overflow: hidden;
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+      cursor: pointer;
+    }
+
+    .product-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(120% 60% at 0% 0%, rgba(255, 255, 255, .22), transparent 60%),
+        radial-gradient(80% 50% at 100% -10%, rgba(168, 85, 247, .18), transparent 60%);
+      pointer-events: none;
+      mix-blend-mode: screen;
+      opacity: .35;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, .26);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 20px 50px rgba(0, 0, 0, .45);
+    }
+
+    .product-card .icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+      display: block;
+      position: relative
+    }
+
+    .product-card .icon img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain
+    }
+
+    .product-card h3 {
+      position: relative;
+      margin-bottom: 10px
+    }
+
+    .product-card .desc {
+      position: relative;
+      color: var(--mut);
+      line-height: 1.7
+    }
+
+    .product-card .arrow {
+      position: relative;
+      margin-top: 16px;
+      color: var(--pri);
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      background: linear-gradient(180deg, transparent, #00000008);
+      color: var(--mut);
+      padding: 40px 0
+    }
+
+    @media(max-width:980px) {
+      .container {
+        padding-left: max(env(safe-area-inset-left), 20px);
+        padding-right: max(env(safe-area-inset-right), 20px)
+      }
+
+      .product-card {
+        padding: 24px
+      }
+
+      .result-showcase {
+        padding: 32px 24px
+      }
+
+      .review-showcase {
+        padding: 40px 28px
+      }
+    }
+  </style>
 
 </head>
+
 <body>
 
-<header>
-  <div class="container nav">
-    <div class="brand">
-      <span class="logo" aria-label="Chan's">Chan's</span><span>찬공 스튜디오</span>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <span class="logo" aria-label="Chan's">Chan's</span><span>찬공 스튜디오</span>
+      </div>
+      <button class="hamb" id="hamb" aria-label="메뉴" onclick="alert('메뉴는 PC 버전에서 이용하세요')">☰</button>
+      <nav class="menu" id="menu">
+        <a href="/">홈</a>
+        <a href="/about">소개</a>
+        <a href="/services">서비스</a>
+        <a href="/faq">FAQ</a>
+        <a href="/guide">가이드</a>
+        <a class="btn pri" href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">상담</a>
+      </nav>
     </div>
-    <button class="hamb" id="hamb" aria-label="메뉴" onclick="alert('메뉴는 PC 버전에서 이용하세요')">☰</button>
-    <nav class="menu" id="menu">
-      <a href="/">홈</a>
-      <a href="/about">소개</a>
-      <a href="/services">서비스</a>
-      <a href="/faq">FAQ</a>
-      <a href="/guide">가이드</a>
-      <a class="btn pri" href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">상담</a>
-    </nav>
-  </div>
-</header>
+  </header>
 
-<section class="hero-carousel" id="heroCarousel">
+  <section class="hero-carousel" id="heroCarousel">
 
-  <div class="hero-slide active" data-link="/services#coldapp">
-    <div class="content">
-      <div class="result-showcase vertical">
-        <div class="screenshot">
-          <img src="스크린샷 2025-12-02 183006.png" alt="실제 수익 66만원 정산">
+    <div class="hero-slide active" data-link="/services#coldapp">
+      <div class="content">
+        <div class="result-showcase vertical">
+          <div class="screenshot">
+            <img src="스크린샷 2025-12-02 183006.png" alt="실제 수익 66만원 정산">
+          </div>
+          <div class="info-section">
+            <div>
+              <span class="program-tag">🤖 ColdAPP - AI 블로그 자동 포스팅</span>
+              <span class="label">💰 실제 수익 증명</span>
+            </div>
+            <div class="info">
+              <div class="info-item">
+                <span class="label">계좌 지급액</span>
+                <span class="value">66만원</span>
+              </div>
+              <div class="info-item">
+                <span class="label">정산 대상</span>
+                <span class="value">1,241만원</span>
+              </div>
+              <div class="info-item">
+                <span class="label">작업 방식</span>
+                <span class="value">자동</span>
+              </div>
+            </div>
+            <div class="hero-cta">
+              <a class="btn pri" href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">카카오톡
+                상담하기</a>
+            </div>
+          </div>
         </div>
-        <div class="info-section">
-          <div>
-            <span class="program-tag">🤖 ColdAPP - AI 블로그 자동 포스팅</span>
-            <span class="label">💰 실제 수익 증명</span>
+      </div>
+    </div>
+
+    <div class="hero-slide" data-link="/services#coldapp">
+      <div class="content">
+        <div class="review-showcase">
+          <span class="program-tag">🤖 ColdAPP - AI 블로그 자동 포스팅</span>
+          <span class="label">💬 고객 후기</span>
+          <div class="text">"한 달 만에 본전 뽑았어요"</div>
+          <div class="subtext">
+            URL넣고 그냥 버튼만 누르면<br>
+            알아서 글 써주고 올라가요<br>
+            이틀만에 수익이 발생했어요!
+          </div>
+          <div class="author">- 블로거 김OO님 (실제 이용자)</div>
+        </div>
+        <div class="hero-cta">
+          <a class="btn pri" href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">카카오톡
+            상담하기</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-slide" data-link="/services#coldapp">
+      <div class="content">
+        <div class="result-showcase horizontal">
+          <span class="program-tag">🤖 ColdAPP - AI 블로그 자동 포스팅</span>
+          <span class="label">💰 실제 수익 증명</span>
+          <div class="screenshot">
+            <img src="KakaoTalk_20251125_005129063.png" alt="268개 판매 46만원">
           </div>
           <div class="info">
             <div class="info-item">
-              <span class="label">계좌 지급액</span>
-              <span class="value">66만원</span>
-            </div>
-            <div class="info-item">
-              <span class="label">정산 대상</span>
-              <span class="value">1,241만원</span>
-            </div>
-            <div class="info-item">
-              <span class="label">작업 방식</span>
-              <span class="value">자동</span>
-            </div>
-          </div>
-          <div class="hero-cta">
-            <a class="btn pri" href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">카카오톡 상담하기</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="hero-slide" data-link="/services#coldapp">
-    <div class="content">
-      <div class="review-showcase">
-        <span class="program-tag">🤖 ColdAPP - AI 블로그 자동 포스팅</span>
-        <span class="label">💬 고객 후기</span>
-        <div class="text">"한 달 만에 본전 뽑았어요"</div>
-        <div class="subtext">
-          URL넣고 그냥 버튼만 누르면<br>
-          알아서 글 써주고 올라가요<br>
-          이틀만에 수익이 발생했어요!
-        </div>
-        <div class="author">- 블로거 김OO님 (실제 이용자)</div>
-      </div>
-      <div class="hero-cta">
-        <a class="btn pri" href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">카카오톡 상담하기</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="hero-slide" data-link="services.html#coldapp">
-    <div class="content">
-      <div class="result-showcase horizontal">
-        <span class="program-tag">🤖 ColdAPP - AI 블로그 자동 포스팅</span>
-        <span class="label">💰 실제 수익 증명</span>
-        <div class="screenshot">
-          <img src="KakaoTalk_20251125_005129063.png" alt="268개 판매 46만원">
-        </div>
-        <div class="info">
-          <div class="info-item">
-            <span class="label">판매 개수</span>
-            <span class="value">268개</span>
-          </div>
-          <div class="info-item">
-            <span class="label">판매 금액</span>
-            <span class="value">513만원</span>
-          </div>
-          <div class="info-item">
-            <span class="label">예상 수익</span>
-            <span class="value">46만원</span>
-          </div>
-        </div>
-      </div>
-      <div class="hero-cta">
-        <a class="btn pri" href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">카카오톡 상담하기</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="hero-slide" data-link="services.html#coldapp">
-    <div class="content">
-      <div class="review-showcase">
-        <span class="program-tag">🤖 ColdAPP - AI 블로그 자동 포스팅</span>
-        <span class="label">💬 고객 후기</span>
-        <div class="text">"30분 → 3분으로 단축"</div>
-        <div class="subtext">
-          블로그 포스팅 30분씩 걸렸는데<br>
-          이제 링크만 넣으면 자동으로 3분 컷.<br>
-          바로 1달만에 50만원 달성했어요.
-        </div>
-        <div class="author">- 마케터 박OO님 (2개월 이용)</div>
-      </div>
-      <div class="hero-cta">
-        <a class="btn pri" href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">카카오톡 상담하기</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="hero-slide" data-link="services.html#coldapp">
-    <div class="content">
-      <div class="result-showcase vertical">
-        <div class="screenshot">
-          <img src="KakaoTalk_20251202_184139765.jpg" alt="35만원 정산">
-        </div>
-        <div class="info-section">
-          <div>
-            <span class="program-tag">🤖 ColdAPP - AI 블로그 자동 포스팅</span>
-            <span class="label">💰 실제 수익 증명</span>
-          </div>
-          <div class="info">
-            <div class="info-item">
-              <span class="label">실제 수익</span>
-              <span class="value">35만원</span>
+              <span class="label">판매 개수</span>
+              <span class="value">268개</span>
             </div>
             <div class="info-item">
               <span class="label">판매 금액</span>
-              <span class="value">402만원</span>
+              <span class="value">513만원</span>
             </div>
             <div class="info-item">
-              <span class="label">작업 방식</span>
-              <span class="value">하루 5~6개 작업</span>
+              <span class="label">예상 수익</span>
+              <span class="value">46만원</span>
             </div>
           </div>
-          <div class="hero-cta">
-            <a class="btn pri" href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">카카오톡 상담하기</a>
+        </div>
+        <div class="hero-cta">
+          <a class="btn pri" href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">카카오톡
+            상담하기</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-slide" data-link="/services#coldapp">
+      <div class="content">
+        <div class="review-showcase">
+          <span class="program-tag">🤖 ColdAPP - AI 블로그 자동 포스팅</span>
+          <span class="label">💬 고객 후기</span>
+          <div class="text">"30분 → 3분으로 단축"</div>
+          <div class="subtext">
+            블로그 포스팅 30분씩 걸렸는데<br>
+            이제 링크만 넣으면 자동으로 3분 컷.<br>
+            바로 1달만에 50만원 달성했어요.
+          </div>
+          <div class="author">- 마케터 박OO님 (2개월 이용)</div>
+        </div>
+        <div class="hero-cta">
+          <a class="btn pri" href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">카카오톡
+            상담하기</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-slide" data-link="/services#coldapp">
+      <div class="content">
+        <div class="result-showcase vertical">
+          <div class="screenshot">
+            <img src="KakaoTalk_20251202_184139765.jpg" alt="35만원 정산">
+          </div>
+          <div class="info-section">
+            <div>
+              <span class="program-tag">🤖 ColdAPP - AI 블로그 자동 포스팅</span>
+              <span class="label">💰 실제 수익 증명</span>
+            </div>
+            <div class="info">
+              <div class="info-item">
+                <span class="label">실제 수익</span>
+                <span class="value">35만원</span>
+              </div>
+              <div class="info-item">
+                <span class="label">판매 금액</span>
+                <span class="value">402만원</span>
+              </div>
+              <div class="info-item">
+                <span class="label">작업 방식</span>
+                <span class="value">하루 5~6개 작업</span>
+              </div>
+            </div>
+            <div class="hero-cta">
+              <a class="btn pri" href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">카카오톡
+                상담하기</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="hero-slide" data-link="/services#macro">
-    <div class="content">
-      <div class="review-showcase">
-        <span class="program-tag">🦅 ColdHawk - 커뮤니티 자동 게시 툴</span>
-        <span class="label">💬 고객 후기</span>
-        <div class="text">"손님 모집 완전 편해요"</div>
-        <div class="subtext">
-          단순 텍스트보다 홍보 이미지 퀄리티가 좋고<br>
-          자동으로 상단노출이 계속되니까<br>
-          지원자가 더 많이 들어와서 손이 바빠요
+    <div class="hero-slide" data-link="/services#macro">
+      <div class="content">
+        <div class="review-showcase">
+          <span class="program-tag">🦅 ColdHawk - 커뮤니티 자동 게시 툴</span>
+          <span class="label">💬 고객 후기</span>
+          <div class="text">"손님 모집 완전 편해요"</div>
+          <div class="subtext">
+            단순 텍스트보다 홍보 이미지 퀄리티가 좋고<br>
+            자동으로 상단노출이 계속되니까<br>
+            지원자가 더 많이 들어와서 손이 바빠요
+          </div>
+          <div class="author">- 대리작업 이OO 기사님 (디아4)</div>
         </div>
-        <div class="author">- 대리작업 이OO 기사님 (디아4)</div>
-      </div>
-      <div class="hero-cta">
-        <a class="btn pri" href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">카카오톡 상담하기</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="hero-slide" data-link="services.html#coldapp">
-    <div class="content">
-      <div class="result-showcase horizontal">
-        <span class="program-tag">🤖 ColdAPP - AI 블로그 자동 포스팅</span>
-        <span class="label">💰 1일 수익 증명</span>
-        <div class="screenshot">
-          <img src="KakaoTalk_20251109_005056559.png" alt="60만원 판매">
-        </div>
-        <div class="info">
-          <div class="info-item">
-            <span class="label">판매 건수</span>
-            <span class="value">43개</span>
-          </div>
-          <div class="info-item">
-            <span class="label">판매 금액</span>
-            <span class="value">60.6만원</span>
-          </div>
-          <div class="info-item">
-            <span class="label">실제 수익</span>
-            <span class="value">5.9만원</span>
-          </div>
+        <div class="hero-cta">
+          <a class="btn pri" href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">카카오톡
+            상담하기</a>
         </div>
       </div>
-      <div class="hero-cta">
-        <a class="btn pri" href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">카카오톡 상담하기</a>
+    </div>
+
+    <div class="hero-slide" data-link="/services#coldapp">
+      <div class="content">
+        <div class="result-showcase horizontal">
+          <span class="program-tag">🤖 ColdAPP - AI 블로그 자동 포스팅</span>
+          <span class="label">💰 1일 수익 증명</span>
+          <div class="screenshot">
+            <img src="KakaoTalk_20251109_005056559.png" alt="60만원 판매">
+          </div>
+          <div class="info">
+            <div class="info-item">
+              <span class="label">판매 건수</span>
+              <span class="value">43개</span>
+            </div>
+            <div class="info-item">
+              <span class="label">판매 금액</span>
+              <span class="value">60.6만원</span>
+            </div>
+            <div class="info-item">
+              <span class="label">실제 수익</span>
+              <span class="value">5.9만원</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-cta">
+          <a class="btn pri" href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">카카오톡
+            상담하기</a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="hero-indicators" id="heroIndicators"></div>
-
-  <div class="pause-indicator" id="pauseIndicator">⏸ 일시정지</div>
-</section>
-
-<section class="section container">
-  <h2>제공 서비스</h2>
-  <p class="lede">필요한 거 골라서 쓰세요</p>
-
-  <div class="product-cards">
-    <div class="product-card" onclick="location.href='/services#season'">
-      <span class="icon">🎨</span>
-      <h3>시즌 홍보 페이지</h3>
-      <p class="desc">맞춤 홍보이미지로 시즌을 효과적으로 홍보하세요</p>
-      <span class="arrow">자세히 보기 →</span>
+    <div class="hero-slide" data-link="/services#coldapp">
+      <div class="content">
+        <div class="result-showcase horizontal">
+          <span class="program-tag">🤖 ColdAPP - AI 블로그 자동 포스팅</span>
+          <span class="label">💰 실제 수익 증명</span>
+          <div class="screenshot">
+            <img src="KakaoTalk_20251202_203740737.png" alt="수익 인증">
+          </div>
+          <div class="info">
+            <div class="info-item">
+              <span class="label">판매 건수</span>
+              <span class="value">43개</span>
+            </div>
+            <div class="info-item">
+              <span class="label">판매 금액</span>
+              <span class="value">60.6만원</span>
+            </div>
+            <div class="info-item">
+              <span class="label">실제 수익</span>
+              <span class="value">5.9만원</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-cta">
+          <a class="btn pri" href="https://open.kakao.com/o/sCaiRmIh" target="_blank" rel="noopener noreferrer">카카오톡
+            상담하기</a>
+        </div>
+      </div>
     </div>
 
-    <div class="product-card" onclick="location.href='/services#macro'">
-      <span class="icon"><img src="assets/hawk_icon_256x256.png" alt="ColdHawk"></span>
-      <h3>인벤 게시 매크로</h3>
-      <p class="desc">인벤에 자동으로 글 올려주는 매크로</p>
-      <span class="arrow">자세히 보기 →</span>
+    <div class="hero-indicators" id="heroIndicators"></div>
+
+    <div class="pause-indicator" id="pauseIndicator">⏸ 일시정지</div>
+  </section>
+
+  <section class="section container">
+    <h2>제공 서비스</h2>
+    <p class="lede">필요한 거 골라서 쓰세요</p>
+
+    <div class="product-cards">
+      <div class="product-card" onclick="location.href='/services#season'">
+        <span class="icon">🎨</span>
+        <h3>시즌 홍보 페이지</h3>
+        <p class="desc">맞춤 홍보이미지로 시즌을 효과적으로 홍보하세요</p>
+        <span class="arrow">자세히 보기 →</span>
+      </div>
+
+      <div class="product-card" onclick="location.href='/services#macro'">
+        <span class="icon"><img src="assets/hawk_icon_256x256.png" alt="ColdHawk"></span>
+        <h3>인벤 게시 매크로</h3>
+        <p class="desc">인벤에 자동으로 글 올려주는 매크로</p>
+        <span class="arrow">자세히 보기 →</span>
+      </div>
+
+      <div class="product-card" onclick="location.href='/services#coldapp'">
+        <span class="icon"><img src="assets/coldapp_icon_256x256.png" alt="ColdAPP"></span>
+        <h3>브랜드커넥트 AI 포스팅</h3>
+        <p class="desc">링크만 넣으면 AI가 자동으로 블로그 글 써줌</p>
+        <span class="arrow">자세히 보기 →</span>
+      </div>
     </div>
+  </section>
 
-    <div class="product-card" onclick="location.href='/services#coldapp'">
-      <span class="icon"><img src="assets/coldapp_icon_256x256.png" alt="ColdAPP"></span>
-      <h3>브랜드커넥트 AI 포스팅</h3>
-      <p class="desc">링크만 넣으면 AI가 자동으로 블로그 글 써줌</p>
-      <span class="arrow">자세히 보기 →</span>
+  <footer>
+    <div class="container"
+      style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <p class="lede" style="margin:0">© <span id="y"></span> Changong's Studio — 시즌 홍보를 퀄리티있고 편하게</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="/about" style="color:var(--mut)">소개</a>
+        <a href="/services" style="color:var(--mut)">서비스</a>
+        <a href="/faq" style="color:var(--mut)">FAQ</a>
+        <a href="/guide" style="color:var(--mut)">가이드</a>
+      </div>
     </div>
-  </div>
-</section>
+  </footer>
 
-<footer>
-  <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
-    <p class="lede" style="margin:0">© <span id="y"></span> Changong's Studio — 시즌 홍보를 퀄리티있고 편하게</p>
-    <div style="display:flex;gap:12px;flex-wrap:wrap">
-      <a href="/about" style="color:var(--mut)">소개</a>
-      <a href="/services" style="color:var(--mut)">서비스</a>
-      <a href="/faq" style="color:var(--mut)">FAQ</a>
-      <a href="/guide" style="color:var(--mut)">가이드</a>
-    </div>
-  </div>
-</footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('y').textContent = new Date().getFullYear();
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('y').textContent = new Date().getFullYear();
+      const carousel = document.getElementById('heroCarousel');
+      const slides = carousel.querySelectorAll('.hero-slide');
+      const indicatorsContainer = document.getElementById('heroIndicators');
+      const pauseIndicator = document.getElementById('pauseIndicator');
+      let currentSlide = 0;
+      const totalSlides = slides.length;
+      let autoPlayInterval;
+      let isPaused = false;
 
-  const carousel = document.getElementById('heroCarousel');
-  const slides = carousel.querySelectorAll('.hero-slide');
-  const indicatorsContainer = document.getElementById('heroIndicators');
-  const pauseIndicator = document.getElementById('pauseIndicator');
-  let currentSlide = 0;
-  const totalSlides = slides.length;
-  let autoPlayInterval;
-  let isPaused = false;
+      // 인디케이터 생성
+      slides.forEach((_, index) => {
+        const btn = document.createElement('button');
+        if (index === 0) btn.classList.add('active');
+        btn.addEventListener('click', () => goToSlide(index));
+        indicatorsContainer.appendChild(btn);
+      });
 
-  // 인디케이터 생성
-  slides.forEach((_, index) => {
-    const btn = document.createElement('button');
-    if (index === 0) btn.classList.add('active');
-    btn.addEventListener('click', () => goToSlide(index));
-    indicatorsContainer.appendChild(btn);
-  });
+      const indicators = indicatorsContainer.querySelectorAll('button');
 
-  const indicators = indicatorsContainer.querySelectorAll('button');
+      function goToSlide(index) {
+        slides[currentSlide].classList.remove('active');
+        indicators[currentSlide].classList.remove('active');
 
-  function goToSlide(index) {
-    slides[currentSlide].classList.remove('active');
-    indicators[currentSlide].classList.remove('active');
+        currentSlide = index;
 
-    currentSlide = index;
-
-    slides[currentSlide].classList.add('active');
-    indicators[currentSlide].classList.add('active');
-  }
-
-  function nextSlide() {
-    const next = (currentSlide + 1) % totalSlides;
-    goToSlide(next);
-  }
-
-  function startAutoPlay() {
-    autoPlayInterval = setInterval(nextSlide, 3000); // 3초마다 전환
-    isPaused = false;
-    pauseIndicator.classList.remove('show');
-  }
-
-  function stopAutoPlay() {
-    clearInterval(autoPlayInterval);
-    isPaused = true;
-    pauseIndicator.classList.add('show');
-  }
-
-  // 슬라이드 클릭 시 해당 프로그램 페이지로 이동
-  slides.forEach(slide => {
-    slide.addEventListener('click', (e) => {
-      // 버튼 클릭은 무시 (버튼은 카카오톡 링크로 이동)
-      if (e.target.closest('.btn')) return;
-
-      const link = slide.getAttribute('data-link');
-      if (link) {
-        window.location.href = link;
+        slides[currentSlide].classList.add('active');
+        indicators[currentSlide].classList.add('active');
       }
-    });
-  });
 
-  // 이미지와 후기 박스에만 마우스 호버 시 일시 정지
-  const screenshots = carousel.querySelectorAll('.screenshot, .review-showcase');
-  screenshots.forEach(element => {
-    element.addEventListener('mouseenter', stopAutoPlay);
-    element.addEventListener('mouseleave', startAutoPlay);
-  });
+      function nextSlide() {
+        const next = (currentSlide + 1) % totalSlides;
+        goToSlide(next);
+      }
 
-  // 인디케이터 클릭 시에도 자동 재생 재시작
-  indicators.forEach(btn => {
-    btn.addEventListener('click', () => {
-      stopAutoPlay();
+      function startAutoPlay() {
+        autoPlayInterval = setInterval(nextSlide, 3000); // 3초마다 전환
+        isPaused = false;
+        pauseIndicator.classList.remove('show');
+      }
+
+      function stopAutoPlay() {
+        clearInterval(autoPlayInterval);
+        isPaused = true;
+        pauseIndicator.classList.add('show');
+      }
+
+      // 슬라이드 클릭 시 해당 프로그램 페이지로 이동
+      slides.forEach(slide => {
+        slide.addEventListener('click', (e) => {
+          // 버튼 클릭은 무시 (버튼은 카카오톡 링크로 이동)
+          if (e.target.closest('.btn')) return;
+
+          const link = slide.getAttribute('data-link');
+          if (link) {
+            window.location.href = link;
+          }
+        });
+      });
+
+      // 이미지와 후기 박스에만 마우스 호버 시 일시 정지
+      const screenshots = carousel.querySelectorAll('.screenshot, .review-showcase');
+      screenshots.forEach(element => {
+        element.addEventListener('mouseenter', stopAutoPlay);
+        element.addEventListener('mouseleave', startAutoPlay);
+      });
+
+      // 인디케이터 클릭 시에도 자동 재생 재시작
+      indicators.forEach(btn => {
+        btn.addEventListener('click', () => {
+          stopAutoPlay();
+          startAutoPlay();
+        });
+      });
+
       startAutoPlay();
     });
-  });
-
-  startAutoPlay();
-});
-</script>
+  </script>
 
 </body>
+
 </html>
