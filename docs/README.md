@@ -16,7 +16,7 @@
 
 ## 📱 접속 URL
 
-설정 완료 후: `https://xn--ob0by50d.store/signup.html`
+설정 완료 후: `https://xn--ob0by50d.shop/signup.html`
 
 ## 🔧 기능
 

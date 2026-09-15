@@ -47,7 +47,7 @@ git push origin main
 ## 5. 접속 URL
 
 회원가입 페이지는 다음 URL에서 접속 가능:
-- `https://xn--ob0by50d.store/signup.html`
+- `https://xn--ob0by50d.shop/signup.html`
 
 ## 6. Firebase 설정 완료 후
 

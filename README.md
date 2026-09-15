@@ -4,8 +4,8 @@ Chan's Studio 홈페이지 및 회원가입 페이지입니다.
 
 ## 🚀 배포된 사이트
 
-- **메인 페이지**: https://xn--ob0by50d.store/
-- **회원가입**: https://xn--ob0by50d.store/signup.html
+- **메인 페이지**: https://xn--ob0by50d.shop/
+- **회원가입**: https://xn--ob0by50d.shop/signup.html
 
 ## 📁 파일 구조
 

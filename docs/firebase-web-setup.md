@@ -50,7 +50,7 @@ const firebaseConfig = {
 
 1. Firebase 콘솔 → Authentication → Settings → Authorized domains
 2. 다음 도메인 추가:
-   - `xn--ob0by50d.store`
+   - `xn--ob0by50d.shop`
    - `madebychangong.github.io` (GitHub Pages용)
 
 ## 6. 배포 준비
